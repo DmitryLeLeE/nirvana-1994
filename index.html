@@ -69,25 +69,31 @@
     <div class="note">
       <p>
         Some bands you just listen to. Nirvana you carry with you.<br><br>
-        Kurt wrote about the things people feel but don't say — the ache, the loneliness,
-        the anger — and made them sound beautiful instead of shameful. That's why I made
-        this page. It isn't a museum piece. It's a thank-you note, kept the only way I know:
-        a little corner of the internet, the way it looked back then.
+        Kurt wrote about the things people feel but don't say, and he made it sound like it
+        was okay to feel them. That's why this page exists. I keep it the way I know how —
+        the way the internet looked back then.
       </p>
     </div>
 
     <hr>
 
     <p>
-      You are visitor number <span class="counter">001994</span><br>
+      You are visitor number <span class="counter" id="counter">001994</span><br>
       <span class="small">since this page came back online</span>
     </p>
 
-    <p><img src="assets/under-construction.gif" width="360" height="48" alt="Under construction"></p>
-    <p class="small">the Media and Discography sections are still being expanded</p>
+    <div class="statusbar"><span id="statustext">Welcome to my Nirvana page!!!</span></div>
 
-    <p><img src="assets/wow.gif" width="32" height="12" alt="WOW!"> <img src="assets/ad-banner.gif" width="468" height="60" alt="A classic 1994 banner ad — congratulations, you are visitor 1,000,000"></p>
-    <p class="small">a classic 1994 banner ad · no prizes will be delivered</p>
+    <p class="midi">
+      <img src="assets/mic.svg" width="8" height="16" alt=""> MIDI: grunge theme
+      <input type="button" id="midiBtn" value="PLAY" onclick="midiToggle()">
+    </p>
+
+    <p><img src="assets/under-construction.gif" width="360" height="48" alt="Under construction"></p>
+    <p class="small">the Lyrics section is coming — really, it is</p>
+
+    <p><img src="assets/wow.gif" width="32" height="12" alt="WOW!"> <a href="secret.html" title="claim your prize"><img src="assets/ad-banner.gif" width="468" height="60" alt="A classic 1994 banner ad — congratulations, you are visitor 1,000,000"></a></p>
+    <p class="small">banner ad · click to claim your prize (it's a trick, click anyway)</p>
 
     <hr>
 
@@ -100,7 +106,7 @@
 
     <p class="small">
       Best viewed in <b>Netscape Navigator 2.0</b>, 640×480, 256 colors.<br>
-      MIDI player is off so it doesn't get in the way.<br>
+      The MIDI up there is an original riff, not a Nirvana song — be gentle.<br>
       <a href="guestbook.html">Sign my guestbook</a> — or <a href="links.html">read the sources</a>.
     </p>
 
@@ -114,5 +120,47 @@
     <p class="small">© 1994 · made with love, in memory of Kurt Cobain</p>
 
   </center>
+
+  <script>
+    var v = (parseInt(localStorage.getItem("nirvana_visits")) || 1993) + 1;
+    localStorage.setItem("nirvana_visits", v);
+    var ce = document.getElementById("counter");
+    if (ce) ce.textContent = ("000000" + v).slice(-6);
+
+    var msgs = [
+      "Welcome to my Nirvana page!!!",
+      "Come as you are...",
+      "Sign the guestbook before you leave!",
+      "Best viewed in Netscape 2.0",
+      "This page was made by hand, in Notepad",
+      "Kurt — we still hear you"
+    ];
+    var si = 0;
+    setInterval(function () {
+      si = (si + 1) % msgs.length;
+      document.getElementById("statustext").textContent = msgs[si];
+    }, 4000);
+
+    var midiOn = false, midiTimer = null, ctx = null, ni = 0;
+    var RIFF = [220, 220, 196, 220, 262, 196, 220, 175];
+    function midiToggle() {
+      if (!ctx) ctx = new (window.AudioContext || window.webkitAudioContext)();
+      midiOn = !midiOn;
+      document.getElementById("midiBtn").value = midiOn ? "STOP" : "PLAY";
+      if (midiOn) { midiTimer = setInterval(playMidiNote, 450); }
+      else { clearInterval(midiTimer); midiTimer = null; }
+    }
+    function playMidiNote() {
+      var o = ctx.createOscillator(), g = ctx.createGain();
+      o.type = "square";
+      o.frequency.value = RIFF[ni % RIFF.length]; ni++;
+      g.gain.value = 0.06;
+      o.connect(g); g.connect(ctx.destination);
+      var t = ctx.currentTime;
+      g.gain.setValueAtTime(0.06, t);
+      g.gain.exponentialRampToValueAtTime(0.001, t + 0.4);
+      o.start(t); o.stop(t + 0.42);
+    }
+  </script>
 </body>
 </html>

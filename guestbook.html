@@ -61,7 +61,7 @@
     <hr>
 
     <p><a href="index.html">← back home</a></p>
-    <p class="last-updated">Last updated: 04/10/94</p>
+    <p class="last-updated">Last updated: 04/13/94</p>
     <p class="small">[ <a href="index.html">home</a> ] · Nirvana Memorial Web Ring</p>
     <p>
       <img src="assets/btn-netscape.gif" width="88" height="31" alt="Get Netscape 2.0">
@@ -80,7 +80,14 @@
         var raw = localStorage.getItem(KEY);
         if (raw) return JSON.parse(raw);
       } catch (e) {}
-      return [{ name: "A fan from Seattle", date: "1994-04-10", msg: "Thank you for the music. Rest in peace, Kurt." }];
+      return [
+        { name: "Kirsten, Seattle", date: "04/12/94", msg: "I was at the vigil. Still can't believe it. This page helps." },
+        { name: "Mike, Aberdeen", date: "04/11/94", msg: "From his hometown. The bridge into town is covered in flowers." },
+        { name: "Dana", date: "04/13/94", msg: "Smells Like Teen Spirit was the first song I learned on guitar. Thanks Kurt." },
+        { name: "J", date: "04/15/94", msg: "I keep listening to Unplugged and crying. Keep the page going." },
+        { name: "grungegirl94", date: "04/16/94", msg: "Best Nirvana page on the net. Signed your guestbook — now sign mine!" },
+        { name: "Tomas, Prague", date: "04/18/94", msg: "We lit candles here too. The music reached everywhere." }
+      ];
     }
     function saveEntries(list) {
       try { localStorage.setItem(KEY, JSON.stringify(list)); } catch (e) {}

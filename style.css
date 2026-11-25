@@ -174,3 +174,26 @@ table.content th {
   text-align: left;
   margin-bottom: 10px;
 }
+
+.statusbar {
+  display: inline-block;
+  width: 600px;
+  background: #d8d8d0;
+  border: 2px inset #ffffff;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 12px;
+  color: #333333;
+  text-align: left;
+  padding: 2px 6px;
+  margin-top: 8px;
+}
+
+.midi {
+  display: inline-block;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 13px;
+  background: #c8c8c0;
+  border: 2px outset #ffffff;
+  padding: 4px 8px;
+  margin-top: 8px;
+}
