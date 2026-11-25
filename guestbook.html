@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Nirvana — Гостевая книга</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <center>
+
+    <h1>NIRVANA</h1>
+    <p class="nav">
+      <a href="index.html">Главная</a> |
+      <a href="about.html">О группе</a> |
+      <a href="discography.html">Дискография</a> |
+      <a href="kurt.html">Курт Кобейн</a> |
+      <a href="death.html">Смерть и память</a> |
+      <a href="songs.html">Песни</a> |
+      <a href="guestbook.html">Гостевая книга</a> |
+      <a href="links.html">Ссылки</a>
+    </p>
+
+    <hr>
+
+    <h2>Гостевая книга</h2>
+    <p>Оставьте запись. Записи хранятся в вашем браузере.</p>
+
+    <form onsubmit="return sign(this)">
+      <p>
+        Ваше имя или ник:<br>
+        <input type="text" name="name" maxlength="40" required>
+      </p>
+      <p>
+        Сообщение:<br>
+        <textarea name="msg" rows="3" maxlength="240" required></textarea>
+      </p>
+      <p><input type="submit" value="Оставить запись"></p>
+    </form>
+
+    <hr>
+
+    <div id="entries"></div>
+
+    <hr>
+
+    <p><a href="index.html">← на главную</a></p>
+    <p class="small">© 1994 · памяти Курта Кобейна</p>
+
+  </center>
+
+  <script>
+    var KEY = "nirvana_guestbook";
+    function loadEntries() {
+      try {
+        var raw = localStorage.getItem(KEY);
+        if (raw) return JSON.parse(raw);
+      } catch (e) {}
+      return [{ name: "Фанат из Сиэтла", date: "1994-04-10", msg: "Спасибо за музыку. Покойся с миром, Курт." }];
+    }
+    function saveEntries(list) {
+      try { localStorage.setItem(KEY, JSON.stringify(list)); } catch (e) {}
+    }
+    function render() {
+      var el = document.getElementById("entries");
+      var list = loadEntries();
+      el.innerHTML = "";
+      for (var i = 0; i < list.length; i++) {
+        var d = document.createElement("p");
+        d.innerHTML = "<b>" + escapeHtml(list[i].name) + "</b> · " + escapeHtml(list[i].date) + "<br>" + escapeHtml(list[i].msg);
+        el.appendChild(d);
+      }
+    }
+    function escapeHtml(s) {
+      return String(s).replace(/[&<>"]/g, function (c) {
+        return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+      });
+    }
+    function sign(form) {
+      var name = form.name.value.trim();
+      var msg = form.msg.value.trim();
+      if (!name || !msg) return false;
+      var list = loadEntries();
+      list.unshift({ name: name, date: "сегодня", msg: msg });
+      saveEntries(list.slice(0, 20));
+      render();
+      form.reset();
+      return false;
+    }
+    render();
+  </script>
+</body>
+</html>
