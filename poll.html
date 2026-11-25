@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Nirvana — Poll</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <meta property="og:site_name" content="Nirvana Memorial — a hand-made 1994 fan site">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Nirvana — Poll">
+  <meta property="og:description" content="A hand-made 1994-style fan site about Nirvana and Kurt Cobain: the band, the songs, his words, and his memory.">
+  <meta property="og:image" content="https://dmitrylelee.github.io/nirvana-1994/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <center>
+
+    <p><img src="assets/banner-poll.gif" width="600" height="80" alt="NIRVANA — poll"></p>
+
+    <p class="nav">
+      <a href="index.html">Home</a> |
+      <a href="about.html">The Band</a> |
+      <a href="grunge.html">The Scene</a> |
+      <a href="timeline.html">Timeline</a> |
+      <a href="discography.html">Discography</a> |
+      <a href="kurt.html">Kurt Cobain</a> |
+      <a href="family.html">Family</a> |
+      <a href="death.html">Death &amp; Legacy</a> |
+      <a href="27club.html">27 Club</a> |
+      <a href="songs.html">Songs</a> |
+      <a href="quotes.html">Quotes</a> |
+      <a href="lyrics.html">Lyrics</a> |
+      <a href="faq.html">FAQ</a> |
+      <a href="poll.html">Poll</a> |
+      <a href="gear.html">Gear</a> |
+      <a href="trivia.html">Trivia</a> |
+      <a href="awards.html">Awards</a> |
+      <a href="webmaster.html">Webmaster</a> |
+      <a href="sitemap.html">Sitemap</a> |
+      <a href="media.html">Media</a> |
+      <a href="gallery.html">Gallery</a> |
+      <a href="guestbook.html">Guestbook</a> |
+      <a href="links.html">Sources</a>
+    </p>
+
+    <hr>
+
+    <h2>The Big Poll</h2>
+    <p class="small">vote, then look at the results — votes are kept in your browser, like the guestbook</p>
+
+    <div id="poll"></div>
+
+    <hr>
+
+    <p class="last-updated">Last updated: 04/16/94</p>
+    <p class="small">[ <a href="index.html">home</a> ] · Nirvana Memorial Web Ring</p>
+    <p>
+      <img src="assets/btn-netscape.gif" width="88" height="31" alt="Get Netscape 2.0">
+      <img src="assets/btn-notepad.gif" width="88" height="31" alt="Made with Notepad">
+      <img src="assets/btn-guestbook.gif" width="88" height="31" alt="Sign my guestbook">
+      <img src="assets/btn-webring.gif" width="88" height="31" alt="Nirvana Webring">
+    </p>
+    <p class="small">© 1994 · in memory of Kurt Cobain</p>
+
+  </center>
+
+  <script>
+    var POLL_KEY = "nirvana_poll";
+    var QUESTIONS = [
+      { id: "album", title: "Best album?", options: ["Bleach", "Nevermind", "Incesticide", "In Utero", "MTV Unplugged"] },
+      { id: "song", title: "The one song?", options: ["Smells Like Teen Spirit", "Come As You Are", "Lithium", "Heart-Shaped Box", "All Apologies", "Where Did You Sleep Last Night"] },
+      { id: "member", title: "Your favorite member?", options: ["Kurt", "Krist", "Dave"] }
+    ];
+    function loadPoll() {
+      try { return JSON.parse(localStorage.getItem(POLL_KEY)) || {}; } catch (e) { return {}; }
+    }
+    function savePoll(p) {
+      try { localStorage.setItem(POLL_KEY, JSON.stringify(p)); } catch (e) {}
+    }
+    function vote(qid, opt) {
+      var p = loadPoll();
+      var key = qid + "|" + opt;
+      p[key] = (p[key] || 0) + 1;
+      savePoll(p);
+      render();
+    }
+    function render() {
+      var p = loadPoll();
+      var el = document.getElementById("poll");
+      el.innerHTML = "";
+      for (var qi = 0; qi < QUESTIONS.length; qi++) {
+        var q = QUESTIONS[qi];
+        var d = document.createElement("div");
+        var total = 0;
+        for (var i = 0; i < q.options.length; i++) {
+          total += (p[q.id + "|" + q.options[i]] || 0);
+        }
+        var h = document.createElement("h3");
+        h.textContent = q.title;
+        d.appendChild(h);
+        for (var j = 0; j < q.options.length; j++) {
+          var o = q.options[j];
+          var votes = p[q.id + "|" + o] || 0;
+          var pct = total > 0 ? Math.round((votes / total) * 100) : 0;
+          var row = document.createElement("p");
+          var link = document.createElement("a");
+          link.href = "#";
+          link.textContent = "VOTE";
+          link.onclick = (function (qid, opt) {
+            return function () { vote(qid, opt); return false; };
+          })(q.id, o);
+          var bar = "";
+          for (var b = 0; b < Math.round(pct / 5); b++) { bar += "█"; }
+          var barSpan = document.createElement("span");
+          barSpan.style.fontFamily = "Courier New, monospace";
+          barSpan.textContent = bar;
+          row.innerHTML = "";
+          row.appendChild(document.createTextNode(o + " — " + pct + "% (" + votes + ") ["));
+          row.appendChild(link);
+          row.appendChild(document.createTextNode("] "));
+          row.appendChild(barSpan);
+          d.appendChild(row);
+        }
+        el.appendChild(d);
+      }
+    }
+    render();
+  </script>
+</body>
+</html>
