@@ -114,6 +114,7 @@ BANNERS = [
     ("media",       "MEDIA",                    (18, 18, 18),  (62, 62, 72),   (130, 255, 130)),
     ("guestbook",   "GUESTBOOK",                (55, 32, 10),  (135, 82, 32),  (255, 222, 150)),
     ("links",       "SOURCES",                  (22, 26, 55),  (62, 72, 125),  (222, 222, 255)),
+    ("scene",       "THE SCENE",                (8, 40, 20),   (30, 110, 60),  (255, 215, 0)),
 ]
 
 for name, title, c1, c2, gold in BANNERS:
@@ -239,5 +240,46 @@ d.text((430, 430), "1967 - 1994", font=f_dates, fill=(60, 50, 40))
 f_small = ImageFont.truetype(FB, 30)
 d.text((250, 520), "a hand-made 1994 fan site", font=f_small, fill=(90, 75, 60))
 og.save(os.path.join(ROOT, "og-image.png"))
+
+# ---------- ещё реклама ----------
+def fake_ad(path, bg1, bg2, text1, text2):
+    frames = []
+    for i in range(2):
+        img = Image.new("RGB", (468, 60), bg1 if i == 0 else bg2)
+        d = ImageDraw.Draw(img)
+        d.rectangle([0, 0, 467, 59], outline="#ffff00" if i == 0 else "#ffffff")
+        f = ImageFont.truetype(FB, 24)
+        w1, h1 = tw(d, text1, f)
+        d.text(((468 - w1) // 2, 4), text1, font=f, fill="#ffffff" if i == 0 else "#ffff00")
+        f2 = ImageFont.truetype(FB, 16)
+        w2, h2 = tw(d, text2, f2)
+        d.text(((468 - w2) // 2, 36), text2, font=f2, fill="#ffff00" if i == 0 else "#ffffff")
+        frames.append(img)
+    frames[0].save(path, save_all=True, append_images=frames[1:], duration=600, loop=0)
+
+fake_ad(os.path.join(OUT, "ad-ringtone.gif"), "#003300", "#330000",
+        "FREE GRUNGE RINGTONES!", "call 1-900-GRUNGE now — $2.99/min, 18+")
+fake_ad(os.path.join(OUT, "ad-homepage.gif"), "#000033", "#333300",
+        "GET YOUR OWN FREE HOMEPAGE!", "no HTML skills needed — sign up today!!")
+fake_ad(os.path.join(OUT, "ad-chat.gif"), "#330033", "#003333",
+        "TALK GRUNGE LIVE!", "24/7 chat room — 56k modems welcome")
+
+# ---------- ещё бейджи ----------
+blink_badge(os.path.join(OUT, "wow.gif"), "WOW!", "#0000cc", "#ffffff", "#66ccff")
+blink_badge(os.path.join(OUT, "cool.gif"), "COOL!", "#008800", "#ffffff", "#66ff66")
+
+# ---------- анимированный радужный разделитель ----------
+frames = []
+cols = ["#ff0000", "#ff8800", "#ffff00", "#00cc00", "#0088ff", "#8800ff"]
+for shift in range(6):
+    img = Image.new("RGB", (560, 8))
+    d = ImageDraw.Draw(img)
+    cw = 560 // 6
+    for i in range(6):
+        c = cols[(i + shift) % 6]
+        d.rectangle([i * cw, 0, (i + 1) * cw - 1, 7], fill=c)
+    frames.append(img)
+frames[0].save(os.path.join(OUT, "divider-anim.gif"),
+               save_all=True, append_images=frames[1:], duration=200, loop=0)
 
 print("DONE")
