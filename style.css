@@ -153,6 +153,13 @@ table.content th {
   text-align: left;
 }
 
+.note p {
+  text-align: left;
+  max-width: 520px;
+  margin-left: 0;
+  margin-right: 0;
+}
+
 .gallery td {
   text-align: center;
   padding: 8px;
