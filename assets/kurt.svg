@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="28" viewBox="0 0 24 28" shape-rendering="crispEdges">
+  <!-- волосы -->
+  <rect x="4" y="0" width="16" height="3" fill="#e3c565"/>
+  <rect x="2" y="3" width="3" height="5" fill="#e3c565"/>
+  <rect x="19" y="3" width="3" height="5" fill="#e3c565"/>
+  <rect x="3" y="1" width="18" height="2" fill="#c9a24a"/>
+  <!-- лоб -->
+  <rect x="6" y="4" width="12" height="3" fill="#eec9a4"/>
+  <!-- брови -->
+  <rect x="6" y="8" width="3" height="1" fill="#b78a3f"/>
+  <rect x="15" y="8" width="3" height="1" fill="#b78a3f"/>
+  <!-- глаза -->
+  <rect x="6" y="9" width="3" height="2" fill="#3d6ea5"/>
+  <rect x="15" y="9" width="3" height="2" fill="#3d6ea5"/>
+  <!-- нос -->
+  <rect x="11" y="11" width="2" height="3" fill="#d9ae87"/>
+  <!-- рот -->
+  <rect x="9" y="15" width="6" height="2" fill="#9d4f43"/>
+  <!-- щетина -->
+  <rect x="7" y="17" width="10" height="2" fill="#c9a88a"/>
+  <!-- щёки -->
+  <rect x="5" y="7" width="1" height="10" fill="#eec9a4"/>
+  <rect x="18" y="7" width="1" height="10" fill="#eec9a4"/>
+  <!-- шея -->
+  <rect x="9" y="19" width="6" height="2" fill="#eec9a4"/>
+  <!-- фланелевая рубашка -->
+  <rect x="3" y="21" width="18" height="7" fill="#8a3324"/>
+  <rect x="3" y="23" width="18" height="1" fill="#5f2118"/>
+  <rect x="3" y="25" width="18" height="1" fill="#5f2118"/>
+</svg>
