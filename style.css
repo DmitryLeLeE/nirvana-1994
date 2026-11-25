@@ -1,0 +1,113 @@
+/* NIRVANA memorial · стиль 1994 */
+body {
+  background: #141414;
+  color: #c9c9c9;
+  font-family: "Times New Roman", Times, serif;
+  margin: 12px;
+}
+
+a {
+  color: #9fb4d8;
+}
+
+a:visited {
+  color: #8f7fb0;
+}
+
+a:hover {
+  color: #ffcc66;
+}
+
+h1, h2, h3, h4 {
+  color: #ececec;
+  font-weight: normal;
+}
+
+h1 {
+  font-size: 48px;
+  letter-spacing: 8px;
+  margin: 0.2em 0;
+}
+
+h2 {
+  font-size: 26px;
+  letter-spacing: 3px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+hr {
+  height: 2px;
+  border: none;
+  background: #555555;
+  margin: 18px 0;
+}
+
+.nav {
+  font-size: 15px;
+  line-height: 2;
+}
+
+.nav a {
+  margin: 0 2px;
+}
+
+.blink {
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.counter {
+  display: inline-block;
+  font-family: "Courier New", monospace;
+  font-size: 22px;
+  color: #33ff66;
+  background: #000000;
+  padding: 4px 10px;
+  border: 1px solid #333333;
+  letter-spacing: 5px;
+}
+
+.uc {
+  display: inline-block;
+  font-family: "Courier New", monospace;
+  font-weight: bold;
+  color: #ffcc00;
+  border: 2px dashed #ffcc00;
+  padding: 8px 16px;
+  letter-spacing: 2px;
+}
+
+.small {
+  font-size: 12px;
+  color: #888888;
+}
+
+p {
+  max-width: 640px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table.content {
+  width: 660px;
+  border-collapse: collapse;
+}
+
+table.content th, table.content td {
+  border: 1px solid #555555;
+  padding: 6px 10px;
+  text-align: left;
+  font-size: 14px;
+}
+
+table.content th {
+  background: #2a2a2a;
+  color: #ececec;
+}
