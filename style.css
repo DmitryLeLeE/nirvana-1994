@@ -1,26 +1,27 @@
-/* NIRVANA memorial · стиль 1994 */
+/* NIRVANA memorial · 1994 style */
 body {
-  background: #141414;
-  color: #c9c9c9;
+  background: #ffffff;
+  color: #000000;
   font-family: "Times New Roman", Times, serif;
   margin: 12px;
 }
 
 a {
-  color: #9fb4d8;
+  color: #0000ee;
+  text-decoration: underline;
 }
 
 a:visited {
-  color: #8f7fb0;
+  color: #551a8b;
 }
 
 a:hover {
-  color: #ffcc66;
+  color: #cc0000;
 }
 
 h1, h2, h3, h4 {
-  color: #ececec;
-  font-weight: normal;
+  color: #000000;
+  font-weight: bold;
 }
 
 h1 {
@@ -31,7 +32,7 @@ h1 {
 
 h2 {
   font-size: 26px;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
 }
 
 h3 {
@@ -41,7 +42,7 @@ h3 {
 hr {
   height: 2px;
   border: none;
-  background: #555555;
+  background: #000000;
   margin: 18px 0;
 }
 
@@ -66,10 +67,10 @@ hr {
   display: inline-block;
   font-family: "Courier New", monospace;
   font-size: 22px;
-  color: #33ff66;
+  color: #006600;
   background: #000000;
   padding: 4px 10px;
-  border: 1px solid #333333;
+  border: 1px solid #000000;
   letter-spacing: 5px;
 }
 
@@ -77,15 +78,15 @@ hr {
   display: inline-block;
   font-family: "Courier New", monospace;
   font-weight: bold;
-  color: #ffcc00;
-  border: 2px dashed #ffcc00;
+  color: #cc0000;
+  border: 2px dashed #cc0000;
   padding: 8px 16px;
   letter-spacing: 2px;
 }
 
 .small {
   font-size: 12px;
-  color: #888888;
+  color: #555555;
 }
 
 p {
@@ -95,19 +96,27 @@ p {
   margin-right: auto;
 }
 
+ul {
+  max-width: 640px;
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+  display: inline-block;
+}
+
 table.content {
   width: 660px;
   border-collapse: collapse;
 }
 
 table.content th, table.content td {
-  border: 1px solid #555555;
+  border: 1px solid #000000;
   padding: 6px 10px;
   text-align: left;
   font-size: 14px;
 }
 
 table.content th {
-  background: #2a2a2a;
-  color: #ececec;
+  background: #dddddd;
+  color: #000000;
 }

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Nirvana — Гостевая книга</title>
+  <title>Nirvana — Guestbook</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -10,31 +10,32 @@
 
     <h1>NIRVANA</h1>
     <p class="nav">
-      <a href="index.html">Главная</a> |
-      <a href="about.html">О группе</a> |
-      <a href="discography.html">Дискография</a> |
-      <a href="kurt.html">Курт Кобейн</a> |
-      <a href="death.html">Смерть и память</a> |
-      <a href="songs.html">Песни</a> |
-      <a href="guestbook.html">Гостевая книга</a> |
-      <a href="links.html">Ссылки</a>
+      <a href="index.html">Home</a> |
+      <a href="about.html">The Band</a> |
+      <a href="discography.html">Discography</a> |
+      <a href="kurt.html">Kurt Cobain</a> |
+      <a href="death.html">Death &amp; Legacy</a> |
+      <a href="songs.html">Songs</a> |
+      <a href="media.html">Media</a> |
+      <a href="guestbook.html">Guestbook</a> |
+      <a href="links.html">Sources</a>
     </p>
 
     <hr>
 
-    <h2>Гостевая книга</h2>
-    <p>Оставьте запись. Записи хранятся в вашем браузере.</p>
+    <h2>Guestbook</h2>
+    <p>Leave a note. Entries are stored in your browser.</p>
 
     <form onsubmit="return sign(this)">
       <p>
-        Ваше имя или ник:<br>
+        Your name:<br>
         <input type="text" name="name" maxlength="40" required>
       </p>
       <p>
-        Сообщение:<br>
+        Message:<br>
         <textarea name="msg" rows="3" maxlength="240" required></textarea>
       </p>
-      <p><input type="submit" value="Оставить запись"></p>
+      <p><input type="submit" value="Sign the guestbook"></p>
     </form>
 
     <hr>
@@ -43,8 +44,8 @@
 
     <hr>
 
-    <p><a href="index.html">← на главную</a></p>
-    <p class="small">© 1994 · памяти Курта Кобейна</p>
+    <p><a href="index.html">← back home</a></p>
+    <p class="small">© 1994 · in memory of Kurt Cobain</p>
 
   </center>
 
@@ -55,10 +56,15 @@
         var raw = localStorage.getItem(KEY);
         if (raw) return JSON.parse(raw);
       } catch (e) {}
-      return [{ name: "Фанат из Сиэтла", date: "1994-04-10", msg: "Спасибо за музыку. Покойся с миром, Курт." }];
+      return [{ name: "A fan from Seattle", date: "1994-04-10", msg: "Thank you for the music. Rest in peace, Kurt." }];
     }
     function saveEntries(list) {
       try { localStorage.setItem(KEY, JSON.stringify(list)); } catch (e) {}
+    }
+    function escapeHtml(s) {
+      return String(s).replace(/[&<>"]/g, function (c) {
+        return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+      });
     }
     function render() {
       var el = document.getElementById("entries");
@@ -70,17 +76,12 @@
         el.appendChild(d);
       }
     }
-    function escapeHtml(s) {
-      return String(s).replace(/[&<>"]/g, function (c) {
-        return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
-      });
-    }
     function sign(form) {
       var name = form.name.value.trim();
       var msg = form.msg.value.trim();
       if (!name || !msg) return false;
       var list = loadEntries();
-      list.unshift({ name: name, date: "сегодня", msg: msg });
+      list.unshift({ name: name, date: "today", msg: msg });
       saveEntries(list.slice(0, 20));
       render();
       form.reset();
