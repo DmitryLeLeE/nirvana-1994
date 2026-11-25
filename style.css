@@ -157,3 +157,13 @@ table.content th {
   text-align: center;
   padding: 8px;
 }
+
+.quote {
+  display: inline-block;
+  background: #fffdf2;
+  border: 2px ridge #999999;
+  padding: 10px 16px;
+  max-width: 560px;
+  text-align: left;
+  margin-bottom: 10px;
+}
