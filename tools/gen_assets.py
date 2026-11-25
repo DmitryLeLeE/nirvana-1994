@@ -115,6 +115,7 @@ BANNERS = [
     ("guestbook",   "GUESTBOOK",                (55, 32, 10),  (135, 82, 32),  (255, 222, 150)),
     ("links",       "SOURCES",                  (22, 26, 55),  (62, 72, 125),  (222, 222, 255)),
     ("scene",       "THE SCENE",                (8, 40, 20),   (30, 110, 60),  (255, 215, 0)),
+    ("gallery",     "PHOTO GALLERY",            (40, 30, 10),  (120, 90, 40),  (255, 230, 160)),
 ]
 
 for name, title, c1, c2, gold in BANNERS:
