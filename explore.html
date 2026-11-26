@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nirvana — Explore Nirvana (Guided Archive Exploration)</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <meta property="og:site_name" content="Nirvana Memorial — a hand-made 1994 fan site">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Nirvana — Explore Nirvana">
+  <meta property="og:description" content="Guided step-by-step exploration paths across albums, songs, concerts, the Seattle scene, and 1994.">
+  <meta property="og:image" content="https://dmitrylelee.github.io/nirvana-1994/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <center>
+
+    <p><img src="assets/banner-sitemap.gif" width="600" height="80" alt="NIRVANA — explore archive"></p>
+
+    <p class="nav">
+      <a href="index.html">Home</a> |
+      <a href="about.html">The Band</a> |
+      <a href="discography.html">Discography</a> |
+      <a href="songs.html">Songs</a> |
+      <a href="listening.html">Listening Room</a> |
+      <a href="concerts.html">Concerts</a> |
+      <a href="timeline.html">Timeline</a> |
+      <a href="gallery.html">Gallery</a> |
+      <a href="media.html">Media</a> |
+      <a href="sitemap.html">Archive</a> |
+      <a href="search.html">Search</a> |
+      <a href="links.html">Sources</a>
+    </p>
+
+    <hr>
+
+    <h2>EXPLORE NIRVANA — GUIDED ARCHIVE PATHS</h2>
+    <p class="small">
+      step-by-step interactive journeys across existing archive records<br>
+      Related: <a href="story.html">The Nirvana Story</a> &middot; <a href="albums.html">Album Deep Dives</a> &middot; <a href="exhibitions.html">Exhibitions</a> &middot; <a href="search.html">Search</a>
+    </p>
+
+    <p id="pathTabs" class="small"></p>
+    <div id="pathView" class="note" style="max-width:700px; text-align:left; background:#fffdf2; border:3px ridge #808080; padding:14px;"></div>
+
+    <p class="small" style="margin-top:10px;">
+      <button type="button" id="prevStepBtn" onclick="stepPath(-1)">&larr; Previous Step</button>
+      &nbsp;
+      <button type="button" id="nextStepBtn" onclick="stepPath(1)">Next Step &rarr;</button>
+    </p>
+
+    <hr>
+
+    <p class="last-updated">Last updated: 11/16/94 <span class="small">(Stage 4 Guided Explorer)</span></p>
+    <p class="small">[ <a href="index.html">home</a> ] &middot; Nirvana Memorial Web Ring</p>
+    <p>
+      <img src="assets/btn-netscape.gif" width="88" height="31" alt="Get Netscape 2.0">
+      <img src="assets/btn-notepad.gif" width="88" height="31" alt="Made with Notepad">
+      <img src="assets/btn-guestbook.gif" width="88" height="31" alt="Sign my guestbook">
+      <img src="assets/btn-webring.gif" width="88" height="31" alt="Nirvana Webring">
+    </p>
+    <p class="small">&#169; 1994 &middot; in memory of Kurt Cobain</p>
+
+  </center>
+
+  <script src="data/releases_data.js"></script>
+  <script src="data/sessions_data.js"></script>
+  <script src="data/listening_data.js"></script>
+  <script src="data/concerts_data.js"></script>
+  <script src="data/map_data.js"></script>
+  <script src="data/scene_influences_data.js"></script>
+  <script src="data/photos_data.js"></script>
+  <script>
+    var activePathKey = "album";
+    var activeStepIdx = 0;
+
+    function esc(s) {
+      return String(s).replace(/[&<>"]/g, function (c) {
+        return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+      });
+    }
+
+    var PATHS = {
+      album: {
+        title: "I WANT TO EXPLORE AN ALBUM (Nevermind, 1991)",
+        steps: [
+          { name: "1. Album Dossier", summary: "Examine Nevermind's context, Sound City production, and artwork.", href: "albums.html?album=nevermind", label: "Open Nevermind Dossier" },
+          { name: "2. Recording Session", summary: "Inspect the May 2–28, 1991 Sound City Studios session and Neve 8028 console details.", href: "listening.html#ses-1991-soundcity", label: "Open Sound City Session" },
+          { name: "3. Songs & Versions", summary: "Explore track evolution for 'Smells Like Teen Spirit', 'Drain You', and 'Lithium'.", href: "listening.html?song=drain-you#evolution", label: "Open Drain You Evolution" },
+          { name: "4. Physical Releases", summary: "Compare US CD (DGCD-24425), US Cassette, and European LP pressings.", href: "discography.html#rel-nevermind-us-cd", label: "Open Physical Releases" },
+          { name: "5. Era Concerts", summary: "Trace the 1991–1992 live breakthrough from OK Hotel to Paramount and Reading.", href: "concerts.html#con-1991-10-31-paramount", label: "Open Paramount 1991" }
+        ]
+      },
+      song: {
+        title: "I WANT TO EXPLORE A SONG (Drain You)",
+        steps: [
+          { name: "1. Song Origins", summary: "Inspect writers, duration, and story behind 'Drain You'.", href: "listening.html?song=drain-you", label: "Open Drain You in Listening Room" },
+          { name: "2. Studio & Demo Versions", summary: "Compare the May 1991 Sound City LP mix against live/radio takes.", href: "listening.html?song=drain-you#evolution", label: "Compare Takes & Evolution" },
+          { name: "3. Album Context", summary: "See how 'Drain You' fits inside the Nevermind tracklist.", href: "albums.html?album=nevermind", label: "Open Nevermind Dossier" },
+          { name: "4. Live Performances", summary: "Jump to documented live setlists featuring 'Drain You' (Paramount '91, Reading '92, Munich '94).", href: "concerts.html#con-1991-10-31-paramount", label: "Open Live Setlists" },
+          { name: "5. Bootlegs & Tape Trading", summary: "Explore 1990s tape-trading history and radio broadcasts.", href: "bootlegs.html", label: "Open Bootlegs Archive" }
+        ]
+      },
+      concert: {
+        title: "I WANT TO EXPLORE A CONCERT (Reading Festival 1992)",
+        steps: [
+          { name: "1. Concert Dossier", summary: "Review the August 30, 1992 Reading Festival lineup, date confidence, and LiveNirvana sources.", href: "concerts.html#con-1992-08-30-reading", label: "Open Reading '92 Dossier" },
+          { name: "2. Venue & Geography", summary: "Locate Little John's Farm (Reading, UK) on the interactive Nirvana Map.", href: "map.html?place=reading-festival", label: "Open Reading on Map" },
+          { name: "3. Setlist & Songs", summary: "Explore the 24-song headline setlist and linked songs.", href: "concerts.html#con-1992-08-30-reading", label: "Inspect Reading Setlist" },
+          { name: "4. Photos & Artifacts", summary: "View 1992 tour photography and commemorative ticket reconstruction.", href: "exhibitions.html?exhibition=exh-road", label: "Open On The Road Exhibition" }
+        ]
+      },
+      scene: {
+        title: "I WANT TO EXPLORE THE SEATTLE SCENE",
+        steps: [
+          { name: "1. Related Bands", summary: "Browse 15 documented bands (Melvins, Mudhoney, Soundgarden, Bikini Kill, Earth).", href: "grunge.html#network", label: "Open Scene Network" },
+          { name: "2. Independent Labels", summary: "Inspect Sub Pop, K Records, C/Z Records, and SST Records.", href: "grunge.html#lbl-subpop", label: "Inspect Sub Pop & Labels" },
+          { name: "3. Studios & Venues", summary: "Visit Reciprocal Recording, KAOS 89.3 FM, OK Hotel, and Off Ramp on the map.", href: "map.html?place=reciprocal", label: "Open Reciprocal on Map" },
+          { name: "4. Musical Influences", summary: "Trace Pixies, Lead Belly, The Vaselines, Wipers, and musical heritage.", href: "influences.html#connections", label: "Open Influences & Heritage" }
+        ]
+      },
+      year1994: {
+        title: "I WANT TO EXPLORE 1994",
+        steps: [
+          { name: "1. 1994 Timeline", summary: "Review the verified chronology from January 1994 to April 1994.", href: "timeline.html", label: "Open Timeline" },
+          { name: "2. Final Studio Session", summary: "Inspect January 28–30, 1994 at Robert Lang Studios ('You Know You're Right').", href: "listening.html#ses-1994-robertlang", label: "Open Robert Lang Session" },
+          { name: "3. Final Tour & Munich", summary: "Follow the February–March 1994 European dates ending at Terminal Eins.", href: "concerts.html#journeys", label: "Open Final Concerts Journey" },
+          { name: "4. Last Days Exhibition", summary: "Inspect documents, memorials, and post-1994 research.", href: "exhibitions.html?exhibition=exh-lastdays", label: "Open Last Days Exhibition" }
+        ]
+      }
+    };
+
+    function renderPathTabs() {
+      var keys = ["album", "song", "concert", "scene", "year1994"];
+      var labels = { album: "Explore an Album", song: "Explore a Song", concert: "Explore a Concert", scene: "Explore Seattle Scene", year1994: "Explore 1994" };
+      var btns = [];
+      for (var i = 0; i < keys.length; i++) {
+        var k = keys[i];
+        var st = k === activePathKey ? " style='font-weight:bold; border:2px solid #000000;'" : "";
+        btns.push("<button type='button'" + st + " onclick='selectPath(\"" + k + "\")'>" + esc(labels[k]) + "</button>");
+      }
+      document.getElementById("pathTabs").innerHTML = btns.join(" ");
+    }
+
+    function selectPath(key) {
+      activePathKey = PATHS[key] ? key : "album";
+      activeStepIdx = 0;
+      renderPath();
+    }
+
+    function setStep(idx) {
+      var p = PATHS[activePathKey];
+      if (idx < 0 || idx >= p.steps.length) return;
+      activeStepIdx = idx;
+      renderPath();
+    }
+
+    function stepPath(d) {
+      setStep(activeStepIdx + d);
+    }
+
+    function renderPath() {
+      renderPathTabs();
+      var p = PATHS[activePathKey];
+      var st = p.steps[activeStepIdx];
+
+      var stepList = "<table class='content'><tr><th>Step</th><th>Action</th></tr>";
+      for (var i = 0; i < p.steps.length; i++) {
+        var s = p.steps[i];
+        var bg = i === activeStepIdx ? " style='background:#e9eef7;'" : "";
+        stepList += "<tr" + bg + "><td><a href='#' onclick='setStep(" + i + "); return false;'><b>" + esc(s.name) + "</b></a></td><td class='small'>" + esc(s.summary) + "</td></tr>";
+      }
+      stepList += "</table>";
+
+      document.getElementById("pathView").innerHTML =
+        "<h3 style='margin-top:0;'>" + esc(p.title) + "</h3>" +
+        stepList +
+        "<div style='margin-top:10px; padding:10px; border:1px solid #808080; background:#ffffff;'>" +
+        "<b>Current Step (" + (activeStepIdx + 1) + "/" + p.steps.length + "): " + esc(st.name) + "</b><br>" +
+        "<span class='small'>" + esc(st.summary) + "</span><br><br>" +
+        "<a href='" + esc(st.href) + "'><b>" + esc(st.label) + " &rarr;</b></a>" +
+        "</div>";
+
+      document.getElementById("prevStepBtn").disabled = (activeStepIdx === 0);
+      document.getElementById("nextStepBtn").disabled = (activeStepIdx === p.steps.length - 1);
+    }
+
+    (function initExplore() {
+      var params = new URLSearchParams(location.search);
+      var q = params.get("path");
+      if (q && PATHS[q]) activePathKey = q;
+      renderPath();
+    })();
+  </script>
+</body>
+</html>
