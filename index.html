@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nirvana — In Memory of Kurt Cobain</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <meta property="og:site_name" content="Nirvana Memorial — a hand-made 1994 fan site">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Nirvana — In Memory of Kurt Cobain">
   <meta property="og:description" content="A hand-made 1994-style fan site about Nirvana and Kurt Cobain: the band, the songs, his words, and his memory.">
-  <meta property="og:image" content="https://dmitrylelee.github.io/nirvana-1994/og-image.png">
+  <meta property="og:image" content="https://dmitrylelee.github.io/my-page/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -98,7 +99,7 @@
     </p>
 
     <p><img src="assets/under-construction.gif" width="360" height="48" alt="Under construction"></p>
-    <p class="small">the Lyrics section is coming — really, it is</p>
+    <p class="small">more rare bootlegs &amp; tabs coming soon</p>
 
     <p><img src="assets/wow.gif" width="32" height="12" alt="WOW!"> <a href="secret.html" title="claim your prize"><img src="assets/ad-banner.gif" width="468" height="60" alt="A classic 1994 banner ad — congratulations, you are visitor 1,000,000"></a></p>
     <p class="small">banner ad · click to claim your prize (it's a trick, click anyway)</p>
@@ -153,9 +154,10 @@
     var RIFF = [220, 220, 196, 220, 262, 196, 220, 175];
     function midiToggle() {
       if (!ctx) ctx = new (window.AudioContext || window.webkitAudioContext)();
+      if (ctx.state === "suspended") ctx.resume();
       midiOn = !midiOn;
       document.getElementById("midiBtn").value = midiOn ? "STOP" : "PLAY";
-      if (midiOn) { midiTimer = setInterval(playMidiNote, 450); }
+      if (midiOn) { playMidiNote(); midiTimer = setInterval(playMidiNote, 450); }
       else { clearInterval(midiTimer); midiTimer = null; }
     }
     function playMidiNote() {

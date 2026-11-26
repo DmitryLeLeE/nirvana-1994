@@ -75,6 +75,13 @@ marquee {
   font-family: "Courier New", Courier, monospace;
   font-size: 14px;
   padding: 4px 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }
 
 .counter {
@@ -123,7 +130,8 @@ ul {
 }
 
 table.content {
-  width: 660px;
+  width: min(660px, 100%);
+  max-width: 100%;
   border-collapse: collapse;
 }
 
@@ -177,8 +185,10 @@ table.content th {
 
 .statusbar {
   display: inline-block;
-  width: 600px;
-  background: #d8d8d0;
+  width: min(600px, 100%);
+  max-width: 100%;
+  box-sizing: border-box;
+  background: #d8d8c0;
   border: 2px inset #ffffff;
   font-family: "Courier New", Courier, monospace;
   font-size: 12px;
@@ -190,6 +200,8 @@ table.content th {
 
 .midi {
   display: inline-block;
+  max-width: 100%;
+  box-sizing: border-box;
   font-family: "Courier New", Courier, monospace;
   font-size: 13px;
   background: #c8c8c0;
@@ -200,6 +212,8 @@ table.content th {
 
 .lyrics {
   display: inline-block;
+  max-width: 100%;
+  box-sizing: border-box;
   text-align: left;
   background: #fffdf2;
   border: 2px ridge #999999;
@@ -208,4 +222,61 @@ table.content th {
   font-size: 13px;
   line-height: 1.35;
   margin-bottom: 10px;
+}
+
+pre.lyrics,
+.lyrics pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  margin: 0;
+}
+
+@media (max-width: 680px) {
+  h1 {
+    font-size: clamp(26px, 8vw, 48px);
+    letter-spacing: 4px;
+  }
+
+  .nav {
+    line-height: 2.3;
+  }
+
+  .nav a {
+    display: inline-block;
+    padding: 4px 3px;
+  }
+
+  .note,
+  .quote {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .gallery,
+  .gallery tbody,
+  .gallery tr,
+  .gallery td {
+    display: block;
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  table.content {
+    display: block;
+    overflow-x: auto;
+  }
+
+  input[type="button"],
+  input[type="submit"],
+  button {
+    min-height: 40px;
+    padding: 6px 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blink {
+    animation: none;
+  }
 }
