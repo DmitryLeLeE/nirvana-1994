@@ -291,17 +291,33 @@
           "<td class='small'>" + mapCell + "</td></tr>";
       }
       document.getElementById("journeyView").innerHTML =
-        "<h4 style='margin-top:0;'>" + esc(j.title) + "</h4>" +
-        "<p class='small'>" + esc(j.desc) + "</p>" +
-        "<table class='content'><tr><th>#</th><th>Date</th><th>Venue &amp; City</th><th>Setlist</th><th>Map</th></tr>" + rows + "</table>";
+        "<h4 style='margin-top:0;'>" + esc(j.title) + " <span class='badge-modern'>SELECTED DOCUMENTED SHOWS</span></h4>" +
+        "<p class='small'>" + esc(j.desc) + " <i>(Partial archival route: lists documented shows in this repository, not every date of the tour.)</i></p>" +
+        "<table class='content'><tr><th>#</th><th>Date</th><th>Venue &amp; City</th><th>Setlist</th><th>Map</th></tr>" + rows + "</table>" +
+        "<p class='small' style='margin-bottom:0;'><b>Sources:</b> <a href='https://www.livenirvana.com/concerts/' target='_blank'>LiveNirvana Concert Chronology</a> &middot; <a href='https://www.nirvanaguide.com/' target='_blank'>Nirvana Live Guide</a></p>";
     }
 
     renderConcerts();
-    selectJourney("bleach");
-    (function () {
+    (function initConcertsPage() {
       var params = new URLSearchParams(location.search);
-      var q = params.get("concert") || "con-1991-10-31-paramount";
-      selectConcert(q);
+      var qJourney = params.get("journey");
+      selectJourney(qJourney || "bleach");
+
+      var qConcert = params.get("concert");
+      var hashId = (location.hash || "").replace(/^#/, "");
+      var targetConcert = qConcert || (hashId.indexOf("con-") === 0 ? hashId : "");
+
+      if (targetConcert && findConcertById(targetConcert)) {
+        selectConcert(targetConcert);
+        var cd = document.getElementById("concertDetail");
+        if (cd) cd.scrollIntoView();
+      } else {
+        selectConcert("con-1991-10-31-paramount");
+        if (qJourney || hashId === "journeys") {
+          var jv = document.getElementById("journeys");
+          if (jv) jv.scrollIntoView();
+        }
+      }
     })();
   </script>
 </body>
