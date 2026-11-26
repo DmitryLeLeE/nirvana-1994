@@ -1,0 +1,50 @@
+{
+  "concerts_count": 17,
+  "setlist_counts": {
+    "PARTIAL": 8,
+    "INCOMPLETE": 1,
+    "COMPLETE": 7,
+    "UNKNOWN": 1
+  },
+  "photos_count": 23,
+  "known_authorship_photos": 21,
+  "unknown_authorship_photos": 2,
+  "artifacts_count": 15,
+  "scene_entities_count": 20,
+  "influence_links_count": 12,
+  "releases_count": 15,
+  "studios_count": 7,
+  "sessions_count": 11,
+  "songs_count": 12,
+  "map_places_count": 19,
+  "errors": [],
+  "warnings": [],
+  "unverified": [
+    "Photo pho-01: capture_date precision is APPROXIMATE (Unknown (live concert photograph, c. 1988–1989))",
+    "Photo pho-03: capture_date precision is UNKNOWN (Unknown (cover painting created pre-Dec 1992))",
+    "Photo pho-05: photographer unknown (Unknown (MTV / DGC))",
+    "Photo pho-15: photographer unknown (Unknown (Aberdeen Police Department))",
+    "Concert con-1987-04-18-tacoma: setlist_status=PARTIAL (9 tracks)",
+    "Concert con-1987-summer-raymond: setlist_status=INCOMPLETE (5 tracks)",
+    "Concert con-1988-04-central: setlist_status=UNKNOWN (0 tracks)",
+    "Concert con-1989-06-23-rhino: setlist_status=PARTIAL (5 tracks)",
+    "Concert con-1990-09-22-motorsports: setlist_status=PARTIAL (11 tracks)",
+    "Concert con-1990-11-25-offramp: setlist_status=PARTIAL (11 tracks)",
+    "Concert con-1991-04-17-okhotel: setlist_status=PARTIAL (8 tracks)",
+    "Concert con-1992-02-01-melbourne: setlist_status=PARTIAL (15 tracks)",
+    "Concert con-1993-10-23-aragon: setlist_status=PARTIAL (17 tracks)",
+    "Concert con-1994-02-22-rome: setlist_status=PARTIAL (22 tracks)",
+    "Session ses-1987-boombox: completeness_status=PARTIAL DOCUMENTATION",
+    "Session ses-1994-doremi: completeness_status=UNKNOWN"
+  ],
+  "passed": [
+    "Map places validated (19 unique IDs with valid coordinates)",
+    "Gallery metadata validated (23 photos; known authorship=21, unknown=2)",
+    "Artifacts internal links validated (15 items)",
+    "Concerts validated (17 shows; setlist_counts={'PARTIAL': 8, 'INCOMPLETE': 1, 'COMPLETE': 7, 'UNKNOWN': 1})",
+    "Physical releases validated (15 items)",
+    "Studios (7) & Sessions (11) validated",
+    "Scene (20) & Influences (12) validated",
+    "Songs internal links validated (12 songs)"
+  ]
+}
