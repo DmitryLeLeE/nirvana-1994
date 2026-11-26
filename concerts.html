@@ -110,6 +110,19 @@
 
     <hr>
 
+    <h3 id="journeys">Interactive Tour Journeys (1987&#8211;1994)</h3>
+    <p class="small">curated chronological tour routes built directly from documented concerts &amp; verified map venues</p>
+    <p class="small" id="journeyTabs">
+      <button type="button" onclick="selectJourney('bleach')">The Bleach Years (1987&#8211;1990)</button>
+      <button type="button" onclick="selectJourney('nevermind-eu')">Nevermind &amp; Europe (1991)</button>
+      <button type="button" onclick="selectJourney('pacific')">Australia &amp; Festivals (1992)</button>
+      <button type="button" onclick="selectJourney('inutero')">In Utero Tour (1993)</button>
+      <button type="button" onclick="selectJourney('final')">The Final Concerts (1994)</button>
+    </p>
+    <div id="journeyView" class="note" style="max-width:650px; width:100%; box-sizing:border-box; text-align:left;"></div>
+
+    <hr>
+
     <p class="last-updated">Last updated: 11/16/94 <span class="small">(archive expanded with post-1994 LiveNirvana research)</span></p>
     <p class="small">[ <a href="index.html">home</a> ] &middot; Nirvana Memorial Web Ring</p>
     <p>
@@ -230,7 +243,61 @@
         "<b>Sources:</b> " + srcsHtml + "</p>";
     }
 
+    var JOURNEYS = {
+      "bleach": {
+        title: "THE BLEACH YEARS (1987–1990)",
+        desc: "Early Washington clubs, house parties, and Sub Pop regional dates leading up to Dave Grohl's arrival.",
+        stops: ["con-1987-04-18-tacoma", "con-1987-summer-raymond", "con-1988-04-central", "con-1989-06-23-rhino", "con-1990-09-22-motorsports", "con-1990-11-25-offramp"]
+      },
+      "nevermind-eu": {
+        title: "NEVERMIND & EUROPEAN BREAKTHROUGH (1991)",
+        desc: "From the 'Smells Like Teen Spirit' debut at OK Hotel to Paramount Theatre Halloween and Amsterdam's Paradiso.",
+        stops: ["con-1991-04-17-okhotel", "con-1991-10-31-paramount", "con-1991-11-25-paradiso"]
+      },
+      "pacific": {
+        title: "AUSTRALIA & FESTIVAL PEAK (1992)",
+        desc: "SNL #1 chart weekend, Australian tour (Melbourne), and the August 1992 Reading Festival headline.",
+        stops: ["con-1992-01-11-snl", "con-1992-02-01-melbourne", "con-1992-08-30-reading"]
+      },
+      "inutero": {
+        title: "IN UTERO TOUR & UNPLUGGED (1993)",
+        desc: "North American In Utero arena tour with Pat Smear, Sony Music Studios acoustic taping, and Pier 48 Seattle.",
+        stops: ["con-1993-10-23-aragon", "con-1993-11-18-unplugged", "con-1993-12-13-liveandloud"]
+      },
+      "final": {
+        title: "THE FINAL CONCERTS (1994)",
+        desc: "Documented European dates from late February in Rome/Marino to the final performance at Terminal Eins, Munich.",
+        stops: ["con-1994-02-22-rome", "con-1994-03-01-munich"]
+      }
+    };
+
+    function findConcertById(id) {
+      for (var i = 0; i < window.NIRVANA_CONCERTS.length; i++) {
+        if (window.NIRVANA_CONCERTS[i].id === id) return window.NIRVANA_CONCERTS[i];
+      }
+      return null;
+    }
+
+    function selectJourney(key) {
+      var j = JOURNEYS[key] || JOURNEYS["bleach"];
+      var rows = "";
+      for (var i = 0; i < j.stops.length; i++) {
+        var c = findConcertById(j.stops[i]);
+        if (!c) continue;
+        var mapCell = c.venue_id ? "<a href='map.html?place=" + esc(c.venue_id) + "'>Map &rarr;</a>" : "&#8212;";
+        rows += "<tr><td>" + (i + 1) + "</td><td><a href='#concertDetail' onclick='selectConcert(\"" + esc(c.id) + "\")'><b>" + esc(c.date) + "</b></a></td>" +
+          "<td class='small'>" + esc(c.venue + " (" + c.city + ", " + c.country + ")") + "</td>" +
+          "<td class='small'>" + setlistBadge(c.setlist_status) + " (" + (c.setlist ? c.setlist.length : 0) + ")</td>" +
+          "<td class='small'>" + mapCell + "</td></tr>";
+      }
+      document.getElementById("journeyView").innerHTML =
+        "<h4 style='margin-top:0;'>" + esc(j.title) + "</h4>" +
+        "<p class='small'>" + esc(j.desc) + "</p>" +
+        "<table class='content'><tr><th>#</th><th>Date</th><th>Venue &amp; City</th><th>Setlist</th><th>Map</th></tr>" + rows + "</table>";
+    }
+
     renderConcerts();
+    selectJourney("bleach");
     (function () {
       var params = new URLSearchParams(location.search);
       var q = params.get("concert") || "con-1991-10-31-paramount";

@@ -227,7 +227,7 @@ window.NIRVANA_STORY_CHAPTERS = [
       { label: "Album Dossier: Incesticide", href: "albums.html?album=incesticide" },
       { label: "Album Dossier: MTV Unplugged", href: "albums.html?album=unplugged" }
     ],
-    concert_ids: ["con-1993-10-23-chicago", "con-1993-11-18-unplugged", "con-1993-12-13-pier48"],
+    concert_ids: ["con-1993-10-23-aragon", "con-1993-11-18-unplugged", "con-1993-12-13-liveandloud"],
     session_ids: ["ses-1993-pachyderm"],
     people: [
       { label: "Pat Smear & Touring Lineup", href: "about.html" },
@@ -281,7 +281,7 @@ window.NIRVANA_STORY_CHAPTERS = [
     ],
     photo_ids: ["pho-18", "pho-21"],
     album_links: [{ label: "Album Dossier: MTV Unplugged", href: "albums.html?album=unplugged" }],
-    concert_ids: ["con-1994-02-22-milan", "con-1994-03-01-munich"],
+    concert_ids: ["con-1994-02-22-rome", "con-1994-03-01-munich"],
     session_ids: ["ses-1994-robertlang", "ses-1994-doremi"],
     people: [
       { label: "Death & Legacy", href: "death.html" },

@@ -114,7 +114,7 @@ window.NIRVANA_ALBUM_DOSSIERS = [
     release_work_match: ["In Utero", "Pennyroyal Tea"],
     session_ids: ["ses-1993-pachyderm"],
     photo_id: "pho-04",
-    concert_ids: ["con-1993-10-23-chicago", "con-1993-12-13-pier48", "con-1994-03-01-munich"],
+    concert_ids: ["con-1993-10-23-aragon", "con-1993-12-13-liveandloud", "con-1994-03-01-munich"],
     theme: { bg: "#fdf4f4", border: "#7f1d1d", headerBg: "#7f1d1d", headerFg: "#ffffff", tag: "1993 · DGC · PACHYDERM STUDIO & STEVE ALBINI" },
     context: "Seeking an unvarnished, confrontational follow-up to Nevermind, Nirvana isolated themselves at Pachyderm Studio in rural Minnesota with engineer Steve Albini, rejecting glossy 1991 rock production.",
     recording: "Recorded February 12–26, 1993 by Steve Albini and Bob Weston on Pachyderm's Neve 8068 console ($24,000 studio rental + $100,000 flat fee). After label/band tension over the mix, Scott Litt remixed singles 'Heart-Shaped Box' and 'All Apologies' (and 'Pennyroyal Tea' for single).",
