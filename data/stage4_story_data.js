@@ -1,5 +1,6 @@
-// Stage 4.1 — THE NIRVANA STORY (6 Documented Historical Chapters)
-// Strictly separates FACT, TESTIMONY, INTERPRETATION, and DISPUTED claims.
+// Stage 4.9.5 — THE NIRVANA STORY (6 Documented Historical Chapters)
+// Strictly separates FACT, TESTIMONY, INTERPRETATION, and DISPUTED claims,
+// and separates source_publication_date from source_context / source_type.
 window.NIRVANA_STORY_CHAPTERS = [
   {
     id: "ch-01",
@@ -15,15 +16,19 @@ window.NIRVANA_STORY_CHAPTERS = [
         event_date: "Dec 1985 (exact month disputed: Dec 1985 vs spring 1986)",
         source: "Wikipedia — Fecal Matter",
         source_url: "https://en.wikipedia.org/wiki/Fecal_Matter_(band)",
-        pub_date: "Archival reference"
+        source_publication_date: "Unknown",
+        source_context: "Encyclopedic reference summarizing Azerrad (1993) and Cross (2001)",
+        source_type: "reference"
       },
       {
         type: "TESTIMONY",
         text: "Krist Novoselic later recalled that hearing the Fecal Matter tape ('Spank Thru') convinced him to form a band with Cobain.",
         event_date: "1986",
-        source: "Azerrad (1993) / Wikipedia",
+        source: "Michael Azerrad — Come As You Are: The Story of Nirvana",
         source_url: "https://en.wikipedia.org/wiki/Fecal_Matter_(band)",
-        pub_date: "1993"
+        source_publication_date: "1993",
+        source_context: "Authorized band biography (participant interview)",
+        source_type: "book"
       },
       {
         type: "FACT",
@@ -31,7 +36,9 @@ window.NIRVANA_STORY_CHAPTERS = [
         event_date: "1987-04-18",
         source: "LiveNirvana (1987-04-18)",
         source_url: "https://www.livenirvana.com/concerts/87/87-04-18.php",
-        pub_date: "Archival chronology"
+        source_publication_date: "Unknown",
+        source_context: "Specialized concert chronology",
+        source_type: "chronology"
       },
       {
         type: "FACT",
@@ -39,7 +46,9 @@ window.NIRVANA_STORY_CHAPTERS = [
         event_date: "1987-05-06",
         source: "LiveNirvana — May 1987 KAOS",
         source_url: "https://www.livenirvana.com/sessions/radio/may-1987.php",
-        pub_date: "Archival sessionography"
+        source_publication_date: "Unknown",
+        source_context: "Specialized recording sessionography",
+        source_type: "sessionography"
       },
       {
         type: "DISPUTED",
@@ -47,7 +56,9 @@ window.NIRVANA_STORY_CHAPTERS = [
         event_date: "c. Summer 1987",
         source: "LiveNirvana Chronology",
         source_url: "https://www.livenirvana.com/",
-        pub_date: "Modern archival research"
+        source_publication_date: "Unknown",
+        source_context: "Post-2004 independent archival research",
+        source_type: "chronology"
       }
     ],
     photo_ids: ["pho-14", "pho-15"],
@@ -78,15 +89,19 @@ window.NIRVANA_STORY_CHAPTERS = [
         event_date: "1988-01-23",
         source: "LiveNirvana — Jan 1988 Session",
         source_url: "https://www.livenirvana.com/sessions/studio/january-1988.php",
-        pub_date: "Archival sessionography"
+        source_publication_date: "Unknown",
+        source_context: "Specialized recording sessionography",
+        source_type: "sessionography"
       },
       {
         type: "FACT",
         text: "Sub Pop issued the debut single 'Love Buzz / Big Cheese' (SP23) in November 1988 in a hand-numbered run of 1,000 copies, followed by the debut LP Bleach (SP34) on June 15, 1989, recorded for $606.17 fronted by second guitarist Jason Everman.",
         event_date: "1988-11 / 1989-06-15",
-        source: "Wikipedia — Bleach",
+        source: "Wikipedia — Bleach (Nirvana album)",
         source_url: "https://en.wikipedia.org/wiki/Bleach_(Nirvana_album)",
-        pub_date: "Archival reference"
+        source_publication_date: "Unknown",
+        source_context: "Encyclopedic discography reference",
+        source_type: "reference"
       },
       {
         type: "FACT",
@@ -94,7 +109,9 @@ window.NIRVANA_STORY_CHAPTERS = [
         event_date: "1989-10-26",
         source: "LiveNirvana — Oct 1989 Peel #1",
         source_url: "https://www.livenirvana.com/sessions/radio/october-1989.php",
-        pub_date: "Archival sessionography"
+        source_publication_date: "Unknown",
+        source_context: "Specialized recording sessionography",
+        source_type: "sessionography"
       },
       {
         type: "INTERPRETATION",
@@ -102,7 +119,9 @@ window.NIRVANA_STORY_CHAPTERS = [
         event_date: "1989",
         source: "Wikipedia — Bleach (Musical style)",
         source_url: "https://en.wikipedia.org/wiki/Bleach_(Nirvana_album)",
-        pub_date: "Archival analysis"
+        source_publication_date: "Unknown",
+        source_context: "Musicological summary",
+        source_type: "reference"
       }
     ],
     photo_ids: ["pho-01", "pho-17", "pho-16"],
@@ -132,7 +151,9 @@ window.NIRVANA_STORY_CHAPTERS = [
         event_date: "1990-11-25",
         source: "LiveNirvana (1990-11-25)",
         source_url: "https://www.livenirvana.com/concerts/90/90-11-25.php",
-        pub_date: "Archival chronology"
+        source_publication_date: "Unknown",
+        source_context: "Specialized concert chronology",
+        source_type: "chronology"
       },
       {
         type: "FACT",
@@ -140,7 +161,9 @@ window.NIRVANA_STORY_CHAPTERS = [
         event_date: "1991-04-17 / 1991-05",
         source: "LiveNirvana (1991-04-17)",
         source_url: "https://www.livenirvana.com/concerts/91/91-04-17.php",
-        pub_date: "Archival chronology"
+        source_publication_date: "Unknown",
+        source_context: "Specialized concert chronology",
+        source_type: "chronology"
       },
       {
         type: "FACT",
@@ -148,15 +171,19 @@ window.NIRVANA_STORY_CHAPTERS = [
         event_date: "1991-09-24 / 1992-01-11",
         source: "Wikipedia — Nevermind",
         source_url: "https://en.wikipedia.org/wiki/Nevermind",
-        pub_date: "Archival reference"
+        source_publication_date: "Unknown",
+        source_context: "Encyclopedic release & chart record",
+        source_type: "reference"
       },
       {
         type: "TESTIMONY",
-        text: "Cobain later stated in Rolling Stone (January 1994) that on 'Smells Like Teen Spirit' he was 'basically trying to rip off the Pixies' quiet-loud dynamics.",
-        event_date: "1991 (quoted Jan 1994)",
-        source: "Wikipedia — Smells Like Teen Spirit",
+        text: "Cobain stated in Rolling Stone that on 'Smells Like Teen Spirit' he was 'basically trying to rip off the Pixies' quiet-loud dynamics.",
+        event_date: "1991",
+        source: "David Fricke — Rolling Stone Interview (via Wikipedia)",
         source_url: "https://en.wikipedia.org/wiki/Smells_Like_Teen_Spirit",
-        pub_date: "Jan 1994"
+        source_publication_date: "January 27, 1994",
+        source_context: "Contemporary magazine interview",
+        source_type: "interview"
       },
       {
         type: "FACT",
@@ -164,7 +191,9 @@ window.NIRVANA_STORY_CHAPTERS = [
         event_date: "1992-08-30",
         source: "LiveNirvana (1992-08-30)",
         source_url: "https://www.livenirvana.com/concerts/92/92-08-30.php",
-        pub_date: "Archival chronology"
+        source_publication_date: "Unknown",
+        source_context: "Specialized concert chronology",
+        source_type: "chronology"
       }
     ],
     photo_ids: ["pho-02", "pho-10", "pho-20"],
@@ -194,7 +223,9 @@ window.NIRVANA_STORY_CHAPTERS = [
         event_date: "1992-12-15",
         source: "Wikipedia — Incesticide",
         source_url: "https://en.wikipedia.org/wiki/Incesticide",
-        pub_date: "Archival reference"
+        source_publication_date: "Unknown",
+        source_context: "Encyclopedic release record",
+        source_type: "reference"
       },
       {
         type: "FACT",
@@ -202,7 +233,9 @@ window.NIRVANA_STORY_CHAPTERS = [
         event_date: "1993-02-12 to 1993-02-26",
         source: "Wikipedia — In Utero",
         source_url: "https://en.wikipedia.org/wiki/In_Utero",
-        pub_date: "Archival reference"
+        source_publication_date: "Unknown",
+        source_context: "Encyclopedic recording record",
+        source_type: "reference"
       },
       {
         type: "FACT",
@@ -210,7 +243,9 @@ window.NIRVANA_STORY_CHAPTERS = [
         event_date: "1993-11-18",
         source: "LiveNirvana (1993-11-18)",
         source_url: "https://www.livenirvana.com/concerts/93/93-11-18.php",
-        pub_date: "Archival chronology"
+        source_publication_date: "Unknown",
+        source_context: "Specialized concert chronology",
+        source_type: "chronology"
       },
       {
         type: "INTERPRETATION",
@@ -218,7 +253,9 @@ window.NIRVANA_STORY_CHAPTERS = [
         event_date: "1993",
         source: "Wikipedia — In Utero / MTV Unplugged",
         source_url: "https://en.wikipedia.org/wiki/In_Utero",
-        pub_date: "Archival analysis"
+        source_publication_date: "Unknown",
+        source_context: "Critical & historical synthesis",
+        source_type: "reference"
       }
     ],
     photo_ids: ["pho-03", "pho-04", "pho-05"],
@@ -252,7 +289,9 @@ window.NIRVANA_STORY_CHAPTERS = [
         event_date: "1994-01-28 to 1994-01-30",
         source: "LiveNirvana — Jan 1994 Session",
         source_url: "https://www.livenirvana.com/sessions/studio/january-1994.php",
-        pub_date: "Archival sessionography"
+        source_publication_date: "Unknown",
+        source_context: "Specialized recording sessionography",
+        source_type: "sessionography"
       },
       {
         type: "FACT",
@@ -260,23 +299,29 @@ window.NIRVANA_STORY_CHAPTERS = [
         event_date: "1994-03-01",
         source: "LiveNirvana (1994-03-01)",
         source_url: "https://www.livenirvana.com/concerts/94/94-03-01.php",
-        pub_date: "Archival chronology"
+        source_publication_date: "Unknown",
+        source_context: "Specialized concert chronology",
+        source_type: "chronology"
       },
       {
         type: "FACT",
         text: "Following a medical emergency in Rome (March 4) and the cancellation of remaining European dates, Kurt Cobain died on April 5, 1994 at his Seattle residence; his body was discovered on April 8.",
         event_date: "1994-04-05",
-        source: "Timeline & Seattle Times Dispatch",
-        source_url: "timeline.html",
-        pub_date: "April 1994"
+        source: "Wikipedia — Kurt Cobain (1994 chronology & police/coroner records)",
+        source_url: "https://en.wikipedia.org/wiki/Kurt_Cobain",
+        source_publication_date: "Unknown",
+        source_context: "Biographical reference citing April 1994 Seattle press & police records",
+        source_type: "reference"
       },
       {
         type: "DISPUTED",
         text: "Kurt Cobain's solo 4-track home demo 'Do Re Mi' dates from early 1994, though its exact recording day and full cassette context remain undocumented in public session logs.",
         event_date: "Early 1994 (exact date unknown)",
-        source: "Wikipedia — With the Lights Out",
+        source: "With the Lights Out (2004) / Wikipedia",
         source_url: "https://en.wikipedia.org/wiki/With_the_Lights_Out",
-        pub_date: "2004"
+        source_publication_date: "November 23, 2004",
+        source_context: "Posthumous box-set release documentation",
+        source_type: "release"
       }
     ],
     photo_ids: ["pho-18", "pho-21"],
@@ -306,15 +351,19 @@ window.NIRVANA_STORY_CHAPTERS = [
         event_date: "1994-11-01 / 1996",
         source: "Wikipedia — MTV Unplugged in New York",
         source_url: "https://en.wikipedia.org/wiki/MTV_Unplugged_in_New_York",
-        pub_date: "Archival reference"
+        source_publication_date: "Unknown",
+        source_context: "Encyclopedic release & chart record",
+        source_type: "reference"
       },
       {
         type: "FACT",
-        text: "After legal resolution among surviving members and Courtney Love, 'You Know You're Right' was officially released in October 2002 on the Nirvana compilation, and the 3CD+1DVD box set With the Lights Out followed in November 2004.",
+        text: "After legal resolution among surviving members and Courtney Love, 'You Know You're Right' was officially released in October 2002 on the Nirvana compilation, and the 3CD+1DVD box set With the Lights Out followed on November 23, 2004.",
         event_date: "2002-10 / 2004-11-23",
         source: "Wikipedia — With the Lights Out",
         source_url: "https://en.wikipedia.org/wiki/With_the_Lights_Out",
-        pub_date: "Archival reference"
+        source_publication_date: "Unknown",
+        source_context: "Encyclopedic box-set documentation",
+        source_type: "reference"
       },
       {
         type: "FACT",
@@ -322,15 +371,19 @@ window.NIRVANA_STORY_CHAPTERS = [
         event_date: "2004–present",
         source: "LiveNirvana",
         source_url: "https://www.livenirvana.com/",
-        pub_date: "Modern archival research"
+        source_publication_date: "Unknown",
+        source_context: "Ongoing independent archival research",
+        source_type: "chronology"
       },
       {
         type: "INTERPRETATION",
-        text: "Museum exhibitions such as MoPOP in Seattle and digital chronologies preserve Nirvana both as a 1990s cultural watershed and as a continuously verified historical record.",
+        text: "Museum exhibitions such as MoPOP (formerly EMP) in Seattle and digital chronologies preserve Nirvana both as a 1990s cultural watershed and as a continuously verified historical record.",
         event_date: "2000–present",
-        source: "MoPOP / Archive Map",
-        source_url: "map.html?place=mopop",
-        pub_date: "Modern archive"
+        source: "Wikipedia — Museum of Pop Culture",
+        source_url: "https://en.wikipedia.org/wiki/Museum_of_Pop_Culture",
+        source_publication_date: "Unknown",
+        source_context: "Institutional museum reference",
+        source_type: "reference"
       }
     ],
     photo_ids: ["pho-11", "pho-12", "pho-19", "pho-23"],

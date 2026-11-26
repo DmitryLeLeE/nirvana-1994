@@ -208,10 +208,16 @@
         }
       }
 
+      var verRows = [];
+      for (var v = 0; v < (s.versions || []).length; v++) {
+        var vr = s.versions[v];
+        verRows.push("<tr><td class='small'>" + esc(s.year) + "</td><td class='small'><code>" + esc(vr.type) + "</code> <b>" + esc(vr.label) + "</b></td><td class='small'>" + esc(vr.detail) + "</td></tr>");
+      }
+
       var html = "<h4 id='evolution'>" + esc(s.title) + " — Song Evolution &amp; Cross-Archive Timeline</h4>";
-      html += "<p class='small'><i>Partial archival view: lists documented sessions, physical editions, and concerts present in this archive (not an exhaustive log of every performance).</i></p>";
-      if (sesRows.length || conRows.length) {
-        html += "<table class='content'><tr><th>Date</th><th>Stage / Event</th><th>Context</th></tr>" + sesRows.join("") + conRows.join("") + "</table>";
+      html += "<p class='small'><i>Partial archival view: connects documented takes, studio/home sessions, physical editions, and concerts present in this archive (does not claim every live performance).</i></p>";
+      if (verRows.length || sesRows.length || conRows.length) {
+        html += "<table class='content'><tr><th>Date / Era</th><th>Stage / Recording</th><th>Context &amp; Status</th></tr>" + verRows.join("") + sesRows.join("") + conRows.join("") + "</table>";
       } else {
         html += "<p class='small'>No separate session/concert cross-matches beyond the version table above.</p>";
       }

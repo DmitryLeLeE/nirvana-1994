@@ -131,8 +131,10 @@
         var srcLink = cl.source_url.indexOf("http") === 0
           ? "<a href='" + esc(cl.source_url) + "' target='_blank'>" + esc(cl.source) + "</a>"
           : "<a href='" + esc(cl.source_url) + "'>" + esc(cl.source) + "</a>";
+        var pubPart = (cl.source_publication_date && cl.source_publication_date !== "Unknown") ? (", pub. " + esc(cl.source_publication_date)) : "";
+        var ctxPart = cl.source_context ? (" — " + esc(cl.source_context)) : "";
         claimsHtml += "<tr><td class='small' style='white-space:nowrap;'>" + claimBadge(cl.type) + "<br>" + esc(cl.event_date) + "</td>" +
-          "<td class='small'>" + esc(cl.text) + "<br><b>Source:</b> " + srcLink + " (" + esc(cl.pub_date) + ")</td></tr>";
+          "<td class='small'>" + esc(cl.text) + "<br><b>Source:</b> " + srcLink + esc(ctxPart) + pubPart + "</td></tr>";
       }
       claimsHtml += "</table>";
 
