@@ -155,30 +155,25 @@
 
   </center>
 
+  <script src="data/photos_data.js"></script>
   <script>
     var galItems = [];
     var visibleItems = [];
     var lbIndex = 0;
 
-    function classifyCell(imgSrc, altText) {
-      var s = (imgSrc + " " + altText).toLowerCase();
-      var yr = "1992", tp = "kurt", dateLabel = "c. 1992", photog = "Unknown (Wikimedia Commons archive)", place = "Unknown", event = "Archival portrait / stage", license = "Wikimedia Commons / Wikipedia fair-use or CC", status = "APPROXIMATE", relatedHref = "kurt.html", relatedText = "Kurt Cobain";
-      if (s.indexOf("bleach") !== -1) { yr = "early"; tp = "albums"; dateLabel = "June 15, 1989"; photog = "Tracy Marander (cover photo)"; place = "Seattle, WA"; event = "Bleach LP release"; status = "CONFIRMED"; relatedHref = "discography.html"; relatedText = "Discography"; }
-      else if (s.indexOf("nevermind") !== -1) { yr = "1991"; tp = "albums"; dateLabel = "Sept 24, 1991"; photog = "Kirk Weddle (underwater photo)"; place = "Los Angeles, CA"; event = "Nevermind LP release"; status = "CONFIRMED"; relatedHref = "discography.html"; relatedText = "Discography"; }
-      else if (s.indexOf("incesticide") !== -1) { yr = "1992"; tp = "albums"; dateLabel = "Dec 15, 1992"; photog = "Kurt Cobain (painting)"; place = "USA"; event = "Incesticide release"; status = "CONFIRMED"; relatedHref = "kurt.html"; relatedText = "Kurt's Art"; }
-      else if (s.indexOf("utero") !== -1) { yr = "1993"; tp = "albums"; dateLabel = "Sept 21, 1993"; photog = "Robert Fisher / Kurt Cobain (art direction)"; place = "USA"; event = "In Utero LP release"; status = "CONFIRMED"; relatedHref = "discography.html"; relatedText = "Discography"; }
-      else if (s.indexOf("unplugged") !== -1) { yr = "1993"; tp = "albums"; dateLabel = "Nov 1, 1994 (taped Nov 18, 1993)"; photog = "Frank Micelotta / MTV"; place = "New York, NY"; event = "MTV Unplugged"; status = "CONFIRMED"; relatedHref = "concerts.html"; relatedText = "Concerts"; }
-      else if (s.indexOf("1981") !== -1) { yr = "early"; tp = "kurt"; dateLabel = "1981"; photog = "Family / school photo"; place = "Aberdeen, WA"; event = "Early Years"; status = "CONFIRMED"; relatedHref = "map.html?place=cobain-house"; relatedText = "Aberdeen on Map"; }
-      else if (s.indexOf("1986") !== -1) { yr = "early"; tp = "kurt"; dateLabel = "May 1986"; photog = "Aberdeen Police Dept."; place = "Aberdeen, WA"; event = "Aberdeen mugshot (public record)"; status = "CONFIRMED"; relatedHref = "artifacts.html?id=art-mugshot-1986"; relatedText = "Artifacts"; }
-      else if (s.indexOf("bern") !== -1) { yr = "1992"; tp = "kurt"; dateLabel = "1992"; photog = "U.S. Dept. of State"; place = "Bern, Switzerland"; event = "Passport photo"; status = "CONFIRMED"; relatedHref = "artifacts.html?id=art-bern-passport"; relatedText = "Artifacts"; }
-      else if (s.indexOf("love_buzz") !== -1) { yr = "early"; tp = "kurt"; dateLabel = "Nov 1988"; photog = "Alice Wheeler"; place = "Seattle, WA"; event = "Love Buzz sleeve"; status = "CONFIRMED"; relatedHref = "artifacts.html?id=art-lovebuzz-cover"; relatedText = "Artifacts"; }
-      else if (s.indexOf("krist") !== -1) { yr = "1992"; tp = "band"; dateLabel = "Post-1994 archival photo"; photog = "Wikimedia Commons contributor"; place = "Aberdeen, WA"; event = "Band Members"; status = "CONFIRMED"; relatedHref = "about.html"; relatedText = "The Band"; }
-      else if (s.indexOf("dave") !== -1) { yr = "1992"; tp = "band"; dateLabel = "2019 (Foo Fighters Dublin)"; photog = "Wikimedia Commons contributor"; place = "Dublin, Ireland"; event = "Band Members (post-1994)"; status = "CONFIRMED"; relatedHref = "about.html"; relatedText = "The Band"; }
-      else if (s.indexOf("court") !== -1) { yr = "1992"; tp = "band"; dateLabel = "Post-1994 archival photo"; photog = "Wikimedia Commons contributor"; place = "London, UK"; event = "Family"; status = "CONFIRMED"; relatedHref = "family.html"; relatedText = "Family"; }
-      else if (s.indexOf("nirvana_around") !== -1) { yr = "1992"; tp = "band"; dateLabel = "c. 1992"; photog = "Unknown (Wikimedia Commons)"; place = "USA"; event = "Nevermind Era Trio"; status = "APPROXIMATE"; relatedHref = "about.html"; relatedText = "The Band"; }
-      else if (s.indexOf("guitar") !== -1) { yr = "places"; tp = "gear"; dateLabel = "1991-1993 (MoPOP exhibit)"; photog = "Wikimedia Commons / MoPOP"; place = "Seattle, WA"; event = "Guitars & Museum"; status = "CONFIRMED"; relatedHref = "gear.html"; relatedText = "Gear"; }
-      else if (s.indexOf("house") !== -1 || s.indexOf("park") !== -1 || s.indexOf("bridge") !== -1 || s.indexOf("hrc") !== -1) { yr = "places"; tp = "gear"; dateLabel = "Historical Location"; photog = "Wikimedia Commons contributor"; place = "Aberdeen / Seattle, WA"; event = "Historical Locations"; status = "CONFIRMED"; relatedHref = "map.html"; relatedText = "Nirvana Map"; }
-      return { yr: yr, tp: tp, dateLabel: dateLabel, photog: photog, place: place, event: event, license: license, status: status, relatedHref: relatedHref, relatedText: relatedText };
+    function mapYearFilter(yf) {
+      if (yf === "1980s") return "early";
+      if (yf === "1994") return "1993";
+      if (yf === "post1994") return "places";
+      return yf || "places";
+    }
+
+    function findPhotoMeta(imgSrc) {
+      var list = window.NIRVANA_PHOTOS || [];
+      for (var i = 0; i < list.length; i++) {
+        if (list[i].src === imgSrc) return list[i];
+      }
+      return null;
     }
 
     (function initGallery() {
@@ -189,14 +184,41 @@
         var cap = cells[i].querySelector("span.small");
         if (!img) continue;
         img.loading = "lazy";
-        var meta = classifyCell(img.src, img.alt || "");
+        var rec = findPhotoMeta(img.getAttribute("src")) || findPhotoMeta(img.src);
+        var yr = rec ? mapYearFilter(rec.year_filter) : "places";
+        var tp = rec ? rec.topic_filter : "gear";
+        var meta = rec ? {
+          yr: yr,
+          tp: tp,
+          dateLabel: rec.capture_date,
+          photog: rec.photographer,
+          place: rec.location,
+          event: rec.event_context,
+          license: rec.license,
+          sourceLabel: rec.source_label,
+          archiveLayer: rec.archive_layer,
+          relatedHref: rec.related_href,
+          relatedText: rec.related_text
+        } : {
+          yr: "places",
+          tp: "gear",
+          dateLabel: "Unknown",
+          photog: "Unknown",
+          place: "Unknown",
+          event: "Unverified archival entry",
+          license: "Unknown / Unverified",
+          sourceLabel: "Unverified",
+          archiveLayer: "modern-archive",
+          relatedHref: "sources.html",
+          relatedText: "Sources"
+        };
         var item = {
-          id: "pho-" + (i + 1),
+          id: rec ? rec.id : ("pho-" + (i + 1)),
           td: cells[i],
           src: img.src,
           alt: img.alt || (cap ? cap.textContent : "Nirvana photo"),
-          caption: cap ? cap.textContent : img.alt,
-          sourceUrl: link ? link.href : img.src,
+          caption: rec ? rec.title : (cap ? cap.textContent : img.alt),
+          sourceUrl: rec ? rec.source_url : (link ? link.href : img.src),
           yr: meta.yr,
           tp: meta.tp,
           meta: meta
@@ -239,10 +261,10 @@
       document.getElementById("lbImg").alt = it.alt;
       document.getElementById("lbCaption").innerHTML = "<b>" + it.caption + "</b> (" + (lbIndex + 1) + "/" + visibleItems.length + ")";
       document.getElementById("lbSource").innerHTML =
-        "<b>Photo ID:</b> <code>" + it.id + "</code> &middot; <b>Date:</b> " + it.meta.dateLabel + " [" + it.meta.status + "]<br>" +
+        "<b>Photo ID:</b> <code>" + it.id + "</code> &middot; <b>Date:</b> " + it.meta.dateLabel + " &middot; <b>Layer:</b> <code>" + it.meta.archiveLayer + "</code><br>" +
         "<b>Photographer / Credit:</b> " + it.meta.photog + " &middot; <b>Location:</b> " + it.meta.place + "<br>" +
-        "<b>Event:</b> " + it.meta.event + " &middot; <a href='" + it.meta.relatedHref + "'>" + it.meta.relatedText + " &rarr;</a><br>" +
-        "<b>Source &amp; License:</b> <a href='" + it.sourceUrl + "' target='_blank'>" + it.meta.license + "</a>";
+        "<b>Context:</b> " + it.meta.event + " &middot; <a href='" + it.meta.relatedHref + "'>" + it.meta.relatedText + " &rarr;</a><br>" +
+        "<b>License:</b> <code>" + it.meta.license + "</code> &middot; <b>Source:</b> <a href='" + it.sourceUrl + "' target='_blank'>" + it.meta.sourceLabel + "</a>";
       document.getElementById("galLightbox").style.display = "block";
     }
 
