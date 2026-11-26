@@ -57,6 +57,9 @@
       <a href="culture90s.html">The 90s</a> |
       <a href="bootlegs.html">Bootlegs</a> |
       <a href="influences.html">Influences</a> |
+      <a href="tabs.html">Tabs</a> |
+      <a href="concerts.html">Concerts</a> |
+      <a href="quiz.html">Quiz</a> |
       <a href="webmaster.html">Webmaster</a> |
       <a href="sitemap.html">Sitemap</a> |
       <a href="media.html">Media</a> |
@@ -125,7 +128,7 @@
     </p>
 
     <p><img src="assets/under-construction.gif" width="360" height="48" alt="Under construction"></p>
-    <p class="small">more rare bootlegs &amp; tabs coming soon</p>
+    <p class="small"><a href="bootlegs.html">rare bootlegs</a>, <a href="tabs.html">ASCII guitar tabs</a>, <a href="concerts.html">live shows</a> &amp; <a href="quiz.html">1994 quiz</a> now online!</p>
 
     <p><img src="assets/wow.gif" width="32" height="12" alt="WOW!"> <a href="secret.html" title="claim your prize"><img src="assets/ad-banner.gif" width="468" height="60" alt="A classic 1994 banner ad — congratulations, you are visitor 1,000,000"></a></p>
     <p class="small">banner ad · click to claim your prize (it's a trick, click anyway)</p>
@@ -135,7 +138,7 @@
     <p class="last-updated">Last updated: 11/15/94</p>
 
     <p class="small">
-      [ <a href="kurt.html">prev</a> · <a href="index.html">home</a> · <a href="songs.html">next</a> <a href="secret.html" title="shh">·</a> ]<br>
+      [ <a href="kurt.html">prev</a> · <a href="index.html">home</a> · <a href="#" onclick="return randomRingPage()">random</a> · <a href="songs.html">next</a> <a href="secret.html" title="shh">·</a> ]<br>
       Nirvana Memorial Web Ring
     </p>
 
@@ -196,6 +199,19 @@
       g.gain.setValueAtTime(0.06, t);
       g.gain.exponentialRampToValueAtTime(0.001, t + 0.4);
       o.start(t); o.stop(t + 0.42);
+    }
+
+    function randomRingPage() {
+      var pages = [
+        "about.html", "grunge.html", "timeline.html", "discography.html",
+        "kurt.html", "family.html", "death.html", "27club.html", "songs.html",
+        "quotes.html", "lyrics.html", "faq.html", "poll.html", "gear.html",
+        "trivia.html", "awards.html", "culture90s.html", "bootlegs.html",
+        "influences.html", "tabs.html", "concerts.html", "quiz.html",
+        "media.html", "gallery.html", "guestbook.html"
+      ];
+      location.href = pages[Math.floor(Math.random() * pages.length)];
+      return false;
     }
   </script>
 </body>
