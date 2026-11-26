@@ -20,43 +20,15 @@
     <p class="nav">
       <a href="index.html">Home</a> |
       <a href="about.html">The Band</a> |
-      <a href="grunge.html">The Scene</a> |
-      <a href="timeline.html">Timeline</a> |
       <a href="discography.html">Discography</a> |
-      <a href="listening.html">Listening Room</a> |
-      <a href="map.html">Map</a> |
-      <a href="artifacts.html">Artifacts</a> |
-      <a href="search.html">Search</a> |
-      <a href="kurt.html">Kurt Cobain</a> |
-      <a href="family.html">Family</a> |
-      <a href="death.html">Death &amp; Legacy</a> |
-      <a href="27club.html">27 Club</a> |
       <a href="songs.html">Songs</a> |
-      <a href="quotes.html">Quotes</a> |
-      <a href="lyrics.html">Lyrics</a> |
-      <a href="faq.html">FAQ</a> |
-      <a href="poll.html">Poll</a> |
-      <a href="gear.html">Gear</a> |
-      <a href="trivia.html">Trivia</a> |
-      <a href="awards.html">Awards</a> |
-      <a href="culture90s.html">The 90s</a> |
-      <a href="bootlegs.html">Bootlegs</a> |
-      <a href="influences.html">Influences</a> |
-      <a href="tabs.html">Tabs</a> |
+      <a href="listening.html">Listening Room</a> |
       <a href="concerts.html">Concerts</a> |
-      <a href="venues.html">Venues</a> |
-      <a href="videos.html">Videos</a> |
-      <a href="wall.html">Kurt Wall</a> |
-      <a href="quiz.html">Quiz</a> |
-      <a href="pc1994.html">Virtual PC</a> |
-      <a href="mixtape.html">Mixtape</a> |
-      <a href="zines.html">Zines</a> |
-      <a href="usenet.html">Usenet</a> |
-      <a href="webmaster.html">Webmaster</a> |
-      <a href="sitemap.html">Sitemap</a> |
-      <a href="media.html">Media</a> |
+      <a href="timeline.html">Timeline</a> |
       <a href="gallery.html">Gallery</a> |
-      <a href="guestbook.html">Guestbook</a> |
+      <a href="media.html">Media</a> |
+      <a href="sitemap.html">Archive</a> |
+      <a href="search.html">Search</a> |
       <a href="links.html">Sources</a>
     </p>
 
@@ -65,8 +37,19 @@
     <h2>Interactive Timeline (1967&ndash;1994)</h2>
     <p class="small">
       <span class="badge-1994">ORIGINAL 1994 ARCHIVE</span>
-      filter by event type &#8212; verified against LiveNirvana, Nirvana Live Guide &amp; official releases
+      filter by event type &#8212; verified against LiveNirvana, Nirvana Live Guide &amp; official releases<br>
+      Related: <a href="concerts.html">Concerts</a> &middot; <a href="discography.html">Discography</a> &middot; <a href="about.html">The Band</a> &middot; <a href="artifacts.html">Artifacts</a> &middot; <a href="links.html">Sources</a>
     </p>
+
+    <div class="note" style="margin-bottom:10px; max-width:640px;">
+      <p style="margin:0; font-size:12px;">
+        <b>Status Legend:</b>
+        <span class="badge-1994">CONFIRMED</span> verified by primary/archival records &middot;
+        <span class="badge-modern">APPROXIMATE</span> event confirmed, exact date uncertain &middot;
+        <span style="background:#fff3cd;color:#664d03;border:1px solid #664d03;font-size:10px;padding:1px 4px;font-family:Courier New,monospace;">DISPUTED</span> conflicting dates/accounts<br>
+        <b>Archive Stats (auto-calculated):</b> <span id="tlStats">Loading...</span>
+      </p>
+    </div>
 
     <p class="small">
       <button type="button" onclick="filterTimeline('all')">All Events</button>
@@ -117,31 +100,43 @@
 
   <script>
     var TL_EVENTS = [
-      { id: "tl-1967-birth", date: "Feb 20, 1967", type: "formation", status: "Confirmed", text: "Kurt Donald Cobain born in Aberdeen, Washington. Parents divorce in 1976 when he is nine.", links: [{ label: "Kurt Cobain", href: "kurt.html" }, { label: "Map (Aberdeen)", href: "map.html?place=cobain-house" }], src: "Cross (2001)", srcUrl: "links.html" },
-      { id: "tl-1985-fecal-matter", date: "Late 1985 (disputed spring 1986)", type: "formation", status: "Disputed", text: "Kurt forms Fecal Matter and meets Krist Novoselic. Records 'Illiteracy Will Prevail' demo at aunt Mari Earl's house with Dale Crover (traditionally Dec 1985; some researchers suggest Easter 1986).", links: [{ label: "The Band", href: "about.html" }], src: "Azerrad / Discogs", srcUrl: "https://www.discogs.com/artist/125246-Nirvana" },
-      { id: "tl-1987-tacoma", date: "Apr 18, 1987", type: "concert", status: "Confirmed", text: "First documented fliered venue gig at Community World Theater, Tacoma (billed as Skid Row; with Aaron Burckhard).", links: [{ label: "Concerts", href: "concerts.html" }, { label: "Map (Tacoma)", href: "map.html?place=community-world" }], src: "LiveNirvana", srcUrl: "https://www.livenirvana.com/" },
-      { id: "tl-1987-kaos", date: "May 6, 1987", type: "studio", status: "Confirmed", text: "Early radio session at KAOS 89.3 FM, The Evergreen State College, Olympia.", links: [{ label: "Venues", href: "venues.html" }, { label: "Map (Evergreen)", href: "map.html?place=evergreen" }], src: "LiveNirvana", srcUrl: "https://www.livenirvana.com/" },
-      { id: "tl-1987-boombox", date: "c. Summer 1987", type: "studio", status: "Approximate", text: "Unlabeled boombox rehearsal cassette (later titled 'Mrs. Butterworth' by management) with Aaron Burckhard on drums, attributed by Jack Endino.", links: [{ label: "Bootlegs", href: "bootlegs.html" }], src: "LiveNirvana / Jack Endino", srcUrl: "https://www.livenirvana.com/" },
-      { id: "tl-1988-lovebuzz", date: "Nov 1988", type: "release", status: "Confirmed", text: "Debut single 'Love Buzz / Big Cheese' released on Sub Pop Singles Club #1 (SP23, 1,000 copies).", links: [{ label: "Discography", href: "discography.html" }, { label: "Listening Room", href: "listening.html?song=love-buzz" }, { label: "Artifact", href: "artifacts.html?id=art-lovebuzz-cover" }], src: "Discogs / Sub Pop", srcUrl: "https://www.discogs.com/artist/125246-Nirvana" },
-      { id: "tl-1989-bleach", date: "June 15, 1989", type: "release", status: "Confirmed", text: "Bleach (SP34) released on Sub Pop (Reciprocal Recording, Jack Endino, $606.17; Chad Channing & Dale Crover on drums).", links: [{ label: "Discography", href: "discography.html" }, { label: "Map (Reciprocal)", href: "map.html?place=reciprocal" }], src: "Sub Pop / Azerrad", srcUrl: "links.html" },
-      { id: "tl-1989-peel1", date: "Oct 26, 1989", type: "studio", status: "Confirmed", text: "BBC Peel Session #1 at Maida Vale Studio 4, London (aired Nov 22, 1989).", links: [{ label: "Bootlegs", href: "bootlegs.html" }], src: "LiveNirvana", srcUrl: "https://www.livenirvana.com/" },
-      { id: "tl-1990-grohl", date: "Apr & Sept 1990", type: "formation", status: "Confirmed", text: "Smart Studios demos in Madison, WI (Apr 1990). Chad Channing departs in May; Dave Grohl joins permanently in Sept 1990.", links: [{ label: "The Band (Lineup)", href: "about.html" }, { label: "Bootlegs", href: "bootlegs.html" }], src: "Azerrad / LiveNirvana", srcUrl: "https://www.livenirvana.com/" },
-      { id: "tl-1991-okhotel", date: "Apr 17, 1991", type: "concert", status: "Confirmed", text: "First live performance of 'Smells Like Teen Spirit' at OK Hotel, Seattle.", links: [{ label: "Concerts", href: "concerts.html" }, { label: "Map (OK Hotel)", href: "map.html?place=ok-hotel" }], src: "LiveNirvana", srcUrl: "https://www.livenirvana.com/" },
-      { id: "tl-1991-soundcity", date: "May-June 1991", type: "studio", status: "Confirmed", text: "Nevermind recorded at Sound City Studios, Van Nuys, CA with Butch Vig.", links: [{ label: "Gear & Studios", href: "gear.html" }, { label: "Map (Sound City)", href: "map.html?place=sound-city" }], src: "Discogs", srcUrl: "https://www.discogs.com/artist/125246-Nirvana" },
-      { id: "tl-1991-nevermind", date: "Sept 24, 1991", type: "release", status: "Confirmed", text: "Nevermind (DGCD-24425) released on DGC; 'Smells Like Teen Spirit' enters MTV Buzz Bin.", links: [{ label: "Discography", href: "discography.html" }, { label: "Listening Room", href: "listening.html?song=slts" }], src: "DGC / Discogs", srcUrl: "https://www.discogs.com/artist/125246-Nirvana" },
+      { id: "tl-1967-birth", date: "Feb 20, 1967", type: "formation", status: "Confirmed", text: "Kurt Donald Cobain born in Aberdeen, Washington. Parents divorce in 1976 when he is nine.", links: [{ label: "Kurt Cobain", href: "kurt.html" }, { label: "Map (Aberdeen)", href: "map.html?place=cobain-house" }], src: "Cross (2001) [pub. 2001]", srcUrl: "links.html" },
+      { id: "tl-1985-fecal-matter", date: "Late 1985 (disputed spring 1986)", type: "formation", status: "Disputed", text: "Kurt forms Fecal Matter and meets Krist Novoselic. Records 'Illiteracy Will Prevail' demo at aunt Mari Earl's house with Dale Crover (traditionally Dec 1985; some researchers suggest Easter 1986).", links: [{ label: "The Band", href: "about.html" }], src: "Wikipedia / Azerrad (1993)", srcUrl: "https://en.wikipedia.org/wiki/Fecal_Matter_(band)" },
+      { id: "tl-1987-tacoma", date: "Apr 18, 1987", type: "concert", status: "Confirmed", text: "First documented fliered venue gig at Community World Theater, Tacoma (billed as Skid Row; with Aaron Burckhard).", links: [{ label: "Concerts", href: "concerts.html" }, { label: "Map (Tacoma)", href: "map.html?place=community-world" }], src: "LiveNirvana (1987-04-18)", srcUrl: "https://www.livenirvana.com/concerts/87/87-04-18.php" },
+      { id: "tl-1987-kaos", date: "May 6, 1987", type: "studio", status: "Confirmed", text: "Early radio session at KAOS 89.3 FM, The Evergreen State College, Olympia.", links: [{ label: "Venues", href: "venues.html" }, { label: "Map (Evergreen)", href: "map.html?place=evergreen" }], src: "LiveNirvana (May 1987)", srcUrl: "https://www.livenirvana.com/sessions/radio/may-1987.php" },
+      { id: "tl-1987-boombox", date: "c. Summer 1987", type: "studio", status: "Approximate", text: "Unlabeled boombox rehearsal cassette (later titled 'Mrs. Butterworth' by management in 2004) with Aaron Burckhard on drums, attributed by Jack Endino.", links: [{ label: "Bootlegs", href: "bootlegs.html" }], src: "LiveNirvana (Summer 1987) [2004+]", srcUrl: "https://www.livenirvana.com/sessions/home/summer-1987.php" },
+      { id: "tl-1988-lovebuzz", date: "Nov 1988", type: "release", status: "Confirmed", text: "Debut single 'Love Buzz / Big Cheese' released on Sub Pop Singles Club #1 (SP23, 1,000 copies).", links: [{ label: "Discography", href: "discography.html" }, { label: "Listening Room", href: "listening.html?song=love-buzz" }, { label: "Artifact", href: "artifacts.html?id=art-lovebuzz-cover" }], src: "Wikipedia / Sub Pop (1988)", srcUrl: "https://en.wikipedia.org/wiki/Love_Buzz" },
+      { id: "tl-1989-bleach", date: "June 15, 1989", type: "release", status: "Confirmed", text: "Bleach (SP34) released on Sub Pop (Reciprocal Recording, Jack Endino, $606.17; Chad Channing & Dale Crover on drums).", links: [{ label: "Discography", href: "discography.html" }, { label: "Map (Reciprocal)", href: "map.html?place=reciprocal" }], src: "Wikipedia / Bleach (1989)", srcUrl: "https://en.wikipedia.org/wiki/Bleach_(Nirvana_album)" },
+      { id: "tl-1989-peel1", date: "Oct 26, 1989", type: "studio", status: "Confirmed", text: "BBC Peel Session #1 at Maida Vale Studio 4, London (aired Nov 22, 1989).", links: [{ label: "Bootlegs", href: "bootlegs.html" }], src: "LiveNirvana (Oct 1989)", srcUrl: "https://www.livenirvana.com/sessions/radio/october-1989.php" },
+      { id: "tl-1990-grohl", date: "Apr & Sept 1990", type: "formation", status: "Confirmed", text: "Smart Studios demos in Madison, WI (Apr 1990). Chad Channing departs in May; Dave Grohl joins permanently in Sept 1990.", links: [{ label: "The Band (Lineup)", href: "about.html" }, { label: "Bootlegs", href: "bootlegs.html" }], src: "Azerrad (1993) / LiveNirvana", srcUrl: "https://www.livenirvana.com/" },
+      { id: "tl-1991-okhotel", date: "Apr 17, 1991", type: "concert", status: "Confirmed", text: "First live performance of 'Smells Like Teen Spirit' at OK Hotel, Seattle.", links: [{ label: "Concerts", href: "concerts.html" }, { label: "Map (OK Hotel)", href: "map.html?place=ok-hotel" }], src: "LiveNirvana (1991-04-17)", srcUrl: "https://www.livenirvana.com/concerts/91/91-04-17.php" },
+      { id: "tl-1991-soundcity", date: "May 2-28, 1991", type: "studio", status: "Confirmed", text: "Nevermind recorded at Sound City Studios, Van Nuys, CA with Butch Vig.", links: [{ label: "Gear & Studios", href: "gear.html" }, { label: "Map (Sound City)", href: "map.html?place=sound-city" }], src: "Wikipedia / Nevermind", srcUrl: "https://en.wikipedia.org/wiki/Nevermind" },
+      { id: "tl-1991-nevermind", date: "Sept 24, 1991", type: "release", status: "Confirmed", text: "Nevermind (DGCD-24425) released on DGC; 'Smells Like Teen Spirit' enters MTV Buzz Bin.", links: [{ label: "Discography", href: "discography.html" }, { label: "Listening Room", href: "listening.html?song=slts" }], src: "Wikipedia / Nevermind (1991)", srcUrl: "https://en.wikipedia.org/wiki/Nevermind" },
       { id: "tl-1992-snl", date: "Jan 11, 1992", type: "concert", status: "Confirmed", text: "Nevermind hits #1 on Billboard 200. Same night: Nirvana performs on Saturday Night Live.", links: [{ label: "Concerts (SNL)", href: "concerts.html" }], src: "Nirvana Live Guide", srcUrl: "https://www.nirvanaguide.com/" },
-      { id: "tl-1992-family", date: "Feb 24 & Aug 18, 1992", type: "formation", status: "Confirmed", text: "Kurt marries Courtney Love in Waikiki, Hawaii (Feb 24); daughter Frances Bean Cobain born (Aug 18).", links: [{ label: "Family", href: "family.html" }], src: "Cross (2001)", srcUrl: "links.html" },
-      { id: "tl-1992-reading", date: "Aug 30, 1992", type: "concert", status: "Confirmed", text: "Headlines Reading Festival, England (24 songs, wheelchair entrance).", links: [{ label: "Concerts", href: "concerts.html" }, { label: "Map (Reading)", href: "map.html?place=reading-festival" }], src: "Nirvana Live Guide", srcUrl: "https://www.nirvanaguide.com/" },
-      { id: "tl-1992-incesticide", date: "Dec 15, 1992", type: "release", status: "Confirmed", text: "Incesticide (DGCD-24504) rarities compilation released (cover art painted by Kurt Cobain).", links: [{ label: "Discography", href: "discography.html" }, { label: "Kurt's Art", href: "kurt.html" }], src: "Discogs", srcUrl: "https://www.discogs.com/artist/125246-Nirvana" },
-      { id: "tl-1993-pachyderm", date: "Feb 1993", type: "studio", status: "Confirmed", text: "In Utero recorded in 14 days at Pachyderm Studio, MN with Steve Albini ($24k studio, $100k flat fee).", links: [{ label: "Map (Pachyderm)", href: "map.html?place=pachyderm" }, { label: "Trivia", href: "trivia.html" }], src: "LiveNirvana", srcUrl: "https://www.livenirvana.com/" },
-      { id: "tl-1993-inutero", date: "Sept 21, 1993", type: "release", status: "Confirmed", text: "In Utero (DGCD-24607) released on DGC; Pat Smear & Lori Goldston join for the tour.", links: [{ label: "Discography", href: "discography.html" }, { label: "The Band", href: "about.html" }], src: "Discogs", srcUrl: "https://www.discogs.com/artist/125246-Nirvana" },
-      { id: "tl-1993-unplugged", date: "Nov 18, 1993", type: "concert", status: "Confirmed", text: "MTV Unplugged taped at Sony Music Studios, NYC (candles, lilies, 6 covers).", links: [{ label: "Listening Room", href: "listening.html?song=where-did-you-sleep" }, { label: "Map (Sony NYC)", href: "map.html?place=sony-unplugged" }], src: "LiveNirvana", srcUrl: "https://www.livenirvana.com/" },
-      { id: "tl-1994-robertlang", date: "Jan 28-30, 1994", type: "1994", status: "Confirmed", text: "Final studio session at Robert Lang Studios, North Seattle; 'You Know You're Right' tracked Jan 30.", links: [{ label: "Bootlegs", href: "bootlegs.html" }, { label: "Listening Room (YKYR)", href: "listening.html?song=ykyr" }, { label: "Map", href: "map.html?place=robert-lang" }], src: "LiveNirvana", srcUrl: "https://www.livenirvana.com/" },
-      { id: "tl-1994-munich", date: "Mar 1, 1994", type: "1994", status: "Confirmed", text: "Final concert at Terminal Eins, Munich, Germany (~3,000 fans; power outage during 'Come As You Are'; closed with 'Heart-Shaped Box').", links: [{ label: "Concerts (Munich '94)", href: "concerts.html" }, { label: "Map (Munich)", href: "map.html?place=munich-terminal" }], src: "LiveNirvana", srcUrl: "https://www.livenirvana.com/" },
-      { id: "tl-1994-exodus", date: "Mar 4 - Apr 1, 1994", type: "1994", status: "Confirmed", text: "Overdose in Rome (Mar 4); Seattle intervention (Mar 25); enters Exodus Recovery Center in Marina del Rey, LA (Mar 30); leaves Apr 1 and flies back to Seattle.", links: [{ label: "Death & Legacy", href: "death.html" }], src: "Rolling Stone / Wikipedia", srcUrl: "https://en.wikipedia.org/wiki/Kurt_Cobain" },
-      { id: "tl-1994-april5", date: "Apr 5-10, 1994", type: "1994", status: "Confirmed", text: "Kurt Cobain dies in Seattle on April 5 (found April 8); public vigil at Seattle Center on April 10.", links: [{ label: "Death & Legacy", href: "death.html" }], src: "Seattle Times / Wikipedia", srcUrl: "https://en.wikipedia.org/wiki/Kurt_Cobain" },
-      { id: "tl-1994-unplugged-lp", date: "Nov 1, 1994", type: "release", status: "Confirmed", text: "MTV Unplugged in New York released posthumously on DGC (DGCD-24727).", links: [{ label: "Discography", href: "discography.html" }], src: "Discogs", srcUrl: "https://www.discogs.com/artist/125246-Nirvana" }
+      { id: "tl-1992-family", date: "Feb 24 & Aug 18, 1992", type: "formation", status: "Confirmed", text: "Kurt marries Courtney Love in Waikiki, Hawaii (Feb 24); daughter Frances Bean Cobain born (Aug 18).", links: [{ label: "Family", href: "family.html" }], src: "Cross (2001) [pub. 2001]", srcUrl: "links.html" },
+      { id: "tl-1992-reading", date: "Aug 30, 1992", type: "concert", status: "Confirmed", text: "Headlines Reading Festival, England (24 songs, wheelchair entrance).", links: [{ label: "Concerts", href: "concerts.html" }, { label: "Map (Reading)", href: "map.html?place=reading-festival" }], src: "LiveNirvana (1992-08-30)", srcUrl: "https://www.livenirvana.com/concerts/92/92-08-30.php" },
+      { id: "tl-1992-incesticide", date: "Dec 15, 1992", type: "release", status: "Confirmed", text: "Incesticide (DGCD-24504) rarities compilation released (cover art painted by Kurt Cobain).", links: [{ label: "Discography", href: "discography.html" }, { label: "Kurt's Art", href: "kurt.html" }], src: "Wikipedia / Incesticide (1992)", srcUrl: "https://en.wikipedia.org/wiki/Incesticide" },
+      { id: "tl-1993-pachyderm", date: "Feb 12-26, 1993", type: "studio", status: "Confirmed", text: "In Utero recorded in 14 days at Pachyderm Studio, MN with Steve Albini ($24k studio, $100k flat fee).", links: [{ label: "Map (Pachyderm)", href: "map.html?place=pachyderm" }, { label: "Trivia", href: "trivia.html" }], src: "Wikipedia / In Utero", srcUrl: "https://en.wikipedia.org/wiki/In_Utero" },
+      { id: "tl-1993-inutero", date: "Sept 21, 1993", type: "release", status: "Confirmed", text: "In Utero (DGCD-24607) released on DGC; Pat Smear & Lori Goldston join for the tour.", links: [{ label: "Discography", href: "discography.html" }, { label: "The Band", href: "about.html" }], src: "Wikipedia / In Utero (1993)", srcUrl: "https://en.wikipedia.org/wiki/In_Utero" },
+      { id: "tl-1993-unplugged", date: "Nov 18, 1993", type: "concert", status: "Confirmed", text: "MTV Unplugged taped at Sony Music Studios, NYC (candles, lilies, 6 covers).", links: [{ label: "Listening Room", href: "listening.html?song=where-did-you-sleep" }, { label: "Map (Sony NYC)", href: "map.html?place=sony-unplugged" }], src: "LiveNirvana (1993-11-18)", srcUrl: "https://www.livenirvana.com/concerts/93/93-11-18.php" },
+      { id: "tl-1994-robertlang", date: "Jan 28-30, 1994", type: "1994", status: "Confirmed", text: "Final studio session at Robert Lang Studios, North Seattle; 'You Know You're Right' tracked Jan 30.", links: [{ label: "Bootlegs", href: "bootlegs.html" }, { label: "Listening Room (YKYR)", href: "listening.html?song=ykyr" }, { label: "Map", href: "map.html?place=robert-lang" }], src: "LiveNirvana (Jan 1994)", srcUrl: "https://www.livenirvana.com/sessions/studio/january-1994.php" },
+      { id: "tl-1994-munich", date: "Mar 1, 1994", type: "1994", status: "Confirmed", text: "Final concert at Terminal Eins, Munich, Germany (~3,000 fans; power outage during 'Come As You Are'; closed with 'Heart-Shaped Box').", links: [{ label: "Concerts (Munich '94)", href: "concerts.html" }, { label: "Map (Munich)", href: "map.html?place=munich-terminal" }], src: "LiveNirvana (1994-03-01)", srcUrl: "https://www.livenirvana.com/concerts/94/94-03-01.php" },
+      { id: "tl-1994-exodus", date: "Mar 4 - Apr 1, 1994", type: "1994", status: "Confirmed", text: "Overdose in Rome (Mar 4); Seattle intervention (Mar 25); enters Exodus Recovery Center in Marina del Rey, LA (Mar 30); leaves Apr 1 and flies back to Seattle.", links: [{ label: "Death & Legacy", href: "death.html" }], src: "Wikipedia / Kurt Cobain", srcUrl: "https://en.wikipedia.org/wiki/Kurt_Cobain" },
+      { id: "tl-1994-april5", date: "Apr 5-10, 1994", type: "1994", status: "Confirmed", text: "Kurt Cobain dies in Seattle on April 5 (found April 8); public vigil at Seattle Center on April 10.", links: [{ label: "Death & Legacy", href: "death.html" }], src: "Wikipedia / Seattle Times (1994)", srcUrl: "https://en.wikipedia.org/wiki/Kurt_Cobain" },
+      { id: "tl-1994-unplugged-lp", date: "Nov 1, 1994", type: "release", status: "Confirmed", text: "MTV Unplugged in New York released posthumously on DGC (DGCD-24727).", links: [{ label: "Discography", href: "discography.html" }, { label: "Listening Room", href: "listening.html" }], src: "Wikipedia / Unplugged (1994)", srcUrl: "https://en.wikipedia.org/wiki/MTV_Unplugged_in_New_York" }
     ];
+
+    function updateTimelineStats() {
+      var counts = { Confirmed: 0, Approximate: 0, Disputed: 0 };
+      for (var i = 0; i < TL_EVENTS.length; i++) {
+        var st = TL_EVENTS[i].status;
+        if (counts.hasOwnProperty(st)) counts[st]++;
+      }
+      var el = document.getElementById("tlStats");
+      if (el) {
+        el.textContent = "Total: " + TL_EVENTS.length + " events · Confirmed: " + counts.Confirmed + " · Approximate: " + counts.Approximate + " · Disputed: " + counts.Disputed;
+      }
+    }
 
     function filterTimeline(t) {
       var tb = document.getElementById("tlBody");
@@ -171,6 +166,7 @@
         tb.appendChild(tr);
       }
     }
+    updateTimelineStats();
     filterTimeline("all");
   </script>
 </body>
