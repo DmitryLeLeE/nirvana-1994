@@ -275,8 +275,20 @@ pre.lyrics,
   }
 }
 
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #cc0000;
+  outline-offset: 2px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .blink {
     animation: none;
+  }
+  marquee {
+    overflow: auto;
   }
 }

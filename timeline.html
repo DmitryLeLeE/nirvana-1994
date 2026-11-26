@@ -45,6 +45,10 @@
       <a href="videos.html">Videos</a> |
       <a href="wall.html">Kurt Wall</a> |
       <a href="quiz.html">Quiz</a> |
+      <a href="pc1994.html">Virtual PC</a> |
+      <a href="mixtape.html">Mixtape</a> |
+      <a href="zines.html">Zines</a> |
+      <a href="usenet.html">Usenet</a> |
       <a href="webmaster.html">Webmaster</a> |
       <a href="sitemap.html">Sitemap</a> |
       <a href="media.html">Media</a> |
@@ -55,33 +59,23 @@
 
     <hr>
 
-    <h2>Timeline</h2>
-    <p class="small">the whole story, year by year</p>
+    <h2>Interactive Timeline (1967&ndash;1994)</h2>
+    <p class="small">filter by event type &#8212; verified against LiveNirvana, Nirvana Live Guide &amp; official releases</p>
+
+    <p class="small">
+      <button type="button" onclick="filterTimeline('all')">All Events</button>
+      <button type="button" onclick="filterTimeline('formation')">Formation &amp; Early</button>
+      <button type="button" onclick="filterTimeline('studio')">Studio &amp; Sessions</button>
+      <button type="button" onclick="filterTimeline('release')">Releases</button>
+      <button type="button" onclick="filterTimeline('concert')">Concerts &amp; TV</button>
+      <button type="button" onclick="filterTimeline('1994')">1994</button>
+    </p>
 
     <table class="content">
-      <tr><th>Year</th><th>What happened</th></tr>
-      <tr><td>1967</td><td>Kurt Donald Cobain born in Aberdeen, Washington, February 20</td></tr>
-      <tr><td>1976</td><td>Kurt's parents divorce; he is nine</td></tr>
-      <tr><td>1984</td><td>drops out of high school; forms his first band Fecal Matter</td></tr>
-      <tr><td>1985</td><td>meets Krist Novoselic through the Melvins</td></tr>
-      <tr><td>1987</td><td>Nirvana forms; first demos recorded</td></tr>
-      <tr><td>1988</td><td>debut single "Love Buzz" on Sub Pop Singles Club</td></tr>
-      <tr><td>1989</td><td><i>Bleach</i> released in June on Sub Pop; first US tour</td></tr>
-      <tr><td>1990</td><td>Dave Grohl joins on drums; "Sliver" single</td></tr>
-      <tr><td>1991</td><td><i>Nevermind</i> released September 24 on DGC; "Smells Like Teen Spirit" enters MTV Buzz Bin; first Late Night with Arsenio Hall performance</td></tr>
-      <tr><td>Jan 1992</td><td><i>Nevermind</i> hits #1 on Billboard 200, knocking Michael Jackson's <i>Dangerous</i> from the top &#8212; nobody saw this coming, including the band</td></tr>
-      <tr><td>Feb 1992</td><td>Kurt marries Courtney Love on Waikiki Beach, Hawaii &#8212; he wears pajamas</td></tr>
-      <tr><td>Aug 1992</td><td>Frances Bean Cobain born; MTV VMAs &#8212; Kurt teases "Rape Me" opening chords before switching to "Lithium"; Nirvana wins Best Alternative Video</td></tr>
-      <tr><td>Aug 1992</td><td>Reading Festival headline &#8212; Kurt arrives in a wheelchair, wearing a hospital gown; the set is considered one of the greatest live performances in rock history</td></tr>
-      <tr><td>Dec 1992</td><td><i>Incesticide</i> rarities compilation; Kurt writes liner notes attacking Spin magazine readers who missed the point of his songs</td></tr>
-      <tr><td>Feb 1993</td><td><i>In Utero</i> recorded in 14 days at Pachyderm Studio, Minnesota, with Steve Albini; DGC unhappy with the result; Scott Litt called in to remix two tracks</td></tr>
-      <tr><td>Sept 1993</td><td><i>In Utero</i> released; Walmart refuses to stock it; "Radio Friendly Unit Shifter" is not radio friendly</td></tr>
-      <tr><td>Nov 1993</td><td>MTV Unplugged taped at Sony Music Studios, New York, November 18; set decorated with lilies and candles; last public performance Nirvana ever gives</td></tr>
-      <tr><td>Mar 1994</td><td>Kurt overdoses on champagne and Rohypnol in Rome, March 4; Courtney tells press it was an accident; the band's European tour cancelled</td></tr>
-      <tr><td>Mar 1994</td><td>Kurt returns to Seattle; Courtney organizes an intervention; March 25, he agrees to enter Exodus Recovery Center in Los Angeles</td></tr>
-      <tr><td>Apr 1994</td><td>April 1: Kurt escapes from Exodus, flies back to Seattle on a commercial flight; nobody sees him for four days</td></tr>
-      <tr><td>Apr 5, 1994</td><td>Kurt Donald Cobain dies in Seattle; he is 27 years old; his body is found on April 8 by an electrician</td></tr>
-      <tr><td>Apr 10, 1994</td><td>public vigil at Seattle Center, 7,000 people; Courtney reads excerpts from the suicide note over PA; Kurt's ashes are scattered at the Wishkah River</td></tr>
+      <thead>
+        <tr><th>Date</th><th>Event &amp; Context</th><th>Type / Links</th><th>Source</th></tr>
+      </thead>
+      <tbody id="tlBody"></tbody>
     </table>
 
     <h3>After</h3>
@@ -100,7 +94,7 @@
     <hr>
 
     <p><a href="index.html">← back home</a></p>
-    <p class="last-updated">Last updated: 04/08/94</p>
+    <p class="last-updated">Last updated: 11/16/94</p>
     <p class="small">[ <a href="index.html">home</a> ] · Nirvana Memorial Web Ring</p>
     <p>
       <img src="assets/btn-netscape.gif" width="88" height="31" alt="Get Netscape 2.0">
@@ -111,5 +105,49 @@
     <p class="small">© 1994 · in memory of Kurt Cobain</p>
 
   </center>
+
+  <script>
+    var TL_EVENTS = [
+      { date: "Feb 20, 1967", type: "formation", text: "Kurt Donald Cobain born in Aberdeen, Washington. Parents divorce in 1976 when he is nine.", link: "kurt.html", linkText: "Kurt Cobain", src: "Cross (2001)" },
+      { date: "1985", type: "formation", text: "Kurt meets Krist Novoselic through Buzz Osbourne of the Melvins.", link: "about.html", linkText: "The Band", src: "Azerrad (1993)" },
+      { date: "Apr 18, 1987", type: "concert", text: "First documented fliered venue gig at Community World Theater, Tacoma (billed as Skid Row; with Aaron Burckhard). Note: the Raymond WA house party bootleg dates to summer 1987, not March.", link: "map.html", linkText: "Map", src: "LiveNirvana" },
+      { date: "May 6, 1987", type: "studio", text: "Early radio session at KAOS 89.3 FM, Evergreen State College, Olympia.", link: "venues.html", linkText: "Venues", src: "LiveNirvana" },
+      { date: "Nov 1988", type: "release", text: "Debut single 'Love Buzz / Big Cheese' released on Sub Pop Singles Club #1 (1,000 copies).", link: "listening.html?song=love-buzz", linkText: "Listening Room", src: "Discogs / Sub Pop" },
+      { date: "June 15, 1989", type: "release", text: "Bleach released on Sub Pop (recorded at Reciprocal Recording with Jack Endino for $606.17; Chad Channing & Dale Crover on drums).", link: "discography.html", linkText: "Discography", src: "Sub Pop / Azerrad" },
+      { date: "Oct 26, 1989", type: "studio", text: "BBC Peel Session #1 at Maida Vale Studio 4, London (aired Nov 22, 1989).", link: "bootlegs.html", linkText: "Bootlegs", src: "LiveNirvana" },
+      { date: "Apr & Sept 1990", type: "formation", text: "Smart Studios demos in Madison, WI (Apr 1990). Chad Channing departs in May; Dave Grohl joins permanently in Sept 1990.", link: "about.html", linkText: "Lineup History", src: "Azerrad / LiveNirvana" },
+      { date: "Apr 17, 1991", type: "concert", text: "First live performance of 'Smells Like Teen Spirit' at OK Hotel, Seattle.", link: "map.html", linkText: "OK Hotel on Map", src: "LiveNirvana" },
+      { date: "May-June 1991", type: "studio", text: "Nevermind recorded at Sound City Studios, Van Nuys, CA with Butch Vig.", link: "gear.html", linkText: "Gear & Studios", src: "Discogs" },
+      { date: "Sept 24, 1991", type: "release", text: "Nevermind released on DGC; 'Smells Like Teen Spirit' enters MTV Buzz Bin.", link: "listening.html?song=slts", linkText: "Listening Room", src: "DGC / Billboard" },
+      { date: "Jan 11, 1992", type: "concert", text: "Nevermind hits #1 on Billboard 200 (passing Michael Jackson's Dangerous). Same night: Nirvana performs on Saturday Night Live.", link: "concerts.html", linkText: "Concerts (SNL)", src: "Billboard / NBC" },
+      { date: "Feb 24 & Aug 18, 1992", type: "formation", text: "Kurt marries Courtney Love in Waikiki, Hawaii (Feb 24); daughter Frances Bean Cobain born (Aug 18).", link: "family.html", linkText: "Family", src: "Cross (2001)" },
+      { date: "Aug 30, 1992", type: "concert", text: "Headlines Reading Festival, England (24 songs, wheelchair entrance).", link: "concerts.html", linkText: "Concerts", src: "Nirvana Live Guide" },
+      { date: "Dec 15, 1992", type: "release", text: "Incesticide rarities compilation released (cover art painted by Kurt Cobain).", link: "kurt.html", linkText: "Kurt's Art", src: "Discogs" },
+      { date: "Feb 1993", type: "studio", text: "In Utero recorded in 14 days at Pachyderm Studio, MN with Steve Albini ($24k studio, $100k flat fee).", link: "trivia.html", linkText: "Trivia", src: "LiveNirvana" },
+      { date: "Sept 21, 1993", type: "release", text: "In Utero released on DGC; Pat Smear & Lori Goldston join for the tour.", link: "about.html", linkText: "Lineup", src: "Discogs" },
+      { date: "Nov 18, 1993", type: "concert", text: "MTV Unplugged taped at Sony Music Studios, NYC (candies, lilies, 6 covers).", link: "bootlegs.html", linkText: "Unplugged", src: "MTV / DGC" },
+      { date: "Jan 28-30, 1994", type: "1994", text: "Final studio session at Robert Lang Studios, North Seattle; 'You Know You're Right' tracked Jan 30.", link: "listening.html?song=ykyr", linkText: "YKYR", src: "LiveNirvana" },
+      { date: "Mar 1, 1994", type: "1994", text: "Final concert at Terminal Eins, Munich, Germany (~3,000 fans; power outage during 'Come As You Are'; closed with 'Heart-Shaped Box').", link: "concerts.html", linkText: "Munich '94", src: "LiveNirvana" },
+      { date: "Mar 4 - Apr 1, 1994", type: "1994", text: "Overdose in Rome (Mar 4); intervention in Seattle; enters Exodus Recovery Center (Mar 25) and leaves Apr 1.", link: "death.html", linkText: "Death & Legacy", src: "Cross (2001)" },
+      { date: "Apr 5-10, 1994", type: "1994", text: "Kurt Cobain dies in Seattle on April 5 (found April 8); public vigil at Seattle Center on April 10.", link: "death.html", linkText: "Death & Legacy", src: "Seattle Times / AP" }
+    ];
+
+    function filterTimeline(t) {
+      var tb = document.getElementById("tlBody");
+      tb.innerHTML = "";
+      for (var i = 0; i < TL_EVENTS.length; i++) {
+        var e = TL_EVENTS[i];
+        if (t !== "all" && e.type !== t) continue;
+        var tr = document.createElement("tr");
+        tr.innerHTML =
+          "<td><b>" + e.date + "</b></td>" +
+          "<td>" + e.text + "</td>" +
+          "<td><a href='" + e.link + "'>" + e.linkText + "</a></td>" +
+          "<td class='small'>" + e.src + "</td>";
+        tb.appendChild(tr);
+      }
+    }
+    filterTimeline("all");
+  </script>
 </body>
 </html>

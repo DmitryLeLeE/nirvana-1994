@@ -24,6 +24,10 @@
       <a href="grunge.html">The Scene</a> |
       <a href="timeline.html">Timeline</a> |
       <a href="discography.html">Discography</a> |
+      <a href="listening.html">Listening Room</a> |
+      <a href="map.html">Map</a> |
+      <a href="artifacts.html">Artifacts</a> |
+      <a href="search.html">Search</a> |
       <a href="kurt.html">Kurt Cobain</a> |
       <a href="family.html">Family</a> |
       <a href="death.html">Death &amp; Legacy</a> |
@@ -46,6 +50,10 @@
       <a href="videos.html">Videos</a> |
       <a href="wall.html">Kurt Wall</a> |
       <a href="quiz.html">Quiz</a> |
+      <a href="pc1994.html">Virtual PC</a> |
+      <a href="mixtape.html">Mixtape</a> |
+      <a href="zines.html">Zines</a> |
+      <a href="usenet.html">Usenet</a> |
       <a href="webmaster.html">Webmaster</a> |
       <a href="sitemap.html">Sitemap</a> |
       <a href="media.html">Media</a> |
@@ -57,7 +65,41 @@
     <hr>
 
     <h2>Photo Gallery</h2>
-    <p class="small">click a picture for where it came from</p>
+    <p class="small">filter by year, album/era, or click any photo for fullscreen lightbox with arrow navigation &amp; credits</p>
+
+    <p class="small">
+      <b>Year:</b>
+      <select id="galYear" onchange="filterGallery()">
+        <option value="all">All Years</option>
+        <option value="early">1981&#8211;1989</option>
+        <option value="1991">1991</option>
+        <option value="1992">1992</option>
+        <option value="1993">1993&#8211;1994</option>
+        <option value="places">Places &amp; Museum</option>
+      </select>
+      &nbsp;
+      <b>Topic:</b>
+      <select id="galTopic" onchange="filterGallery()">
+        <option value="all">All Topics</option>
+        <option value="albums">Albums</option>
+        <option value="kurt">Kurt Cobain</option>
+        <option value="band">Band &amp; Family</option>
+        <option value="gear">Guitars &amp; Places</option>
+      </select>
+    </p>
+
+    <div id="galLightbox" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.88); z-index:9999; padding:20px; overflow-y:auto;" role="dialog" aria-modal="true" aria-label="Fullscreen Photo Viewer">
+      <div style="background:#fffdf2; border:4px ridge #c0c0c0; max-width:640px; margin:20px auto; padding:14px; text-align:center;">
+        <p style="text-align:right; margin:0 0 8px 0;">
+          <button type="button" onclick="stepGal(-1)">&larr; Prev</button>
+          <button type="button" onclick="stepGal(1)">Next &rarr;</button>
+          <button type="button" onclick="closeGal()">Close [Esc]</button>
+        </p>
+        <img id="lbImg" class="photo" src="" alt="" style="max-width:100%; max-height:420px;">
+        <p id="lbCaption" style="margin-top:8px;"><b></b></p>
+        <p id="lbSource" class="small"></p>
+      </div>
+    </div>
 
     <h3>Album covers</h3>
     <table class="gallery" align="center">
@@ -129,7 +171,7 @@
 
     <hr>
 
-    <p class="last-updated">Last updated: 04/12/94</p>
+    <p class="last-updated">Last updated: 11/16/94</p>
     <p class="small">[ <a href="index.html">home</a> ] · Nirvana Memorial Web Ring</p>
     <p>
       <img src="assets/btn-netscape.gif" width="88" height="31" alt="Get Netscape 2.0">
@@ -140,5 +182,100 @@
     <p class="small">© 1994 · in memory of Kurt Cobain</p>
 
   </center>
+
+  <script>
+    var galItems = [];
+    var visibleItems = [];
+    var lbIndex = 0;
+
+    function classifyCell(imgSrc, altText) {
+      var s = (imgSrc + " " + altText).toLowerCase();
+      var yr = "1992", tp = "kurt";
+      if (s.indexOf("bleach") !== -1) { yr = "early"; tp = "albums"; }
+      else if (s.indexOf("nevermind") !== -1) { yr = "1991"; tp = "albums"; }
+      else if (s.indexOf("incesticide") !== -1) { yr = "1992"; tp = "albums"; }
+      else if (s.indexOf("utero") !== -1 || s.indexOf("unplugged") !== -1) { yr = "1993"; tp = "albums"; }
+      else if (s.indexOf("1981") !== -1 || s.indexOf("1986") !== -1 || s.indexOf("love_buzz") !== -1) { yr = "early"; tp = "kurt"; }
+      else if (s.indexOf("krist") !== -1 || s.indexOf("dave") !== -1 || s.indexOf("courtney") !== -1 || s.indexOf("nirvana_around") !== -1) { yr = "1992"; tp = "band"; }
+      else if (s.indexOf("guitar") !== -1 || s.indexOf("house") !== -1 || s.indexOf("park") !== -1 || s.indexOf("bridge") !== -1 || s.indexOf("hrc") !== -1) { yr = "places"; tp = "gear"; }
+      return { yr: yr, tp: tp };
+    }
+
+    (function initGallery() {
+      var cells = document.querySelectorAll("table.gallery td");
+      for (var i = 0; i < cells.length; i++) {
+        var img = cells[i].querySelector("img.photo");
+        var link = cells[i].querySelector("a");
+        var cap = cells[i].querySelector("span.small");
+        if (!img) continue;
+        img.loading = "lazy";
+        var meta = classifyCell(img.src, img.alt || "");
+        var item = {
+          td: cells[i],
+          src: img.src,
+          alt: img.alt || (cap ? cap.textContent : "Nirvana photo"),
+          caption: cap ? cap.textContent : img.alt,
+          sourceUrl: link ? link.href : img.src,
+          yr: meta.yr,
+          tp: meta.tp
+        };
+        galItems.push(item);
+        if (link) {
+          (function (idx) {
+            link.addEventListener("click", function (ev) {
+              ev.preventDefault();
+              openGalByItem(galItems[idx]);
+            });
+          })(galItems.length - 1);
+        }
+      }
+      visibleItems = galItems.slice();
+    })();
+
+    function filterGallery() {
+      var y = document.getElementById("galYear").value;
+      var t = document.getElementById("galTopic").value;
+      visibleItems = [];
+      for (var i = 0; i < galItems.length; i++) {
+        var it = galItems[i];
+        var show = (y === "all" || it.yr === y) && (t === "all" || it.tp === t);
+        it.td.style.display = show ? "" : "none";
+        if (show) visibleItems.push(it);
+      }
+    }
+
+    function openGalByItem(it) {
+      lbIndex = visibleItems.indexOf(it);
+      if (lbIndex < 0) lbIndex = 0;
+      showLb();
+    }
+
+    function showLb() {
+      var it = visibleItems[lbIndex];
+      if (!it) return;
+      document.getElementById("lbImg").src = it.src;
+      document.getElementById("lbImg").alt = it.alt;
+      document.getElementById("lbCaption").innerHTML = "<b>" + it.caption + "</b> (" + (lbIndex + 1) + "/" + visibleItems.length + ")";
+      document.getElementById("lbSource").innerHTML = "Source / License: <a href='" + it.sourceUrl + "' target='_blank'>Wikimedia / Wikipedia</a>";
+      document.getElementById("galLightbox").style.display = "block";
+    }
+
+    function stepGal(d) {
+      if (!visibleItems.length) return;
+      lbIndex = (lbIndex + d + visibleItems.length) % visibleItems.length;
+      showLb();
+    }
+
+    function closeGal() {
+      document.getElementById("galLightbox").style.display = "none";
+    }
+
+    document.addEventListener("keydown", function (e) {
+      if (document.getElementById("galLightbox").style.display !== "block") return;
+      if (e.key === "Escape") closeGal();
+      else if (e.key === "ArrowLeft") stepGal(-1);
+      else if (e.key === "ArrowRight") stepGal(1);
+    });
+  </script>
 </body>
 </html>

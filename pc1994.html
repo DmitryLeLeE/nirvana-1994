@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nirvana &#8212; Virtual 1994 Fan Computer</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <meta property="og:site_name" content="Nirvana Memorial &#8212; a hand-made 1994 fan site">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Nirvana &#8212; Virtual 1994 PC">
+  <meta property="og:description" content="Interactive 1994 desktop simulation: retro windows, Netscape mini-browser, README.TXT, photo viewer, floppy A:\, and 8-bit MIDI player.">
+  <meta property="og:image" content="https://dmitrylelee.github.io/nirvana-1994/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .desktop {
+      background: #008080;
+      border: 4px ridge #c0c0c0;
+      max-width: 680px;
+      margin: 10px auto;
+      padding: 12px;
+      text-align: left;
+      color: #000000;
+      font-family: "Courier New", monospace;
+    }
+    .icons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .desk-icon {
+      background: #c0c0c0;
+      border: 2px outset #ffffff;
+      padding: 6px 10px;
+      cursor: pointer;
+      font-family: "Courier New", monospace;
+      font-size: 12px;
+      color: #000000;
+    }
+    .win {
+      display: none;
+      background: #c0c0c0;
+      border: 3px outset #ffffff;
+      margin-bottom: 12px;
+    }
+    .win-bar {
+      background: #000080;
+      color: #ffffff;
+      padding: 4px 8px;
+      font-weight: bold;
+      font-size: 13px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .win-body {
+      padding: 10px;
+      background: #fffdf2;
+      border: 2px inset #808080;
+      margin: 4px;
+      font-size: 13px;
+    }
+    .taskbar {
+      background: #c0c0c0;
+      border-top: 2px outset #ffffff;
+      padding: 4px 8px;
+      font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+  <center>
+
+    <p><img src="assets/banner-webmaster.gif" width="600" height="80" alt="NIRVANA &#8212; Virtual 1994 PC"></p>
+
+    <p class="nav">
+      <a href="index.html">Home</a> |
+      <a href="about.html">The Band</a> |
+      <a href="listening.html">Listening Room</a> |
+      <a href="map.html">Map</a> |
+      <a href="artifacts.html">Artifacts</a> |
+      <a href="search.html">Search</a> |
+      <a href="pc1994.html">Virtual PC</a> <img src="assets/new.gif" width="32" height="12" alt="NEW"> |
+      <a href="mixtape.html">Mixtape</a> |
+      <a href="zines.html">Zines</a> |
+      <a href="usenet.html">Usenet</a> |
+      <a href="sitemap.html">Sitemap</a>
+    </p>
+
+    <hr>
+
+    <h2>1994 Fan Desktop Simulator</h2>
+    <p class="small">click any desktop icon below to open its window &#8212; 486DX2 / 8MB RAM / 14.4k modem</p>
+
+    <div class="desktop" role="application" aria-label="1994 Desktop Simulator">
+      <div class="icons">
+        <button type="button" class="desk-icon" onclick="openWin('winReadme')">[TXT] README.TXT</button>
+        <button type="button" class="desk-icon" onclick="openWin('winNetscape')">[WEB] Netscape 2.0</button>
+        <button type="button" class="desk-icon" onclick="openWin('winPhotos')">[DIR] C:\NIRVANA\PIX</button>
+        <button type="button" class="desk-icon" onclick="openWin('winMidi')">[WAV] MIDI Player</button>
+        <button type="button" class="desk-icon" onclick="openWin('winFloppy')">[A:\] 3.5&quot; Floppy</button>
+      </div>
+
+      <div id="winReadme" class="win" style="display:block;">
+        <div class="win-bar">
+          <span>NOTEPAD - README.TXT</span>
+          <button type="button" onclick="closeWin('winReadme')">X</button>
+        </div>
+        <div class="win-body">
+          <pre style="white-space:pre-wrap; margin:0;">C:\NIRVANA\README.TXT (April 1994)
+==================================
+Hey — if you found this diskette, welcome to my 486.
+I keep Nirvana setlists, ASCII guitar tabs from OLGA,
+and scans from Aberdeen in here.
+
+To browse the full archive, use Netscape or jump to:
+- <a href="listening.html">Listening Room</a>
+- <a href="tabs.html">OLGA Guitar Tabs</a>
+- <a href="usenet.html">alt.music.nirvana</a></pre>
+        </div>
+      </div>
+
+      <div id="winNetscape" class="win">
+        <div class="win-bar">
+          <span>Netscape Navigator 2.0 - [Nirvana Memorial]</span>
+          <button type="button" onclick="closeWin('winNetscape')">X</button>
+        </div>
+        <div class="win-body">
+          <p style="text-align:left; margin:0 0 6px 0;">
+            <b>Location:</b>
+            <select id="pcUrl" onchange="goPcUrl()">
+              <option value="index.html">http://geocities.com/~kurtfan94/index.html</option>
+              <option value="usenet.html">news://alt.music.nirvana</option>
+              <option value="webring-dead.html?site=subpop">http://halcyon.com/~subpop_tapes/trade.txt</option>
+              <option value="tabs.html">ftp://olga.net/pub/guitar/n/nirvana/</option>
+            </select>
+          </p>
+          <p id="pcBrowserMsg" style="text-align:left;">Loaded via 14.4k modem. <a href="index.html">Open full page &rarr;</a></p>
+        </div>
+      </div>
+
+      <div id="winPhotos" class="win">
+        <div class="win-bar">
+          <span>File Manager - C:\NIRVANA\PIX</span>
+          <button type="button" onclick="closeWin('winPhotos')">X</button>
+        </div>
+        <div class="win-body">
+          <img class="photo" src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Kurt_Cobain_1992.jpg" width="140" alt="Kurt 1992">
+          <img class="photo" src="https://upload.wikimedia.org/wikipedia/commons/1/19/Nirvana_around_1992.jpg" width="180" alt="Nirvana 1992"><br>
+          <span class="small">KURT_92.JPG &middot; TRIO_92.JPG &middot; <a href="gallery.html">Open full Gallery &rarr;</a></span>
+        </div>
+      </div>
+
+      <div id="winMidi" class="win">
+        <div class="win-bar">
+          <span>Media Player - GRUNGE.MID</span>
+          <button type="button" onclick="closeWin('winMidi')">X</button>
+        </div>
+        <div class="win-body">
+          <p style="text-align:left; margin:0;">
+            Track: <b>TEEN_SPIRIT.MID</b> (8-bit WebAudio synth)<br><br>
+            <button type="button" onclick="pcMidiPlay()">PLAY RIFF</button>
+            <button type="button" onclick="pcMidiStop()">STOP</button>
+          </p>
+        </div>
+      </div>
+
+      <div id="winFloppy" class="win">
+        <div class="win-bar">
+          <span>Drive A:\ (1.44 MB 3.5&quot; Floppy)</span>
+          <button type="button" onclick="closeWin('winFloppy')">X</button>
+        </div>
+        <div class="win-body">
+          <pre style="white-space:pre-wrap; margin:0;"> Directory of A:\
+TABS_94  TXT     14,208  04-12-94  <a href="tabs.html">Open Tabs</a>
+BOOTLEGS LST      8,412  04-15-94  <a href="bootlegs.html">Open Bootlegs</a>
+MIXTAPE  EXE     32,768  04-18-94  <a href="mixtape.html">Open Mixtape Maker</a>
+   3 file(s)    55,388 bytes
+   1,388,544 bytes free</pre>
+        </div>
+      </div>
+
+      <div class="taskbar">
+        <span><b>[Start]</b> C:\NIRVANA</span>
+        <span>14.4k CONNECTED &middot; 1994</span>
+      </div>
+    </div>
+
+    <hr>
+    <p class="last-updated">Last updated: 11/16/94</p>
+    <p class="small">[ <a href="index.html">home</a> ] &middot; Nirvana Memorial Web Ring</p>
+    <p class="small">&#169; 1994 &middot; in memory of Kurt Cobain</p>
+
+  </center>
+
+  <script>
+    function openWin(id) { document.getElementById(id).style.display = "block"; }
+    function closeWin(id) { document.getElementById(id).style.display = "none"; }
+    function goPcUrl() {
+      var u = document.getElementById("pcUrl").value;
+      document.getElementById("pcBrowserMsg").innerHTML = "Ready: <a href='" + u + "'>Launch " + u + " &rarr;</a>";
+    }
+    var pcTimer = null, pcCtx = null, pcI = 0;
+    var NOTES = [175, 175, 175, 233, 233, 208, 208, 208, 277, 277];
+    function pcMidiPlay() {
+      if (!pcCtx) pcCtx = new (window.AudioContext || window.webkitAudioContext)();
+      if (pcCtx.state === "suspended") pcCtx.resume();
+      pcMidiStop();
+      pcTimer = setInterval(function () {
+        var o = pcCtx.createOscillator(), g = pcCtx.createGain();
+        o.type = "square";
+        o.frequency.value = NOTES[pcI % NOTES.length]; pcI++;
+        g.gain.value = 0.05;
+        o.connect(g); g.connect(pcCtx.destination);
+        var t = pcCtx.currentTime;
+        g.gain.exponentialRampToValueAtTime(0.001, t + 0.3);
+        o.start(t); o.stop(t + 0.32);
+      }, 350);
+    }
+    function pcMidiStop() {
+      if (pcTimer) { clearInterval(pcTimer); pcTimer = null; }
+    }
+  </script>
+</body>
+</html>

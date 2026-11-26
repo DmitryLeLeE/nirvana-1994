@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nirvana &#8212; Interactive Geography Map</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <meta property="og:site_name" content="Nirvana Memorial &#8212; a hand-made 1994 fan site">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Nirvana &#8212; Interactive Geography Map">
+  <meta property="og:description" content="Explore Aberdeen, Seattle, Olympia, recording studios, and international tour landmarks on OpenStreetMap.">
+  <meta property="og:image" content="https://dmitrylelee.github.io/nirvana-1994/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+  <style>
+    #nirvanaMap {
+      width: min(660px, 100%);
+      height: 400px;
+      border: 3px ridge #888888;
+      background: #c8c8c0;
+      margin: 10px auto;
+      text-align: left;
+    }
+    .map-card {
+      max-width: 640px;
+      width: 100%;
+      box-sizing: border-box;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <center>
+
+    <p><img src="assets/banner-scene.gif" width="600" height="80" alt="NIRVANA &#8212; Geography Map"></p>
+
+    <marquee>&#9830; Aberdeen &#9830; Olympia &#9830; Seattle &#9830; Van Nuys &#9830; Cannon Falls &#9830; Reading &#9830; New York &#9830; Munich &#9830;</marquee>
+
+    <p class="nav">
+      <a href="index.html">Home</a> |
+      <a href="about.html">The Band</a> |
+      <a href="grunge.html">The Scene</a> |
+      <a href="timeline.html">Timeline</a> |
+      <a href="discography.html">Discography</a> |
+      <a href="listening.html">Listening Room</a> |
+      <a href="map.html">Map</a> <img src="assets/new.gif" width="32" height="12" alt="NEW"> |
+      <a href="kurt.html">Kurt Cobain</a> |
+      <a href="family.html">Family</a> |
+      <a href="death.html">Death &amp; Legacy</a> |
+      <a href="27club.html">27 Club</a> |
+      <a href="songs.html">Songs</a> |
+      <a href="quotes.html">Quotes</a> |
+      <a href="lyrics.html">Lyrics</a> |
+      <a href="faq.html">FAQ</a> |
+      <a href="poll.html">Poll</a> |
+      <a href="gear.html">Gear</a> |
+      <a href="trivia.html">Trivia</a> |
+      <a href="awards.html">Awards</a> |
+      <a href="culture90s.html">The 90s</a> |
+      <a href="bootlegs.html">Bootlegs</a> |
+      <a href="influences.html">Influences</a> |
+      <a href="tabs.html">Tabs</a> |
+      <a href="concerts.html">Concerts</a> |
+      <a href="venues.html">Venues</a> |
+      <a href="videos.html">Videos</a> |
+      <a href="wall.html">Kurt Wall</a> |
+      <a href="quiz.html">Quiz</a> |
+      <a href="pc1994.html">Virtual PC</a> |
+      <a href="mixtape.html">Mixtape</a> |
+      <a href="zines.html">Zines</a> |
+      <a href="usenet.html">Usenet</a> |
+      <a href="webmaster.html">Webmaster</a> |
+      <a href="sitemap.html">Sitemap</a> |
+      <a href="media.html">Media</a> |
+      <a href="gallery.html">Gallery</a> |
+      <a href="guestbook.html">Guestbook</a> |
+      <a href="links.html">Sources</a>
+    </p>
+
+    <hr>
+
+    <h2>Interactive Nirvana Map</h2>
+    <p class="small">powered by OpenStreetMap &amp; Leaflet &#8212; click any pin or filter by region/category</p>
+
+    <p class="small">
+      <b>Region:</b>
+      <button type="button" onclick="focusRegion('all')">All World</button>
+      <button type="button" onclick="focusRegion('aberdeen')">Aberdeen</button>
+      <button type="button" onclick="focusRegion('olympia')">Olympia</button>
+      <button type="button" onclick="focusRegion('seattle')">Seattle</button>
+      <button type="button" onclick="focusRegion('intl')">Studios &amp; Tour</button>
+    </p>
+    <p class="small">
+      <b>Category:</b>
+      <select id="catFilter" onchange="applyMapFilter()">
+        <option value="all">All 7 Categories (19 locations)</option>
+        <option value="childhood">1. Kurt's Childhood Places</option>
+        <option value="formation">2. Band Formation</option>
+        <option value="rehearsal">3. Rehearsal Spaces</option>
+        <option value="studio">4. Recording Studios</option>
+        <option value="venue">5. Concert Venues</option>
+        <option value="store">6. Record Stores &amp; Hangouts</option>
+        <option value="landmark">7. Cultural Landmarks</option>
+      </select>
+    </p>
+
+    <div id="nirvanaMap" role="region" aria-label="Interactive map of Nirvana locations"></div>
+
+    <div id="placeCard" class="note map-card">
+      <p class="small">Click any marker on the map or pick a location from the table below to view coordinates, accuracy notes, and archive links.</p>
+    </div>
+
+    <hr>
+
+    <h3>Directory of Locations</h3>
+    <table class="content">
+      <thead>
+        <tr><th>Location</th><th>City</th><th>Category</th><th>Dates</th></tr>
+      </thead>
+      <tbody id="placeRows"></tbody>
+    </table>
+
+    <hr>
+
+    <p class="small">
+      Note on coordinates: exact street coordinates are used for verified public landmarks and studios;
+      where private residences or rural parties cannot be pinpointed exactly, approximate area coordinates
+      are explicitly noted.
+    </p>
+    <p class="last-updated">Last updated: 11/16/94</p>
+    <p class="small">[ <a href="index.html">home</a> ] &middot; Nirvana Memorial Web Ring</p>
+    <p>
+      <img src="assets/btn-netscape.gif" width="88" height="31" alt="Get Netscape 2.0">
+      <img src="assets/btn-notepad.gif" width="88" height="31" alt="Made with Notepad">
+      <img src="assets/btn-guestbook.gif" width="88" height="31" alt="Sign my guestbook">
+      <img src="assets/btn-webring.gif" width="88" height="31" alt="Nirvana Webring">
+    </p>
+    <p class="small">&#169; 1994 &middot; in memory of Kurt Cobain</p>
+
+  </center>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script src="data/map_data.js"></script>
+  <script>
+    var map, markersLayer;
+    var activeRegion = "all";
+
+    function esc(s) {
+      return String(s).replace(/[&<>"]/g, function (c) {
+        return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+      });
+    }
+
+    function initMap() {
+      if (typeof L === "undefined") {
+        document.getElementById("nirvanaMap").innerHTML = "<p style='padding:20px;'>Leaflet failed to load (offline?). You can still browse all 19 verified locations in the table below.</p>";
+        renderPlaceTable("all", "all");
+        return;
+      }
+      map = L.map("nirvanaMap").setView([47.25, -122.9], 7);
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 18,
+        attribution: "&copy; OpenStreetMap contributors"
+      }).addTo(map);
+      markersLayer = L.layerGroup().addTo(map);
+      applyMapFilter();
+    }
+
+    function focusRegion(reg) {
+      activeRegion = reg;
+      applyMapFilter();
+      if (!map) return;
+      if (reg === "aberdeen") map.setView([46.979, -123.805], 13);
+      else if (reg === "olympia") map.setView([47.055, -122.93], 12);
+      else if (reg === "seattle") map.setView([47.625, -122.34], 11);
+      else if (reg === "intl") map.setView([38.0, -45.0], 2);
+      else map.setView([47.25, -122.9], 7);
+    }
+
+    function applyMapFilter() {
+      var cat = document.getElementById("catFilter").value;
+      renderPlaceTable(activeRegion, cat);
+      if (!markersLayer) return;
+      markersLayer.clearLayers();
+      for (var i = 0; i < window.NIRVANA_MAP_PLACES.length; i++) {
+        var p = window.NIRVANA_MAP_PLACES[i];
+        if (activeRegion !== "all" && p.region !== activeRegion) continue;
+        if (cat !== "all" && p.cat !== cat) continue;
+        (function (place) {
+          var m = L.marker([place.lat, place.lng]).addTo(markersLayer);
+          m.bindPopup("<b>" + esc(place.name) + "</b><br>" + esc(place.city));
+          m.on("click", function () { showPlaceCard(place.id); });
+        })(p);
+      }
+    }
+
+    function renderPlaceTable(reg, cat) {
+      var tb = document.getElementById("placeRows");
+      tb.innerHTML = "";
+      for (var i = 0; i < window.NIRVANA_MAP_PLACES.length; i++) {
+        var p = window.NIRVANA_MAP_PLACES[i];
+        if (reg !== "all" && p.region !== reg) continue;
+        if (cat !== "all" && p.cat !== cat) continue;
+        var tr = document.createElement("tr");
+        tr.innerHTML =
+          "<td><a href='#nirvanaMap' onclick='selectPlace(\"" + esc(p.id) + "\")'><b>" + esc(p.name) + "</b></a></td>" +
+          "<td>" + esc(p.city) + "</td>" +
+          "<td>" + esc(window.NIRVANA_MAP_CATEGORIES[p.cat] || p.cat) + "</td>" +
+          "<td>" + esc(p.dates) + "</td>";
+        tb.appendChild(tr);
+      }
+    }
+
+    function selectPlace(id) {
+      showPlaceCard(id);
+      for (var i = 0; i < window.NIRVANA_MAP_PLACES.length; i++) {
+        var p = window.NIRVANA_MAP_PLACES[i];
+        if (p.id === id && map) {
+          map.setView([p.lat, p.lng], 13);
+          break;
+        }
+      }
+    }
+
+    function showPlaceCard(id) {
+      var p = null;
+      for (var i = 0; i < window.NIRVANA_MAP_PLACES.length; i++) {
+        if (window.NIRVANA_MAP_PLACES[i].id === id) { p = window.NIRVANA_MAP_PLACES[i]; break; }
+      }
+      if (!p) return;
+      var linksHtml = "";
+      for (var j = 0; j < p.links.length; j++) {
+        linksHtml += "<a href='" + esc(p.links[j].href) + "'>" + esc(p.links[j].label) + "</a>" + (j < p.links.length - 1 ? " &middot; " : "");
+      }
+      var photoHtml = p.photo
+        ? "<p><img class='photo' src='" + esc(p.photo) + "' width='220' alt='" + esc(p.name) + "'></p>"
+        : "";
+      document.getElementById("placeCard").innerHTML =
+        "<h3 style='margin-top:0;'>" + esc(p.name) + "</h3>" +
+        photoHtml +
+        "<p><b>City:</b> " + esc(p.city) + " &middot; <b>Category:</b> " + esc(window.NIRVANA_MAP_CATEGORIES[p.cat]) + "<br>" +
+        "<b>Coordinates:</b> " + p.lat.toFixed(4) + ", " + p.lng.toFixed(4) + " <i>(" + esc(p.precision) + ")</i><br>" +
+        "<b>Dates:</b> " + esc(p.dates) + "</p>" +
+        "<p>" + esc(p.desc) + "</p>" +
+        "<p class='small'><b>Related pages:</b> " + linksHtml + "</p>";
+    }
+
+    initMap();
+    showPlaceCard("ok-hotel");
+  </script>
+</body>
+</html>

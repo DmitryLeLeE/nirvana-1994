@@ -45,6 +45,10 @@
       <a href="videos.html">Videos</a> |
       <a href="wall.html">Kurt Wall</a> |
       <a href="quiz.html">Quiz</a> |
+      <a href="pc1994.html">Virtual PC</a> |
+      <a href="mixtape.html">Mixtape</a> |
+      <a href="zines.html">Zines</a> |
+      <a href="usenet.html">Usenet</a> |
       <a href="webmaster.html">Webmaster</a> |
       <a href="sitemap.html">Sitemap</a> |
       <a href="media.html">Media</a> |
@@ -64,14 +68,38 @@
       name because he wanted something "beautiful and nice," not an aggressive punk word.
     </p>
 
-    <h3>Lineup</h3>
+    <h3>Lineup &amp; Lineup History (1987&#8211;1994)</h3>
+    <p class="small">clear distinction between permanent core members and early/touring/session musicians</p>
+
     <table class="content">
-      <tr><th>Member</th><th>Instrument</th><th>Years</th></tr>
-      <tr><td>Kurt Cobain</td><td>vocals, guitar</td><td>1987–1994</td></tr>
-      <tr><td>Krist Novoselic</td><td>bass</td><td>1987–1994</td></tr>
-      <tr><td>Dave Grohl</td><td>drums</td><td>1990–1994</td></tr>
+      <tr><th>Core Member</th><th>Instrument</th><th>Years</th><th>Key Recordings</th></tr>
+      <tr><td><b>Kurt Cobain</b></td><td>vocals, lead guitar</td><td>1987&#8211;1994</td><td>All studio &amp; live releases</td></tr>
+      <tr><td><b>Krist Novoselic</b></td><td>bass</td><td>1987&#8211;1994</td><td>All studio &amp; live releases</td></tr>
+      <tr><td><b>Dave Grohl</b></td><td>drums, backing vocals</td><td>Sept 1990&#8211;1994</td><td><i>Nevermind</i>, <i>In Utero</i>, <i>MTV Unplugged</i></td></tr>
     </table>
-    <p class="small">several drummers rotated before Grohl joined</p>
+
+    <h4>Early Drummers &amp; Touring / Session Musicians</h4>
+    <table class="content">
+      <tr><th>Musician</th><th>Role / Status</th><th>Period</th><th>Notable Sessions / Tours</th></tr>
+      <tr><td><b>Aaron Burckhard</b></td><td>Early drummer (pre-Sub Pop)</td><td>1987&#8211;late 1987</td><td>First Aberdeen/Olympia gigs, KAOS FM (May 1987)</td></tr>
+      <tr><td><b>Dale Crover</b></td><td>Session / fill-in drummer (Melvins)</td><td>Jan 1988; Aug 1990</td><td>Jan 1988 Reciprocal demo (3 tracks on <i>Bleach</i>)</td></tr>
+      <tr><td><b>Chad Channing</b></td><td>Permanent drummer (<i>Bleach</i> era)</td><td>1988&#8211;May 1990</td><td><i>Bleach</i> (1989), Smart Studios demos (1990), &#8220;Polly&#8221;</td></tr>
+      <tr><td><b>Pat Smear</b></td><td>Touring rhythm guitarist (Germs)</td><td>Sept 1993&#8211;1994</td><td><i>In Utero</i> US/EU tours, <i>Live and Loud</i>, <i>MTV Unplugged</i></td></tr>
+      <tr><td><b>Lori Goldston</b></td><td>Touring / session cellist</td><td>1993&#8211;1994</td><td><i>MTV Unplugged in New York</i>, <i>Live and Loud</i>, 1993-94 tours</td></tr>
+      <tr><td><b>Melora Creager</b></td><td>Touring cellist (Rasputina)</td><td>Feb&#8211;Mar 1994</td><td>Final European tour (replacing Lori Goldston on select dates)</td></tr>
+    </table>
+
+    <h4>Interactive Lineup Timeline (1987&#8211;1994)</h4>
+    <p class="small">click a period to inspect who was onstage or in the studio:</p>
+    <p class="small">
+      <button type="button" onclick="showEra('1987')">1987 (Formation)</button>
+      <button type="button" onclick="showEra('1988')">1988&#8211;1990 (Bleach)</button>
+      <button type="button" onclick="showEra('1991')">1990&#8211;1993 (Classic Trio)</button>
+      <button type="button" onclick="showEra('1993')">1993&#8211;1994 (In Utero Tour)</button>
+    </p>
+    <div id="eraBox" class="note" style="max-width:620px; width:100%; box-sizing:border-box;">
+      <p class="small">Select an era above to view the exact lineup, roles, and verified sessions.</p>
+    </div>
 
     <p>
       <a href="https://commons.wikimedia.org/wiki/File:Nirvana_around_1992.jpg" target="_blank"><img class="photo" src="https://upload.wikimedia.org/wikipedia/commons/1/19/Nirvana_around_1992.jpg" width="360" alt="Nirvana around 1992"></a><br>
@@ -132,7 +160,7 @@
     <hr>
 
     <p><a href="index.html">← back home</a></p>
-    <p class="last-updated">Last updated: 03/28/94</p>
+    <p class="last-updated">Last updated: 11/16/94</p>
     <p class="small">[ <a href="index.html">home</a> ] · Nirvana Memorial Web Ring</p>
     <p>
       <img src="assets/btn-netscape.gif" width="88" height="31" alt="Get Netscape 2.0">
@@ -143,5 +171,18 @@
     <p class="small">© 1994 · in memory of Kurt Cobain</p>
 
   </center>
+
+  <script>
+    var ERAS = {
+      "1987": "<b>1987 (Formation &amp; Early Demos):</b> Kurt Cobain (vocals/guitar), Krist Novoselic (bass), <b>Aaron Burckhard</b> (drums). Played Tacoma Community World Theater (Apr 18, 1987), Evergreen dorms, and KAOS FM (May 6, 1987). <a href='map.html'>See Olympia/Tacoma on Map</a>.",
+      "1988": "<b>1988&#8211;May 1990 (Sub Pop &amp; Bleach Era):</b> <b>Dale Crover</b> played drums on the Jan 23, 1988 Reciprocal demo (three tracks made <i>Bleach</i>). <b>Chad Channing</b> joined in 1988, recorded &#8216;Love Buzz&#8217;, <i>Bleach</i> (1989), Peel Session #1 (Oct 1989), and the Apr 1990 Smart Studios demos before departing in May 1990.",
+      "1991": "<b>Sept 1990&#8211;1993 (The Classic Trio):</b> <b>Dave Grohl</b> (formerly of Scream) joined in Sept 1990. This permanent trio recorded <i>Nevermind</i> (1991), <i>In Utero</i> (Feb 1993), and headlined Reading 1992. <a href='listening.html'>Explore in Listening Room</a>.",
+      "1993": "<b>Sept 1993&#8211;Mar 1994 (Expanded Live Lineup):</b> Core trio joined onstage by touring guitarist <b>Pat Smear</b> and cellist <b>Lori Goldston</b> (<i>MTV Unplugged</i>, <i>Live &amp; Loud</i>). Cellist <b>Melora Creager</b> joined for the final European dates in Feb&#8211;Mar 1994. <a href='concerts.html'>See Concerts</a>."
+    };
+    function showEra(k) {
+      document.getElementById("eraBox").innerHTML = "<p>" + ERAS[k] + "</p>";
+    }
+    showEra("1991");
+  </script>
 </body>
 </html>

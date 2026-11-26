@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nirvana &#8212; Create Your 1994 Mixtape (PNG Export)</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <meta property="og:site_name" content="Nirvana Memorial &#8212; a hand-made 1994 fan site">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Nirvana &#8212; Create Your 1994 Mixtape">
+  <meta property="og:description" content="Build your custom Nirvana 90-minute cassette J-card, reorder tracks, pick TDK/Maxell shells, and export as PNG.">
+  <meta property="og:image" content="https://dmitrylelee.github.io/nirvana-1994/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <center>
+
+    <p><img src="assets/banner-songs.gif" width="600" height="80" alt="NIRVANA &#8212; Create Your Mixtape"></p>
+
+    <p class="nav">
+      <a href="index.html">Home</a> |
+      <a href="about.html">The Band</a> |
+      <a href="listening.html">Listening Room</a> |
+      <a href="map.html">Map</a> |
+      <a href="artifacts.html">Artifacts</a> |
+      <a href="search.html">Search</a> |
+      <a href="pc1994.html">Virtual PC</a> |
+      <a href="mixtape.html">Mixtape</a> <img src="assets/new.gif" width="32" height="12" alt="NEW"> |
+      <a href="zines.html">Zines</a> |
+      <a href="usenet.html">Usenet</a> |
+      <a href="sitemap.html">Sitemap</a>
+    </p>
+
+    <hr>
+
+    <h2>Create Your 1994 Mixtape</h2>
+    <p class="small">pick songs, reorder your tracklist, customize the cassette shell &amp; J-card, and export to PNG</p>
+
+    <table class="content">
+      <tr><th>1. Mixtape Title &amp; Cassette Shell</th></tr>
+      <tr>
+        <td>
+          <label for="tapeTitle"><b>Mixtape Title:</b></label>
+          <input type="text" id="tapeTitle" value="RAINY SEATTLE 1994" maxlength="32" oninput="drawTape()"><br><br>
+          <label for="tapeShell"><b>Cassette Shell:</b></label>
+          <select id="tapeShell" onchange="drawTape()">
+            <option value="tdk">TDK SA90 (Dark Charcoal)</option>
+            <option value="maxell">Maxell XLII (Gold / Black)</option>
+            <option value="subpop">Sub Pop White Demo</option>
+          </select>
+        </td>
+      </tr>
+      <tr><th>2. Add Nirvana Songs</th></tr>
+      <tr>
+        <td>
+          <select id="songPick"></select>
+          <button type="button" onclick="addSongToTape()">+ Add to Tape</button>
+        </td>
+      </tr>
+      <tr><th>3. Your Tracklist (Up / Down / Remove)</th></tr>
+      <tr>
+        <td id="tapeList"></td>
+      </tr>
+    </table>
+
+    <br>
+    <canvas id="tapeCanvas" width="520" height="320" style="max-width:100%; border:3px ridge #888888; background:#ffffff;"></canvas>
+    <p>
+      <button type="button" onclick="downloadTapePng()">Download Mixtape Cover (PNG)</button>
+    </p>
+
+    <hr>
+    <p class="last-updated">Last updated: 11/16/94</p>
+    <p class="small">[ <a href="index.html">home</a> ] &middot; Nirvana Memorial Web Ring</p>
+    <p class="small">&#169; 1994 &middot; in memory of Kurt Cobain</p>
+
+  </center>
+
+  <script>
+    var CATALOG = [
+      "Smells Like Teen Spirit", "Drain You", "Come As You Are", "Lithium",
+      "About a Girl", "Polly", "Heart-Shaped Box", "All Apologies",
+      "In Bloom", "Breed", "On a Plain", "Something in the Way",
+      "Aneurysm", "Sliver", "Love Buzz", "Pennyroyal Tea",
+      "Dumb", "Rape Me", "Where Did You Sleep Last Night", "You Know You're Right"
+    ];
+    var tracks = ["About a Girl", "Drain You", "Lithium", "Heart-Shaped Box", "All Apologies", "Where Did You Sleep Last Night"];
+
+    (function initSelect() {
+      var sel = document.getElementById("songPick");
+      for (var i = 0; i < CATALOG.length; i++) {
+        var o = document.createElement("option");
+        o.value = CATALOG[i];
+        o.textContent = CATALOG[i];
+        sel.appendChild(o);
+      }
+    })();
+
+    function addSongToTape() {
+      if (tracks.length >= 10) { alert("Max 10 tracks for Side A J-card!"); return; }
+      var val = document.getElementById("songPick").value;
+      tracks.push(val);
+      renderList();
+      drawTape();
+    }
+
+    function moveTrack(idx, dir) {
+      var ni = idx + dir;
+      if (ni < 0 || ni >= tracks.length) return;
+      var tmp = tracks[idx]; tracks[idx] = tracks[ni]; tracks[ni] = tmp;
+      renderList();
+      drawTape();
+    }
+
+    function removeTrack(idx) {
+      tracks.splice(idx, 1);
+      renderList();
+      drawTape();
+    }
+
+    function renderList() {
+      var box = document.getElementById("tapeList");
+      if (!tracks.length) { box.innerHTML = "<span class='small'>No tracks yet.</span>"; return; }
+      var html = "";
+      for (var i = 0; i < tracks.length; i++) {
+        html += "<div style='margin:3px 0;'>" + (i + 1) + ". <b>" + tracks[i] + "</b> " +
+          "<button type='button' onclick='moveTrack(" + i + ",-1)'>Up</button> " +
+          "<button type='button' onclick='moveTrack(" + i + ",1)'>Down</button> " +
+          "<button type='button' onclick='removeTrack(" + i + ")'>Del</button></div>";
+      }
+      box.innerHTML = html;
+    }
+
+    function drawTape() {
+      var c = document.getElementById("tapeCanvas");
+      var g = c.getContext("2d");
+      var title = document.getElementById("tapeTitle").value || "NIRVANA 94";
+      var shell = document.getElementById("tapeShell").value;
+
+      g.fillStyle = "#fffdf2";
+      g.fillRect(0, 0, c.width, c.height);
+      g.strokeStyle = "#000000";
+      g.lineWidth = 3;
+      g.strokeRect(4, 4, c.width - 8, c.height - 8);
+
+      // Left cassette shell preview
+      var bg = shell === "tdk" ? "#2b2b2b" : (shell === "maxell" ? "#1a1a1a" : "#ececec");
+      var fg = shell === "maxell" ? "#e0b030" : (shell === "tdk" ? "#ffffff" : "#000000");
+      g.fillStyle = bg;
+      g.fillRect(20, 45, 220, 140);
+      g.strokeStyle = "#000000";
+      g.lineWidth = 2;
+      g.strokeRect(20, 45, 220, 140);
+
+      // Tape label strip
+      g.fillStyle = shell === "subpop" ? "#ffff00" : "#f5f0dc";
+      g.fillRect(34, 58, 192, 42);
+      g.fillStyle = "#000000";
+      g.font = "bold 12px Courier New";
+      g.fillText(title.slice(0, 22), 42, 82);
+
+      // Tape reels
+      g.fillStyle = "#ffffff";
+      g.beginPath(); g.arc(85, 132, 16, 0, Math.PI * 2); g.fill(); g.stroke();
+      g.beginPath(); g.arc(175, 132, 16, 0, Math.PI * 2); g.fill(); g.stroke();
+      g.fillStyle = "#000000";
+      g.fillRect(108, 124, 44, 16);
+
+      g.fillStyle = fg;
+      g.font = "11px Courier New";
+      g.fillText(shell.toUpperCase() + " 90 MIN", 34, 174);
+
+      // Right J-card tracklist
+      g.fillStyle = "#000000";
+      g.font = "bold 14px Courier New";
+      g.fillText("SIDE A - J-CARD", 265, 42);
+      g.fillRect(265, 48, 230, 2);
+      g.font = "12px Courier New";
+      for (var i = 0; i < tracks.length; i++) {
+        g.fillText((i + 1) + ". " + tracks[i].slice(0, 26), 265, 70 + i * 21);
+      }
+      g.font = "11px Courier New";
+      g.fillStyle = "#555555";
+      g.fillText("MADE ON NIRVANA 1994 ARCHIVE", 20, 295);
+    }
+
+    function downloadTapePng() {
+      var c = document.getElementById("tapeCanvas");
+      var a = document.createElement("a");
+      a.download = "nirvana-mixtape-1994.png";
+      a.href = c.toDataURL("image/png");
+      a.click();
+    }
+
+    renderList();
+    drawTape();
+  </script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nirvana &#8212; Usenet alt.music.nirvana (1994 Board)</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <meta property="og:site_name" content="Nirvana Memorial &#8212; a hand-made 1994 fan site">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Nirvana &#8212; alt.music.nirvana">
+  <meta property="og:description" content="Stylized 1994 Usenet message board reconstruction for albums, concerts, bootlegs, influences, and band history.">
+  <meta property="og:image" content="https://dmitrylelee.github.io/nirvana-1994/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <center>
+
+    <p><img src="assets/banner-guestbook.gif" width="600" height="80" alt="NIRVANA &#8212; alt.music.nirvana"></p>
+
+    <p class="nav">
+      <a href="index.html">Home</a> |
+      <a href="about.html">The Band</a> |
+      <a href="listening.html">Listening Room</a> |
+      <a href="map.html">Map</a> |
+      <a href="artifacts.html">Artifacts</a> |
+      <a href="search.html">Search</a> |
+      <a href="pc1994.html">Virtual PC</a> |
+      <a href="mixtape.html">Mixtape</a> |
+      <a href="zines.html">Zines</a> |
+      <a href="usenet.html">Usenet</a> <img src="assets/new.gif" width="32" height="12" alt="NEW"> |
+      <a href="sitemap.html">Sitemap</a>
+    </p>
+
+    <hr>
+
+    <h2>news://alt.music.nirvana (1994)</h2>
+    <p class="small">plain-text Usenet newsreader style</p>
+
+    <div class="note">
+      <p>
+        <b>Reconstruction notice:</b> The starter threads below are <b>artistic reconstructions</b>
+        modeled on how fans actually discussed albums, bootlegs, and news on <i>alt.music.nirvana</i>
+        in 1994 (not verbatim scraped Usenet logs). New replies you post are stored locally in your
+        browser&#8217;s <code>localStorage</code>.
+      </p>
+    </div>
+
+    <p class="small">
+      <b>Topic:</b>
+      <select id="usenetTopic" onchange="renderThreads()">
+        <option value="all">All Newsgroups Threads</option>
+        <option value="Albums">Albums</option>
+        <option value="Concerts">Concerts</option>
+        <option value="Bootlegs">Bootlegs</option>
+        <option value="Songs">Favorite Songs</option>
+        <option value="Influences">Influences</option>
+        <option value="History">Band History</option>
+      </select>
+    </p>
+
+    <div id="threadBox" style="max-width:640px; text-align:left; margin:10px auto;"></div>
+
+    <hr>
+
+    <h3>Post a Follow-up</h3>
+    <form onsubmit="return postUsenet(this)">
+      <p>
+        From (email/handle):<br>
+        <input type="text" name="from" maxlength="45" placeholder="e.g. jdoe@cs.washington.edu" required>
+      </p>
+      <p>
+        Topic:<br>
+        <select name="topic">
+          <option value="Albums">Albums</option>
+          <option value="Concerts">Concerts</option>
+          <option value="Bootlegs">Bootlegs</option>
+          <option value="Songs">Favorite Songs</option>
+          <option value="Influences">Influences</option>
+          <option value="History">Band History</option>
+        </select>
+      </p>
+      <p>
+        Subject:<br>
+        <input type="text" name="subj" maxlength="70" placeholder="Re: In Utero Albini mix..." required>
+      </p>
+      <p>
+        Message:<br>
+        <textarea name="body" rows="3" maxlength="300" required></textarea>
+      </p>
+      <p><input type="submit" value="Post to alt.music.nirvana (localStorage)"></p>
+    </form>
+
+    <hr>
+    <p class="last-updated">Last updated: 11/16/94</p>
+    <p class="small">[ <a href="index.html">home</a> ] &middot; Nirvana Memorial Web Ring</p>
+    <p class="small">&#169; 1994 &middot; in memory of Kurt Cobain</p>
+
+  </center>
+
+  <script>
+    var UKEY = "nirvana_usenet_posts";
+    var DEFAULT_POSTS = [
+      { topic: "Albums", from: "kris_v@uoregon.edu", date: "04/09/94", subj: "In Utero vs Nevermind production", body: "Anyone else prefer Albini's raw drum sound on In Utero? Nevermind is great, but Scentless Apprentice sounds like a truck hitting the room." },
+      { topic: "Bootlegs", from: "tape_trader@halcyon.com", date: "04/12/94", subj: "Peel Sessions 89/90/91 tracklists?", body: "Finally got a clean dub of all three BBC Peel sessions. Still looking for a 1st-gen copy of Paramount Halloween '91 if anyone trades TDK SA90." },
+      { topic: "Concerts", from: "uk_fan92@ic.ac.uk", date: "04/14/94", subj: "Reading '92 wheelchair moment", body: "I was 30 rows back when Kurt rolled out in the hospital gown. When he stood up and hit Breed, the whole field shook." },
+      { topic: "Songs", from: "xander@umich.edu", date: "04/18/94", subj: "Hidden track after Something in the Way", body: "Left my Nevermind CD playing while studying and nearly jumped out of my chair 10 minutes later when Endless Nameless kicked in." },
+      { topic: "Influences", from: "olympia_k@evergreen.edu", date: "05/03/94", subj: "Lead Belly & Vaselines on Unplugged", body: "If you loved Unplugged, check out Lead Belly's Folkways tapes and The Vaselines' Dum-Dum. Kurt wasn't kidding about them." },
+      { topic: "History", from: "sea_archive@u.washington.edu", date: "05/19/94", subj: "First gig: Raymond WA vs Tacoma '87?", body: "Keep seeing March '87 Raymond listed as the first gig, though folks in Olympia say Tacoma Community World Theater in April '87 was first fliered show." }
+    ];
+
+    function loadUsenet() {
+      try {
+        var r = localStorage.getItem(UKEY);
+        if (r) return JSON.parse(r);
+      } catch (e) {}
+      return DEFAULT_POSTS;
+    }
+
+    function esc(s) {
+      return String(s).replace(/[&<>"]/g, function (c) {
+        return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+      });
+    }
+
+    function renderThreads() {
+      var tf = document.getElementById("usenetTopic").value;
+      var box = document.getElementById("threadBox");
+      var list = loadUsenet();
+      box.innerHTML = "";
+      for (var i = 0; i < list.length; i++) {
+        var p = list[i];
+        if (tf !== "all" && p.topic !== tf) continue;
+        var pre = document.createElement("pre");
+        pre.className = "lyrics";
+        pre.style.width = "100%";
+        pre.innerHTML =
+          "<b>Subject:</b> " + esc(p.subj) + " [" + esc(p.topic) + "]\n" +
+          "<b>From:</b> " + esc(p.from) + " &middot; <b>Date:</b> " + esc(p.date) + "\n" +
+          "--------------------------------------------------\n" +
+          esc(p.body);
+        box.appendChild(pre);
+      }
+    }
+
+    function postUsenet(form) {
+      var from = form.from.value.trim(), subj = form.subj.value.trim(), body = form.body.value.trim(), topic = form.topic.value;
+      if (!from || !subj || !body) return false;
+      var list = loadUsenet();
+      list.unshift({ topic: topic, from: from, date: "today (local)", subj: subj, body: body });
+      try { localStorage.setItem(UKEY, JSON.stringify(list.slice(0, 25))); } catch (e) {}
+      renderThreads();
+      form.reset();
+      return false;
+    }
+
+    renderThreads();
+  </script>
+</body>
+</html>

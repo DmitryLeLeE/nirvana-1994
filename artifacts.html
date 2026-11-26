@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nirvana &#8212; Archive of Artifacts</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <meta property="og:site_name" content="Nirvana Memorial &#8212; a hand-made 1994 fan site">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Nirvana &#8212; Archive of Artifacts">
+  <meta property="og:description" content="Material culture archive: flyers, tickets, passes, setlists, zines, documents, and museum photographs with category/year filters and lightbox.">
+  <meta property="og:image" content="https://dmitrylelee.github.io/nirvana-1994/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .art-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+      max-width: 680px;
+      margin: 12px auto;
+      text-align: left;
+    }
+    .art-card {
+      background: #fffdf2;
+      border: 2px ridge #888888;
+      padding: 8px;
+      font-size: 13px;
+    }
+    .art-mock {
+      background: #ece6d2;
+      border: 2px dashed #555555;
+      padding: 8px;
+      font-family: "Courier New", monospace;
+      font-size: 11px;
+      white-space: pre-wrap;
+      min-height: 110px;
+      margin-bottom: 6px;
+    }
+    .badge-auth { background:#d8f3dc; color:#1b4332; padding:1px 4px; font-size:10px; font-family:"Courier New",monospace; }
+    .badge-recon { background:#fff3cd; color:#664d03; padding:1px 4px; font-size:10px; font-family:"Courier New",monospace; }
+    #artModal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      z-index: 9999;
+      overflow-y: auto;
+      padding: 20px;
+    }
+    #artModalBox {
+      background: #fffdf2;
+      border: 4px ridge #c0c0c0;
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 16px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <center>
+
+    <p><img src="assets/banner-gallery.gif" width="600" height="80" alt="NIRVANA &#8212; Archive of Artifacts"></p>
+
+    <p class="nav">
+      <a href="index.html">Home</a> |
+      <a href="about.html">The Band</a> |
+      <a href="grunge.html">The Scene</a> |
+      <a href="timeline.html">Timeline</a> |
+      <a href="discography.html">Discography</a> |
+      <a href="listening.html">Listening Room</a> |
+      <a href="map.html">Map</a> |
+      <a href="artifacts.html">Artifacts</a> <img src="assets/new.gif" width="32" height="12" alt="NEW"> |
+      <a href="kurt.html">Kurt Cobain</a> |
+      <a href="family.html">Family</a> |
+      <a href="death.html">Death &amp; Legacy</a> |
+      <a href="27club.html">27 Club</a> |
+      <a href="songs.html">Songs</a> |
+      <a href="quotes.html">Quotes</a> |
+      <a href="lyrics.html">Lyrics</a> |
+      <a href="faq.html">FAQ</a> |
+      <a href="poll.html">Poll</a> |
+      <a href="gear.html">Gear</a> |
+      <a href="trivia.html">Trivia</a> |
+      <a href="awards.html">Awards</a> |
+      <a href="culture90s.html">The 90s</a> |
+      <a href="bootlegs.html">Bootlegs</a> |
+      <a href="influences.html">Influences</a> |
+      <a href="tabs.html">Tabs</a> |
+      <a href="concerts.html">Concerts</a> |
+      <a href="venues.html">Venues</a> |
+      <a href="videos.html">Videos</a> |
+      <a href="wall.html">Kurt Wall</a> |
+      <a href="quiz.html">Quiz</a> |
+      <a href="pc1994.html">Virtual PC</a> |
+      <a href="mixtape.html">Mixtape</a> |
+      <a href="zines.html">Zines</a> |
+      <a href="usenet.html">Usenet</a> |
+      <a href="webmaster.html">Webmaster</a> |
+      <a href="sitemap.html">Sitemap</a> |
+      <a href="media.html">Media</a> |
+      <a href="gallery.html">Gallery</a> |
+      <a href="guestbook.html">Guestbook</a> |
+      <a href="links.html">Sources</a>
+    </p>
+
+    <hr>
+
+    <h2>Archive of Artifacts</h2>
+    <p class="small">material culture of Nirvana &#8212; verified archival photographs &amp; clearly labeled illustrative reconstructions</p>
+
+    <div class="note">
+      <p>
+        <b>Authenticity policy:</b> Verified museum/archival photos are labeled
+        <span class="badge-auth">ARCHIVAL PHOTO</span> with Wikimedia sources.
+        Textual flyers, tickets, passes, and setlists shown as visual cards are explicitly labeled
+        <span class="badge-recon">ILLUSTRATIVE RECONSTRUCTION</span> &#8212; never passed off as original scans.
+      </p>
+    </div>
+
+    <p class="small">
+      <b>Category:</b>
+      <select id="catSel" onchange="renderArtifacts()">
+        <option value="all">All Categories (12 types)</option>
+        <option value="Concert Flyers">Concert Flyers</option>
+        <option value="Tickets">Tickets</option>
+        <option value="Backstage Passes">Backstage Passes</option>
+        <option value="Setlists">Setlists</option>
+        <option value="Fanzines">Fanzines</option>
+        <option value="Magazine Covers">Magazine Covers</option>
+        <option value="Newspaper Articles">Newspaper Articles</option>
+        <option value="Promotional Materials">Promotional Materials</option>
+        <option value="Studio Photographs">Studio Photographs</option>
+        <option value="Rehearsal Photographs">Rehearsal Photographs</option>
+        <option value="Handwritten Notes">Handwritten Notes</option>
+        <option value="Historical Documents">Historical Documents</option>
+      </select>
+      &nbsp;
+      <b>Year:</b>
+      <select id="yearSel" onchange="renderArtifacts()">
+        <option value="all">All Years</option>
+        <option value="1986">1986</option>
+        <option value="1988">1988</option>
+        <option value="1991">1991</option>
+        <option value="1992">1992</option>
+        <option value="1993">1993</option>
+        <option value="1994">1994</option>
+      </select>
+    </p>
+
+    <div id="artGrid" class="art-grid"></div>
+
+    <hr>
+
+    <p class="last-updated">Last updated: 11/16/94</p>
+    <p class="small">[ <a href="index.html">home</a> ] &middot; Nirvana Memorial Web Ring</p>
+    <p>
+      <img src="assets/btn-netscape.gif" width="88" height="31" alt="Get Netscape 2.0">
+      <img src="assets/btn-notepad.gif" width="88" height="31" alt="Made with Notepad">
+      <img src="assets/btn-guestbook.gif" width="88" height="31" alt="Sign my guestbook">
+      <img src="assets/btn-webring.gif" width="88" height="31" alt="Nirvana Webring">
+    </p>
+    <p class="small">&#169; 1994 &middot; in memory of Kurt Cobain</p>
+
+  </center>
+
+  <div id="artModal" role="dialog" aria-modal="true" aria-label="Artifact Viewer">
+    <div id="artModalBox"></div>
+  </div>
+
+  <script src="data/artifacts_data.js"></script>
+  <script>
+    var filteredArtifacts = [];
+    var modalIdx = 0;
+
+    function esc(s) {
+      return String(s).replace(/[&<>"]/g, function (c) {
+        return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+      });
+    }
+
+    function renderArtifacts() {
+      var cat = document.getElementById("catSel").value;
+      var yr = document.getElementById("yearSel").value;
+      var grid = document.getElementById("artGrid");
+      grid.innerHTML = "";
+      filteredArtifacts = [];
+
+      for (var i = 0; i < window.NIRVANA_ARTIFACTS.length; i++) {
+        var a = window.NIRVANA_ARTIFACTS[i];
+        if (cat !== "all" && a.category !== cat) continue;
+        if (yr !== "all" && String(a.year) !== yr) continue;
+        filteredArtifacts.push(a);
+      }
+
+      if (!filteredArtifacts.length) {
+        grid.innerHTML = "<p class='small'>No artifacts match this filter.</p>";
+        return;
+      }
+
+      for (var j = 0; j < filteredArtifacts.length; j++) {
+        (function (item, idx) {
+          var card = document.createElement("div");
+          card.className = "art-card";
+          var badge = item.authentic
+            ? "<span class='badge-auth'>ARCHIVAL PHOTO</span>"
+            : "<span class='badge-recon'>RECONSTRUCTION</span>";
+          var visual = item.img
+            ? "<div style='text-align:center; margin-bottom:6px;'><img class='photo' src='" + esc(item.img) + "' style='max-height:140px;' alt='" + esc(item.title) + "'></div>"
+            : "<div class='art-mock'>" + esc(item.mockupText || "") + "</div>";
+          card.innerHTML =
+            visual +
+            badge + "<br><b>" + esc(item.title) + "</b><br>" +
+            "<span class='small'>" + esc(item.category) + " &middot; " + esc(item.date) + "</span><br>" +
+            "<button type='button' style='margin-top:6px;' onclick='openArtifact(" + idx + ")'>Inspect</button>";
+          grid.appendChild(card);
+        })(filteredArtifacts[j], j);
+      }
+    }
+
+    function openArtifact(idx) {
+      modalIdx = idx;
+      var item = filteredArtifacts[idx];
+      if (!item) return;
+      var linksHtml = "";
+      for (var k = 0; k < item.links.length; k++) {
+        linksHtml += "<a href='" + esc(item.links[k].href) + "'>" + esc(item.links[k].label) + "</a>" + (k < item.links.length - 1 ? " &middot; " : "");
+      }
+      var visual = item.img
+        ? "<p style='text-align:center;'><img class='photo' src='" + esc(item.img) + "' style='max-width:100%; max-height:340px;' alt='" + esc(item.title) + "'></p>"
+        : "<pre class='art-mock' style='font-size:13px;'>" + esc(item.mockupText || "") + "</pre>";
+      var badge = item.authentic
+        ? "<span class='badge-auth'>VERIFIED ARCHIVAL PHOTO</span>"
+        : "<span class='badge-recon'>ILLUSTRATIVE RECONSTRUCTION (NOT AN ORIGINAL SCAN)</span>";
+
+      document.getElementById("artModalBox").innerHTML =
+        "<p style='text-align:right; margin:0;'>" +
+        "<button type='button' onclick='stepArtifact(-1)'>&larr; Prev</button> " +
+        "<button type='button' onclick='stepArtifact(1)'>Next &rarr;</button> " +
+        "<button type='button' onclick='closeArtifact()'>Close [Esc]</button></p>" +
+        "<h3 style='margin-top:6px;'>" + esc(item.title) + "</h3>" +
+        badge +
+        visual +
+        "<p><b>Date:</b> " + esc(item.date) + " &middot; <b>Category:</b> " + esc(item.category) + "<br>" +
+        "<b>Author / Credit:</b> " + esc(item.author) + "<br>" +
+        "<b>Source:</b> " + esc(item.source) + "</p>" +
+        "<p>" + esc(item.desc) + "</p>" +
+        "<p class='small'><b>Related pages:</b> " + linksHtml + "</p>";
+      document.getElementById("artModal").style.display = "block";
+    }
+
+    function stepArtifact(delta) {
+      if (!filteredArtifacts.length) return;
+      modalIdx = (modalIdx + delta + filteredArtifacts.length) % filteredArtifacts.length;
+      openArtifact(modalIdx);
+    }
+
+    function closeArtifact() {
+      document.getElementById("artModal").style.display = "none";
+    }
+
+    document.addEventListener("keydown", function (e) {
+      if (document.getElementById("artModal").style.display !== "block") return;
+      if (e.key === "Escape") closeArtifact();
+      else if (e.key === "ArrowLeft") stepArtifact(-1);
+      else if (e.key === "ArrowRight") stepArtifact(1);
+    });
+
+    renderArtifacts();
+  </script>
+</body>
+</html>

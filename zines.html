@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nirvana &#8212; Fan Zine Archive (1988&#8211;1994)</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <meta property="og:site_name" content="Nirvana Memorial &#8212; a hand-made 1994 fan site">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Nirvana &#8212; Fan Zine Archive">
+  <meta property="og:description" content="1980s and 1990s punk and riot grrrl fanzines: Sub Pop, Flipside, Maximumrocknroll, Bikini Kill, Sassy.">
+  <meta property="og:image" content="https://dmitrylelee.github.io/nirvana-1994/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .zine-card {
+      background: #fffdf2;
+      border: 2px ridge #888888;
+      padding: 10px;
+      margin: 10px auto;
+      max-width: 620px;
+      text-align: left;
+    }
+    .zine-cover {
+      background: #ece6d2;
+      border: 2px dashed #000000;
+      padding: 10px;
+      font-family: "Courier New", monospace;
+      font-size: 12px;
+      white-space: pre-wrap;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+  <center>
+
+    <p><img src="assets/banner-scene.gif" width="600" height="80" alt="NIRVANA &#8212; Fan Zine Archive"></p>
+
+    <p class="nav">
+      <a href="index.html">Home</a> |
+      <a href="about.html">The Band</a> |
+      <a href="listening.html">Listening Room</a> |
+      <a href="map.html">Map</a> |
+      <a href="artifacts.html">Artifacts</a> |
+      <a href="search.html">Search</a> |
+      <a href="pc1994.html">Virtual PC</a> |
+      <a href="mixtape.html">Mixtape</a> |
+      <a href="zines.html">Zines</a> <img src="assets/new.gif" width="32" height="12" alt="NEW"> |
+      <a href="usenet.html">Usenet</a> |
+      <a href="sitemap.html">Sitemap</a>
+    </p>
+
+    <hr>
+
+    <h2>Fan Zine Archive (1988&#8211;1994)</h2>
+    <p class="small">photocopied paper, stapled at midnight, traded at record stores and by mail</p>
+
+    <div class="note">
+      <p>
+        <b>Transparency notice:</b> Descriptions, publication years, and editorial credits are historical.
+        The visual cover/page mockups below are <b>illustrative typographic reconstructions</b>
+        for browsing, not original copyrighted page scans.
+      </p>
+    </div>
+
+    <p class="small">
+      <b>Sort by year:</b>
+      <button type="button" onclick="renderZines('asc')">1988 &rarr; 1994</button>
+      <button type="button" onclick="renderZines('desc')">1994 &rarr; 1988</button>
+    </p>
+
+    <div id="zineList"></div>
+
+    <div id="zineModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:9999; padding:20px;" role="dialog" aria-modal="true" aria-label="Zine Preview">
+      <div id="zineModalBox" style="background:#fffdf2; border:4px ridge #c0c0c0; max-width:560px; margin:20px auto; padding:16px; text-align:left;"></div>
+    </div>
+
+    <hr>
+    <p class="last-updated">Last updated: 11/16/94</p>
+    <p class="small">[ <a href="index.html">home</a> ] &middot; Nirvana Memorial Web Ring</p>
+    <p class="small">&#169; 1994 &middot; in memory of Kurt Cobain</p>
+
+  </center>
+
+  <script>
+    var ZINES = [
+      {
+        year: 1988,
+        title: "Sub Pop Fanzine Origins (Bruce Pavitt)",
+        editor: "Bruce Pavitt (Olympia / Seattle)",
+        source: "Sub Pop archive / Azerrad (1993)",
+        cover: "SUB POP #1-9 (1980-1988)\n[ILLUSTRATIVE RECONSTRUCTION]\nCASSETTE ZINE -> RECORD LABEL\nSEATTLE UNDERGROUND REPORTS",
+        pages: "Before becoming a record label, Sub Pop began as Bruce Pavitt's xeroxed fanzine and cassette series covering Northwest indie bands.",
+        desc: "Laid the editorial and aesthetic groundwork for the Pacific Northwest indie scene that later signed Nirvana in 1988."
+      },
+      {
+        year: 1990,
+        title: "Maximumrocknroll (MRR) — DIY Scene Reports",
+        editor: "Tim Yohannan & volunteer collective (San Francisco)",
+        source: "MRR Archive / punk zine history",
+        cover: "MAXIMUMROCKNROLL (1990)\n[ILLUSTRATIVE RECONSTRUCTION]\nNO MAJOR LABELS - DIY PUNK\nCLASSIFIEDS & TOUR DATES",
+        pages: "Included scene reports from Washington state, record reviews of early Sub Pop 7-inches, and nationwide tape-trading ads.",
+        desc: "The central bulletin board of North American punk before the internet."
+      },
+      {
+        year: 1991,
+        title: "Bikini Kill Zine #1 / #2 (Olympia, WA)",
+        editor: "Kathleen Hanna, Tobi Vail, Billy Karren, Kathi Wilcox",
+        source: "Olympia Riot Grrrl archives",
+        cover: "BIKINI KILL #2 (1991)\n[ILLUSTRATIVE RECONSTRUCTION]\nRIOT GRRRL - OLYMPIA, WA\nCUT-AND-PASTE COLLAGE",
+        pages: "Cut-and-paste feminist punk manifestos, hand-lettered essays, and Olympia gig flyers. Tobi Vail's zine 'Jigsaw' also circulated in the same circle.",
+        desc: "Kurt Cobain lived in Olympia during this period and credited Riot Grrrl zines and bands with shaping his lyrics and politics."
+      },
+      {
+        year: 1992,
+        title: "Flipside Fanzine (Los Angeles)",
+        editor: "Al Kowalewski & Flipside staff",
+        source: "Flipside archive",
+        cover: "FLIPSIDE #76 (1992)\n[ILLUSTRATIVE RECONSTRUCTION]\nNIRVANA INTERVIEW & LIVE PIX\n$2.00 AT RECORD STORES",
+        pages: "Featured raw Q&As, show reviews, and interviews with Nirvana before major-label gloss took over.",
+        desc: "One of the longest-running California punk zines, carried at Fallout Records in Seattle."
+      },
+      {
+        year: 1992,
+        title: "Sassy Magazine (April 1992 Issue)",
+        editor: "Jane Pratt & Sassy editors (NYC)",
+        source: "Sassy archive / Cross (2001)",
+        cover: "SASSY (APRIL 1992)\n[ILLUSTRATIVE RECONSTRUCTION]\nKURT & COURTNEY COVER STORY\nREADER LETTERS & INDIE PICKS",
+        pages: "Though a national teen magazine, Sassy covered Riot Grrrl, Hole, and Nirvana with genuine respect rather than tabloid mockery.",
+        desc: "Kurt and Courtney agreed to a joint interview and cover shoot specifically because they respected Sassy's editorial voice."
+      }
+    ];
+
+    function esc(s) {
+      return String(s).replace(/[&<>"]/g, function (c) {
+        return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+      });
+    }
+
+    function renderZines(dir) {
+      var list = ZINES.slice().sort(function (a, b) { return dir === "asc" ? a.year - b.year : b.year - a.year; });
+      var box = document.getElementById("zineList");
+      box.innerHTML = "";
+      for (var i = 0; i < list.length; i++) {
+        (function (z) {
+          var d = document.createElement("div");
+          d.className = "zine-card";
+          d.innerHTML =
+            "<div class='zine-cover'>" + esc(z.cover) + "</div>" +
+            "<b>" + esc(z.title) + " (" + z.year + ")</b><br>" +
+            "<span class='small'>Editor/Author: " + esc(z.editor) + " &middot; Source: " + esc(z.source) + "</span>" +
+            "<p style='text-align:left; margin:6px 0;'>" + esc(z.desc) + "</p>" +
+            "<button type='button' onclick='openZine(\"" + esc(z.title) + "\")'>Inspect Pages</button>";
+          box.appendChild(d);
+        })(list[i]);
+      }
+    }
+
+    function openZine(title) {
+      var z = null;
+      for (var i = 0; i < ZINES.length; i++) if (ZINES[i].title === title) { z = ZINES[i]; break; }
+      if (!z) return;
+      document.getElementById("zineModalBox").innerHTML =
+        "<p style='text-align:right; margin:0;'><button type='button' onclick='closeZine()'>Close [Esc]</button></p>" +
+        "<h3>" + esc(z.title) + " (" + z.year + ")</h3>" +
+        "<div class='zine-cover'>" + esc(z.cover) + "</div>" +
+        "<p><b>Inside the issue:</b> " + esc(z.pages) + "</p>" +
+        "<p class='small'><b>Editorial credit:</b> " + esc(z.editor) + "<br><b>Source:</b> " + esc(z.source) + "</p>";
+      document.getElementById("zineModal").style.display = "block";
+    }
+
+    function closeZine() { document.getElementById("zineModal").style.display = "none"; }
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeZine(); });
+    renderZines("asc");
+  </script>
+</body>
+</html>
