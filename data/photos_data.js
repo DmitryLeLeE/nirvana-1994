@@ -187,7 +187,7 @@ window.NIRVANA_PHOTOS = [
     source_url: "https://commons.wikimedia.org/wiki/File:Nirvana_around_1992.jpg",
     source_label: "Wikimedia Commons — CC BY-SA 2.0",
     archive_layer: "1994-context",
-    related_href: "band.html",
+    related_href: "about.html",
     related_text: "Band Lineup & History",
     artifact_id: "art-nirvana-1992-trio"
   },
@@ -206,7 +206,7 @@ window.NIRVANA_PHOTOS = [
     source_url: "https://commons.wikimedia.org/wiki/File:Krist_Novoselic_in_Aberdeen.jpg",
     source_label: "Wikimedia Commons — CC BY-SA 4.0",
     archive_layer: "modern-archive",
-    related_href: "band.html",
+    related_href: "about.html",
     related_text: "Band Lineup & History",
     artifact_id: ""
   },
@@ -225,7 +225,7 @@ window.NIRVANA_PHOTOS = [
     source_url: "https://commons.wikimedia.org/wiki/File:FoosDublin210819-6_(48620330261)_(cropped).jpg",
     source_label: "Wikimedia Commons — CC BY 2.0",
     archive_layer: "modern-archive",
-    related_href: "band.html",
+    related_href: "about.html",
     related_text: "Band Lineup & History",
     artifact_id: ""
   },
@@ -244,8 +244,8 @@ window.NIRVANA_PHOTOS = [
     source_url: "https://commons.wikimedia.org/wiki/File:CourtLoveRoyalGeo040325_(49_of_54)_(crop).jpg",
     source_label: "Wikimedia Commons — CC BY 2.0",
     archive_layer: "modern-archive",
-    related_href: "courtney.html",
-    related_text: "Courtney Love Profile",
+    related_href: "family.html",
+    related_text: "Family & Courtney Love",
     artifact_id: ""
   },
   {
@@ -282,7 +282,7 @@ window.NIRVANA_PHOTOS = [
     source_url: "https://commons.wikimedia.org/wiki/File:Kurt_Cobain_1986_mugshot.png",
     source_label: "Wikimedia Commons — Public Domain",
     archive_layer: "1994-context",
-    related_href: "artifacts.html",
+    related_href: "artifacts.html?id=art-mugshot-1986",
     related_text: "Artifacts: 1986 Mugshot",
     artifact_id: "art-mugshot-1986"
   },
@@ -301,7 +301,7 @@ window.NIRVANA_PHOTOS = [
     source_url: "https://commons.wikimedia.org/wiki/File:Photo_of_Kurt_Cobain_from_US_Embassy_in_Bern.jpg",
     source_label: "Wikimedia Commons — Public Domain",
     archive_layer: "1994-context",
-    related_href: "artifacts.html",
+    related_href: "artifacts.html?id=art-bern-passport",
     related_text: "Artifacts: Bern Passport Photo",
     artifact_id: "art-bern-passport"
   },
@@ -320,7 +320,7 @@ window.NIRVANA_PHOTOS = [
     source_url: "https://commons.wikimedia.org/wiki/File:Kurt_Cobain_on_Love_Buzz_Big_Cheese_front_cover_(cropped).jpg",
     source_label: "Wikimedia Commons — Public Domain",
     archive_layer: "1994-context",
-    related_href: "artifacts.html",
+    related_href: "artifacts.html?id=art-lovebuzz-cover",
     related_text: "Artifacts: Love Buzz Sleeve",
     artifact_id: "art-lovebuzz-cover"
   },
@@ -339,8 +339,8 @@ window.NIRVANA_PHOTOS = [
     source_url: "https://commons.wikimedia.org/wiki/File:Kurt_Cobains_House_Aberdeen_2020.jpg",
     source_label: "Wikimedia Commons — CC BY 4.0",
     archive_layer: "modern-archive",
-    related_href: "map.html?place=aberdeen",
-    related_text: "Map: Aberdeen, WA",
+    related_href: "map.html?place=cobain-house",
+    related_text: "Map: Cobain Childhood Home",
     artifact_id: ""
   },
   {
@@ -358,7 +358,7 @@ window.NIRVANA_PHOTOS = [
     source_url: "https://commons.wikimedia.org/wiki/File:Kurt_Cobain_Smashed_Guitar_MOPOP.jpg",
     source_label: "Wikimedia Commons — CC BY-SA 4.0",
     archive_layer: "modern-archive",
-    related_href: "artifacts.html",
+    related_href: "artifacts.html?id=art-smashed-guitar",
     related_text: "Artifacts: Smashed Guitar",
     artifact_id: "art-smashed-guitar"
   },
@@ -377,7 +377,7 @@ window.NIRVANA_PHOTOS = [
     source_url: "https://commons.wikimedia.org/wiki/File:Kurt_Cobain,_Smells_Like_Teen_Spirit_guitar,_EMP_Museum.jpg",
     source_label: "Wikimedia Commons — CC BY 2.0",
     archive_layer: "modern-archive",
-    related_href: "artifacts.html",
+    related_href: "artifacts.html?id=art-mustang-slts",
     related_text: "Artifacts: Teen Spirit Mustang",
     artifact_id: "art-mustang-slts"
   },
@@ -396,8 +396,8 @@ window.NIRVANA_PHOTOS = [
     source_url: "https://commons.wikimedia.org/wiki/File:Kurt_Cobain_Memorial_Park_04.JPG",
     source_label: "Wikimedia Commons — CC BY-SA 4.0",
     archive_layer: "modern-archive",
-    related_href: "map.html?place=aberdeen",
-    related_text: "Map: Aberdeen Memorial",
+    related_href: "map.html?place=young-st-bridge",
+    related_text: "Map: Young Street Bridge & Park",
     artifact_id: ""
   },
   {
@@ -415,7 +415,7 @@ window.NIRVANA_PHOTOS = [
     source_url: "https://commons.wikimedia.org/wiki/File:Under_the_Young_Street_Bridge.jpg",
     source_label: "Wikimedia Commons — CC BY-SA 4.0",
     archive_layer: "modern-archive",
-    related_href: "map.html?place=aberdeen",
+    related_href: "map.html?place=young-st-bridge",
     related_text: "Map: Young Street Bridge",
     artifact_id: ""
   },
@@ -434,8 +434,8 @@ window.NIRVANA_PHOTOS = [
     source_url: "https://commons.wikimedia.org/wiki/File:HRC_Seattle_sign_-_Smells_Like_Teen_Spirit.jpg",
     source_label: "Wikimedia Commons — CC BY 2.0",
     archive_layer: "modern-archive",
-    related_href: "map.html?place=seattle",
-    related_text: "Map: Seattle Landmarks",
+    related_href: "map.html",
+    related_text: "Explore Nirvana Map",
     artifact_id: ""
   }
 ];
