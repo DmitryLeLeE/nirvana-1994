@@ -97,7 +97,7 @@ window.NIRVANA_ALBUM_DOSSIERS = [
       { title: "(New Wave) Polly", writers: "Cobain / Novoselic / Grohl", duration: "1:47", song_id: "", note: "Fast electric BBC version from Nov 1991." },
       { title: "Beeswax / Downer / Mexican Seafood / Hairspray Queen / Aero Zeppelin", writers: "Cobain / Novoselic", duration: "1988", song_id: "", note: "Five tracks drawn from the Jan 23, 1988 Dale Crover Reciprocal demo." },
       { title: "Big Long Now", writers: "Cobain", duration: "5:03", song_id: "", note: "Bleach-era outtake recorded Dec 1988." },
-      { title: "Aneurysm", writers: "Cobain / Novoselic / Grohl", duration: "4:36", song_id: "aneurysm", note: "BBC Mark Goodier session version (Nov 1991)." }
+      { title: "Aneurysm", writers: "Cobain / Novoselic / Grohl", duration: "4:36", song_id: "", note: "BBC Mark Goodier session version (Nov 1991); earlier B-side on 'Smells Like Teen Spirit'." }
     ],
     reception: [
       { period: "Contemporary (1992–1993)", type: "FACT", text: "Reached #39 on the Billboard 200 and introduced mainstream Nevermind buyers to Nirvana's punk and Vaselines/Devo roots.", source: "Wikipedia — Incesticide", source_url: "https://en.wikipedia.org/wiki/Incesticide" }
@@ -120,7 +120,7 @@ window.NIRVANA_ALBUM_DOSSIERS = [
     recording: "Recorded February 12–26, 1993 by Steve Albini and Bob Weston on Pachyderm's Neve 8068 console ($24,000 studio rental + $100,000 flat fee). After label/band tension over the mix, Scott Litt remixed singles 'Heart-Shaped Box' and 'All Apologies' (and 'Pennyroyal Tea' for single).",
     artwork: "Transparent Anatomical Manikin with superimposed angel wings photographed for the front cover; back-cover fetus collage arranged by Kurt Cobain (art direction by Robert Fisher). Censored Walmart/Kmart copies retitled 'Rape Me' to 'Waif Me'.",
     tracks: [
-      { title: "Serve the Servants", writers: "Cobain", duration: "3:36", song_id: "serve-the-servants", note: "Opens with 'Teenage angst has paid off well / Now I'm bored and old'." },
+      { title: "Serve the Servants", writers: "Cobain", duration: "3:36", song_id: "", note: "Opens with 'Teenage angst has paid off well / Now I'm bored and old'." },
       { title: "Scentless Apprentice", writers: "Cobain / Novoselic / Grohl", duration: "3:48", song_id: "", note: "Built on Dave Grohl's drumbeat and riff; inspired by Patrick Süskind's 'Perfume'." },
       { title: "Heart-Shaped Box", writers: "Cobain", duration: "4:41", song_id: "heart-shaped-box", note: "Lead single; remixed by Scott Litt; video directed by Anton Corbijn." },
       { title: "Rape Me", writers: "Cobain", duration: "2:50", song_id: "", note: "Written in 1991; altered to 'Waif Me' on censored US big-box editions." },

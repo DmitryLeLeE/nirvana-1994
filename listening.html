@@ -127,6 +127,8 @@
 
   <script src="data/listening_data.js"></script>
   <script src="data/sessions_data.js"></script>
+  <script src="data/concerts_data.js"></script>
+  <script src="data/releases_data.js"></script>
   <script>
     var currentFilter = "all";
 
@@ -171,6 +173,54 @@
       }
     }
 
+    function buildSongEvolutionHtml(s) {
+      var titleLower = s.title.toLowerCase();
+      var sesRows = [];
+      for (var i = 0; i < (window.NIRVANA_SESSIONS || []).length; i++) {
+        var ses = window.NIRVANA_SESSIONS[i];
+        var matched = false;
+        for (var j = 0; j < (ses.tracks || []).length; j++) {
+          if (ses.tracks[j].toLowerCase().indexOf(titleLower) !== -1) { matched = true; break; }
+        }
+        if (matched) {
+          sesRows.push("<tr><td class='small'>" + esc(ses.session_date || ses.date) + "</td><td class='small'><code>SESSION</code> <a href='#" + esc(ses.id) + "' onclick='selectSession(\"" + esc(ses.id) + "\")'><b>" + esc(ses.title) + "</b></a></td><td class='small'>" + esc(ses.studio_name) + " (" + esc(ses.completeness_status) + ")</td></tr>");
+        }
+      }
+
+      var conRows = [];
+      for (var c = 0; c < (window.NIRVANA_CONCERTS || []).length; c++) {
+        var con = window.NIRVANA_CONCERTS[c];
+        var inSet = false;
+        for (var k = 0; k < (con.setlist || []).length; k++) {
+          if (con.setlist[k].toLowerCase().indexOf(titleLower) !== -1) { inSet = true; break; }
+        }
+        if (inSet) {
+          var eraTag = con.year <= 1991 ? "EARLY LIVE" : "LATER LIVE";
+          conRows.push("<tr><td class='small'>" + esc(con.date) + "</td><td class='small'><code>" + eraTag + "</code> <a href='concerts.html#" + esc(con.id) + "'><b>" + esc(con.venue + " (" + con.city + ")") + "</b></a></td><td class='small'>" + esc(con.recording_type) + " &middot; " + esc(con.setlist_status) + "</td></tr>");
+        }
+      }
+
+      var relLinks = [];
+      for (var r = 0; r < (window.NIRVANA_PHYSICAL_RELEASES || []).length; r++) {
+        var rel = window.NIRVANA_PHYSICAL_RELEASES[r];
+        if (rel.work.toLowerCase().indexOf(titleLower) !== -1 || s.album.toLowerCase().indexOf(rel.work.toLowerCase()) !== -1) {
+          relLinks.push("<a href='discography.html#" + esc(rel.id) + "'>" + esc(rel.title + " [" + rel.catalog_no + "]") + "</a>");
+        }
+      }
+
+      var html = "<h4 id='evolution'>" + esc(s.title) + " — Song Evolution &amp; Cross-Archive Timeline</h4>";
+      html += "<p class='small'><i>Partial archival view: lists documented sessions, physical editions, and concerts present in this archive (not an exhaustive log of every performance).</i></p>";
+      if (sesRows.length || conRows.length) {
+        html += "<table class='content'><tr><th>Date</th><th>Stage / Event</th><th>Context</th></tr>" + sesRows.join("") + conRows.join("") + "</table>";
+      } else {
+        html += "<p class='small'>No separate session/concert cross-matches beyond the version table above.</p>";
+      }
+      if (relLinks.length) {
+        html += "<p class='small'><b>Physical Editions:</b> " + relLinks.join(" &middot; ") + "</p>";
+      }
+      return html;
+    }
+
     function selectSong(id) {
       var s = null;
       for (var i = 0; i < window.NIRVANA_SONGS.length; i++) {
@@ -205,6 +255,7 @@
         playerHtml +
         "<h4>Version Comparison (" + s.versions.length + " takes)</h4>" +
         versHtml +
+        buildSongEvolutionHtml(s) +
         "<p class='small' style='margin-top:10px;'><b>Related archive pages:</b> " + linksHtml + "</p>";
     }
 
