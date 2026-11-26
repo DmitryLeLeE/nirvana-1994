@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nirvana — The Nirvana Story (1985–Post-1994)</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <meta property="og:site_name" content="Nirvana Memorial — a hand-made 1994 fan site">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Nirvana — The Nirvana Story">
+  <meta property="og:description" content="Six-chapter historical narrative linking Nirvana's concerts, studio sessions, albums, photos, and verified sources.">
+  <meta property="og:image" content="https://dmitrylelee.github.io/nirvana-1994/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <center>
+
+    <p><img src="assets/banner.gif" width="600" height="80" alt="NIRVANA — the story"></p>
+
+    <p class="nav">
+      <a href="index.html">Home</a> |
+      <a href="about.html">The Band</a> |
+      <a href="discography.html">Discography</a> |
+      <a href="songs.html">Songs</a> |
+      <a href="listening.html">Listening Room</a> |
+      <a href="concerts.html">Concerts</a> |
+      <a href="timeline.html">Timeline</a> |
+      <a href="gallery.html">Gallery</a> |
+      <a href="media.html">Media</a> |
+      <a href="sitemap.html">Archive</a> |
+      <a href="search.html">Search</a> |
+      <a href="links.html">Sources</a>
+    </p>
+
+    <hr>
+
+    <h2>THE NIRVANA STORY (1985–POST-1994)</h2>
+    <p class="small">
+      curated six-chapter narrative connecting concerts, studio sessions, albums, photos &amp; archival sources<br>
+      Related: <a href="albums.html">Album Deep Dives</a> &middot; <a href="exhibitions.html">Exhibitions</a> &middot; <a href="explore.html">Explore Nirvana</a> &middot; <a href="timeline.html">Timeline</a>
+    </p>
+
+    <div class="note" style="max-width:660px; margin-bottom:10px;">
+      <p style="margin:0; font-size:12px;">
+        <b>Evidence Legend:</b>
+        <span class="badge-1994">FACT</span> verified historical record &middot;
+        <span class="badge-modern">TESTIMONY</span> participant / witness recollection &middot;
+        <code>INTERPRETATION</code> historical/musical analysis &middot;
+        <span style="background:#fff3cd;color:#664d03;border:1px solid #664d03;font-size:10px;padding:1px 4px;font-family:Courier New,monospace;">DISPUTED</span> conflicting dates or unconfirmed context
+      </p>
+    </div>
+
+    <div id="chapterToc" style="max-width:680px; margin-bottom:12px;"></div>
+    <div id="chapterView" style="max-width:700px; text-align:left; background:#fffdf2; border:2px solid #808080; padding:14px;"></div>
+
+    <p class="small" style="margin-top:12px;">
+      <button type="button" id="prevChapBtn" onclick="stepChapter(-1)">&larr; Previous Chapter</button>
+      &nbsp;
+      <button type="button" id="nextChapBtn" onclick="stepChapter(1)">Next Chapter &rarr;</button>
+    </p>
+
+    <hr>
+
+    <p class="last-updated">Last updated: 11/16/94 <span class="small">(Stage 4 Narrative Index)</span></p>
+    <p class="small">[ <a href="index.html">home</a> ] &middot; Nirvana Memorial Web Ring</p>
+    <p>
+      <img src="assets/btn-netscape.gif" width="88" height="31" alt="Get Netscape 2.0">
+      <img src="assets/btn-notepad.gif" width="88" height="31" alt="Made with Notepad">
+      <img src="assets/btn-guestbook.gif" width="88" height="31" alt="Sign my guestbook">
+      <img src="assets/btn-webring.gif" width="88" height="31" alt="Nirvana Webring">
+    </p>
+    <p class="small">&#169; 1994 &middot; in memory of Kurt Cobain</p>
+
+  </center>
+
+  <script src="data/concerts_data.js"></script>
+  <script src="data/sessions_data.js"></script>
+  <script src="data/photos_data.js"></script>
+  <script src="data/stage4_story_data.js"></script>
+  <script>
+    var activeChapIndex = 0;
+
+    function esc(s) {
+      return String(s).replace(/[&<>"]/g, function (c) {
+        return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+      });
+    }
+
+    function claimBadge(t) {
+      if (t === "FACT") return "<span class='badge-1994'>FACT</span>";
+      if (t === "TESTIMONY") return "<span class='badge-modern'>TESTIMONY</span>";
+      if (t === "DISPUTED") return "<span style='background:#fff3cd;color:#664d03;border:1px solid #664d03;font-size:10px;padding:1px 4px;font-family:Courier New,monospace;'>DISPUTED</span>";
+      return "<code>INTERPRETATION</code>";
+    }
+
+    function findById(arr, id) {
+      if (!arr) return null;
+      for (var i = 0; i < arr.length; i++) {
+        if (arr[i].id === id) return arr[i];
+      }
+      return null;
+    }
+
+    function renderToc() {
+      var toc = document.getElementById("chapterToc");
+      var html = "<table class='content'><tr><th>Chapter</th><th>Period</th><th>Title</th></tr>";
+      for (var i = 0; i < window.NIRVANA_STORY_CHAPTERS.length; i++) {
+        var c = window.NIRVANA_STORY_CHAPTERS[i];
+        var cls = (i === activeChapIndex) ? " style='background:#e9eef7;'" : "";
+        html += "<tr" + cls + "><td><b>" + esc(c.number) + "</b></td><td class='small'>" + esc(c.years) + "</td><td><a href='?chapter=" + esc(c.id) + "' onclick='selectChapter(" + i + "); return false;'><b>" + esc(c.title) + "</b></a></td></tr>";
+      }
+      html += "</table>";
+      toc.innerHTML = html;
+    }
+
+    function selectChapter(idx) {
+      var list = window.NIRVANA_STORY_CHAPTERS;
+      if (idx < 0 || idx >= list.length) idx = 0;
+      activeChapIndex = idx;
+      var ch = list[idx];
+      renderToc();
+
+      var layerBadge = ch.archive_layer === "1994-context"
+        ? "<span class='badge-1994'>ORIGINAL 1994 CONTEXT</span>"
+        : "<span class='badge-modern'>POST-1994 MODERN ARCHIVE</span>";
+
+      var claimsHtml = "<table class='content' style='margin-top:8px;'><tr><th>Type &amp; Date</th><th>Documented Narrative &amp; Source</th></tr>";
+      for (var i = 0; i < ch.claims.length; i++) {
+        var cl = ch.claims[i];
+        var srcLink = cl.source_url.indexOf("http") === 0
+          ? "<a href='" + esc(cl.source_url) + "' target='_blank'>" + esc(cl.source) + "</a>"
+          : "<a href='" + esc(cl.source_url) + "'>" + esc(cl.source) + "</a>";
+        claimsHtml += "<tr><td class='small' style='white-space:nowrap;'>" + claimBadge(cl.type) + "<br>" + esc(cl.event_date) + "</td>" +
+          "<td class='small'>" + esc(cl.text) + "<br><b>Source:</b> " + srcLink + " (" + esc(cl.pub_date) + ")</td></tr>";
+      }
+      claimsHtml += "</table>";
+
+      var photosHtml = "";
+      if (ch.photo_ids && ch.photo_ids.length) {
+        photosHtml += "<h4>Archival Photographs</h4><p>";
+        for (var p = 0; p < ch.photo_ids.length; p++) {
+          var ph = findById(window.NIRVANA_PHOTOS, ch.photo_ids[p]);
+          if (!ph) continue;
+          photosHtml += "<a href='gallery.html' title='" + esc(ph.title) + "'><img class='photo' loading='lazy' src='" + esc(ph.src) + "' alt='" + esc(ph.title) + "' width='110' style='margin:4px; vertical-align:top;'></a>";
+        }
+        photosHtml += "</p>";
+      }
+
+      var conHtml = "";
+      if (ch.concert_ids && ch.concert_ids.length) {
+        conHtml += "<li><b>Key Concerts:</b> ";
+        var cLinks = [];
+        for (var k = 0; k < ch.concert_ids.length; k++) {
+          var con = findById(window.NIRVANA_CONCERTS, ch.concert_ids[k]);
+          if (con) cLinks.push("<a href='concerts.html#" + esc(con.id) + "'>" + esc(con.date + " — " + con.venue) + "</a>");
+        }
+        conHtml += cLinks.join(" &middot; ") + "</li>";
+      }
+
+      var sesHtml = "";
+      if (ch.session_ids && ch.session_ids.length) {
+        sesHtml += "<li><b>Studio &amp; Home Sessions:</b> ";
+        var sLinks = [];
+        for (var s = 0; s < ch.session_ids.length; s++) {
+          var ses = findById(window.NIRVANA_SESSIONS, ch.session_ids[s]);
+          if (ses) sLinks.push("<a href='listening.html#" + esc(ses.id) + "'>" + esc(ses.title) + "</a>");
+        }
+        sesHtml += sLinks.join(" &middot; ") + "</li>";
+      }
+
+      var albHtml = "";
+      if (ch.album_links && ch.album_links.length) {
+        albHtml += "<li><b>Albums &amp; Releases:</b> ";
+        var aLinks = [];
+        for (var a = 0; a < ch.album_links.length; a++) {
+          aLinks.push("<a href='" + esc(ch.album_links[a].href) + "'>" + esc(ch.album_links[a].label) + "</a>");
+        }
+        albHtml += aLinks.join(" &middot; ") + "</li>";
+      }
+
+      var pplHtml = "";
+      if (ch.people && ch.people.length) {
+        pplHtml += "<li><b>Band &amp; Scene Links:</b> ";
+        var pLinks = [];
+        for (var m = 0; m < ch.people.length; m++) {
+          pLinks.push("<a href='" + esc(ch.people[m].href) + "'>" + esc(ch.people[m].label) + "</a>");
+        }
+        pplHtml += pLinks.join(" &middot; ") + "</li>";
+      }
+
+      var artHtml = "";
+      if (ch.artifacts && ch.artifacts.length) {
+        artHtml += "<li><b>Artifacts &amp; Places:</b> ";
+        var rLinks = [];
+        for (var r = 0; r < ch.artifacts.length; r++) {
+          rLinks.push("<a href='" + esc(ch.artifacts[r].href) + "'>" + esc(ch.artifacts[r].label) + "</a>");
+        }
+        artHtml += rLinks.join(" &middot; ") + "</li>";
+      }
+
+      document.getElementById("chapterView").innerHTML =
+        "<p class='small' style='margin:0;'>" + esc(ch.number) + " &middot; " + esc(ch.years) + " &middot; " + layerBadge + "</p>" +
+        "<h3 style='margin-top:4px;'>" + esc(ch.title) + "</h3>" +
+        "<p>" + esc(ch.intro) + "</p>" +
+        claimsHtml +
+        photosHtml +
+        "<h4>Connected Archive Records</h4>" +
+        "<ul class='small'>" + albHtml + conHtml + sesHtml + pplHtml + artHtml + "</ul>";
+
+      document.getElementById("prevChapBtn").disabled = (activeChapIndex === 0);
+      document.getElementById("nextChapBtn").disabled = (activeChapIndex === list.length - 1);
+    }
+
+    function stepChapter(d) {
+      selectChapter(activeChapIndex + d);
+    }
+
+    (function initStory() {
+      var params = new URLSearchParams(location.search);
+      var q = params.get("chapter");
+      var idx = 0;
+      if (q) {
+        for (var i = 0; i < window.NIRVANA_STORY_CHAPTERS.length; i++) {
+          if (window.NIRVANA_STORY_CHAPTERS[i].id === q) { idx = i; break; }
+        }
+      }
+      selectChapter(idx);
+    })();
+  </script>
+</body>
+</html>
