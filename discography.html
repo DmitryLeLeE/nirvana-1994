@@ -163,6 +163,15 @@
         <option value="Geffen">Geffen</option>
         <option value="Tupelo Recording Company">Tupelo</option>
       </select>
+      &nbsp;
+      <b>Edition:</b>
+      <select id="rCategory" onchange="renderPhysReleases()">
+        <option value="all">All Editions</option>
+        <option value="Original Pressing">Original Pressing</option>
+        <option value="International Edition">International Edition</option>
+        <option value="Promo / Recalled">Promo / Recalled</option>
+        <option value="Box Set">Box Set</option>
+      </select>
     </p>
 
     <table class="content">
@@ -197,6 +206,7 @@
       var fmt = document.getElementById("rFmt").value;
       var co = document.getElementById("rCountry").value;
       var lb = document.getElementById("rLabel").value;
+      var cat = document.getElementById("rCategory").value;
       var tb = document.getElementById("physRows");
       tb.innerHTML = "";
       for (var i = 0; i < window.NIRVANA_PHYSICAL_RELEASES.length; i++) {
@@ -204,14 +214,15 @@
         if (fmt !== "all" && r.format !== fmt) continue;
         if (co !== "all" && r.country !== co) continue;
         if (lb !== "all" && r.label.indexOf(lb) === -1) continue;
+        if (cat !== "all" && (r.category_type || r.edition_type) !== cat) continue;
         var tr = document.createElement("tr");
         tr.id = r.id;
         tr.innerHTML =
-          "<td><b>" + esc(r.title) + "</b><br><span class='small'>" + esc(r.edition_type) + "</span></td>" +
+          "<td><b>" + esc(r.title) + "</b><br><span class='small'><code>" + esc(r.category_type || r.edition_type) + "</code></span></td>" +
           "<td>" + esc(r.label) + "<br><code>" + esc(r.catalog_no) + "</code></td>" +
           "<td>" + esc(r.format) + "<br><span class='small'>" + esc(r.country) + "</span></td>" +
           "<td class='small'>" + esc(r.date) + "</td>" +
-          "<td class='small'>" + esc(r.notes) + " (<a href='" + esc(r.source_url) + "' target='_blank'>" + esc(r.source) + "</a>)</td>";
+          "<td class='small'><b>Variant:</b> " + esc(r.variant_description || "") + "<br><b>Tracks:</b> " + esc(r.tracklist_summary || "") + "<br>" + esc(r.notes) + " (<a href='" + esc(r.source_url) + "' target='_blank'>" + esc(r.source) + "</a>)</td>";
         tb.appendChild(tr);
       }
     }
