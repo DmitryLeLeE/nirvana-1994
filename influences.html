@@ -319,6 +319,35 @@
 
     <hr>
 
+    <h3 id="connections">Interactive Network of Musical Connections</h3>
+    <p class="small">explicitly separates documented influences, live/studio covers, scene ties, and stylistic similarity</p>
+    <p class="small">
+      <button type="button" onclick="renderInf('all')">All Connections (12)</button>
+      <button type="button" onclick="renderInf('DOCUMENTED INFLUENCE')">Documented Influence</button>
+      <button type="button" onclick="renderInf('COVER / PERFORMANCE')">Cover / Performance</button>
+      <button type="button" onclick="renderInf('SCENE CONNECTION')">Scene Connection</button>
+      <button type="button" onclick="renderInf('MUSICAL SIMILARITY')">Musical Similarity</button>
+    </p>
+
+    <pre id="infDiagram" class="lyrics" style="max-width:640px; width:100%; font-size:12px;">
+                 [DOCUMENTED INFLUENCE]         [COVER / PERFORMANCE]
+                 Pixies / Beatles / R.E.M.      Lead Belly / Bowie / Vaselines
+                             \                       /
+                              +-----> [NIRVANA] <---+
+                             /                       \
+                 [SCENE CONNECTION]             [MUSICAL SIMILARITY]
+                 Melvins / Sonic Youth          Black Sabbath (Bleach riffs)
+    </pre>
+
+    <table class="content">
+      <thead>
+        <tr><th>Artist</th><th>Genre</th><th>Relationship Type</th><th>Evidence &amp; Source</th></tr>
+      </thead>
+      <tbody id="infRows"></tbody>
+    </table>
+
+    <hr>
+
     <p class="last-updated">Last updated: 11/16/94</p>
     <p class="small">[ <a href="index.html">home</a> ] &middot; Nirvana Memorial Web Ring</p>
     <p>
@@ -330,5 +359,22 @@
     <p class="small">&#169; 1994 &middot; in memory of Kurt Cobain</p>
 
   </center>
+  <script src="data/scene_influences_data.js"></script>
+  <script>
+    function esc(s) { return String(s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+    function renderInf(rel) {
+      var tb = document.getElementById("infRows");
+      tb.innerHTML = "";
+      for (var i = 0; i < window.NIRVANA_INFLUENCE_LINKS.length; i++) {
+        var x = window.NIRVANA_INFLUENCE_LINKS[i];
+        if (rel !== "all" && x.rel !== rel) continue;
+        var tr = document.createElement("tr");
+        tr.id = x.id;
+        tr.innerHTML = "<td><b>" + esc(x.artist) + "</b></td><td class='small'>" + esc(x.genre) + "</td><td><code>" + esc(x.rel) + "</code></td><td class='small'>" + esc(x.desc) + " <i>(" + esc(x.source) + ")</i></td>";
+        tb.appendChild(tr);
+      }
+    }
+    renderInf("all");
+  </script>
 </body>
 </html>
