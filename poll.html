@@ -43,6 +43,7 @@
       <a href="tabs.html">Tabs</a> |
       <a href="concerts.html">Concerts</a> |
       <a href="venues.html">Venues</a> |
+      <a href="videos.html">Videos</a> |
       <a href="quiz.html">Quiz</a> |
       <a href="webmaster.html">Webmaster</a> |
       <a href="sitemap.html">Sitemap</a> |
@@ -78,7 +79,10 @@
     var QUESTIONS = [
       { id: "album", title: "Best album?", options: ["Bleach", "Nevermind", "Incesticide", "In Utero", "MTV Unplugged"] },
       { id: "song", title: "The one song?", options: ["Smells Like Teen Spirit", "Come As You Are", "Lithium", "Heart-Shaped Box", "All Apologies", "Where Did You Sleep Last Night"] },
-      { id: "member", title: "Your favorite member?", options: ["Kurt", "Krist", "Dave"] }
+      { id: "member", title: "Your favorite member?", options: ["Kurt", "Krist", "Dave"] },
+      { id: "video", title: "Best music video?", options: ["Smells Like Teen Spirit", "Come As You Are", "In Bloom", "Sliver", "Heart-Shaped Box"] },
+      { id: "cover", title: "Best Nirvana cover song?", options: ["The Man Who Sold the World", "Where Did You Sleep Last Night", "Love Buzz", "Lake of Fire", "Molly's Lips"] },
+      { id: "other94", title: "Best non-Nirvana album of 1994?", options: ["Hole — Live Through This", "Green Day — Dookie", "Soundgarden — Superunknown", "Weezer — Blue Album", "Oasis — Definitely Maybe"] }
     ];
     function loadPoll() {
       try { return JSON.parse(localStorage.getItem(POLL_KEY)) || {}; } catch (e) { return {}; }
