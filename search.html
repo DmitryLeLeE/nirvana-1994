@@ -49,11 +49,15 @@
           <select id="typeFilter" onchange="runSearch()">
             <option value="all">Everything</option>
             <option value="Song">Songs</option>
-            <option value="Release">Releases</option>
-            <option value="Member">Members</option>
+            <option value="Release">Albums &amp; Physical Releases</option>
+            <option value="Session">Recording Sessions</option>
+            <option value="Studio">Studios</option>
             <option value="Concert">Concerts</option>
+            <option value="Member">Members</option>
             <option value="Location">Map Locations</option>
-            <option value="Artifact">Artifacts &amp; Photos</option>
+            <option value="Scene">Seattle Scene / Labels</option>
+            <option value="Influence">Musical Influences</option>
+            <option value="Artifact">Artifacts &amp; Documents</option>
             <option value="Page">Archive Pages</option>
           </select>
         </td>
@@ -84,6 +88,10 @@
   </center>
 
   <script src="data/listening_data.js"></script>
+  <script src="data/concerts_data.js"></script>
+  <script src="data/sessions_data.js"></script>
+  <script src="data/releases_data.js"></script>
+  <script src="data/scene_influences_data.js"></script>
   <script src="data/map_data.js"></script>
   <script src="data/artifacts_data.js"></script>
   <script>
@@ -97,17 +105,12 @@
       { type: "Member", title: "Pat Smear", desc: "Touring rhythm guitarist (Sept 1993-1994). Unplugged & Live and Loud.", href: "about.html" },
       { type: "Member", title: "Lori Goldston", desc: "Touring & session cellist (1993-1994). MTV Unplugged.", href: "about.html" },
       { type: "Member", title: "Melora Creager", desc: "Touring cellist (Feb-Mar 1994). Final European tour.", href: "about.html" },
-      { type: "Concert", title: "Paramount Theatre, Seattle (Oct 31, 1991)", desc: "Halloween 1991 show filmed on 16mm.", href: "concerts.html" },
-      { type: "Concert", title: "Saturday Night Live (Jan 11, 1992)", desc: "Smells Like Teen Spirit & Territorial Pissings on national TV.", href: "concerts.html" },
-      { type: "Concert", title: "Reading Festival (Aug 30, 1992)", desc: "Wheelchair entrance, 24-song headline set in England.", href: "concerts.html" },
-      { type: "Concert", title: "Live and Loud, Pier 48 (Dec 13, 1993)", desc: "MTV New Year's Eve taping in Seattle with Pat Smear & Lori Goldston.", href: "concerts.html" },
-      { type: "Concert", title: "Terminal Eins, Munich (Mar 1, 1994)", desc: "Final Nirvana concert. Power outage during Come As You Are; closed with Heart-Shaped Box.", href: "concerts.html" },
       { type: "Page", title: "Virtual 1994 Computer", desc: "Interactive Win 3.1/Netscape desktop simulator.", href: "pc1994.html" },
       { type: "Page", title: "Create Your Mixtape", desc: "Build custom Nirvana cassette J-cards and export PNG.", href: "mixtape.html" },
       { type: "Page", title: "Fan Zine Archive", desc: "1990s punk & riot grrrl zines: Flipside, Maximumrocknroll, Sassy.", href: "zines.html" },
       { type: "Page", title: "Usenet alt.music.nirvana", desc: "1994 newsgroup message board reconstruction.", href: "usenet.html" },
       { type: "Page", title: "ASCII Guitar Tabs (OLGA)", desc: "Tablatures for Teen Spirit, Come As You Are, About a Girl, Lithium, Polly, Heart-Shaped Box.", href: "tabs.html" },
-      { type: "Page", title: "Photo Gallery", desc: "Filterable archival photos with fullscreen lightbox.", href: "gallery.html" }
+      { type: "Page", title: "Photo Gallery", desc: "Filterable archival photos with fullscreen lightbox and credits.", href: "gallery.html" }
     ];
 
     var FULL_INDEX = [];
@@ -117,45 +120,61 @@
       if (window.NIRVANA_SONGS) {
         for (i = 0; i < window.NIRVANA_SONGS.length; i++) {
           var s = window.NIRVANA_SONGS[i];
-          FULL_INDEX.push({
-            type: "Song",
-            title: s.title + " (" + s.year + ")",
-            desc: s.album + " — " + s.story,
-            href: "listening.html?song=" + encodeURIComponent(s.id)
-          });
+          FULL_INDEX.push({ type: "Song", title: s.title + " (" + s.year + ")", desc: s.album + " — " + s.story, href: "listening.html?song=" + encodeURIComponent(s.id) });
         }
       }
       if (window.NIRVANA_RELEASES) {
         for (i = 0; i < window.NIRVANA_RELEASES.length; i++) {
           var r = window.NIRVANA_RELEASES[i];
-          FULL_INDEX.push({
-            type: "Release",
-            title: r.title + " (" + r.date + ")",
-            desc: r.kind + " · " + r.label + " · " + r.notes,
-            href: "listening.html"
-          });
+          FULL_INDEX.push({ type: "Release", title: r.title + " (" + r.date + ")", desc: r.kind + " · " + r.label + " · " + r.notes, href: "listening.html" });
+        }
+      }
+      if (window.NIRVANA_PHYSICAL_RELEASES) {
+        for (i = 0; i < window.NIRVANA_PHYSICAL_RELEASES.length; i++) {
+          var pr = window.NIRVANA_PHYSICAL_RELEASES[i];
+          FULL_INDEX.push({ type: "Release", title: pr.title + " [" + pr.catalog_no + "]", desc: pr.label + " · " + pr.country + " · " + pr.notes, href: "discography.html#" + encodeURIComponent(pr.id) });
+        }
+      }
+      if (window.NIRVANA_CONCERTS) {
+        for (i = 0; i < window.NIRVANA_CONCERTS.length; i++) {
+          var c = window.NIRVANA_CONCERTS[i];
+          FULL_INDEX.push({ type: "Concert", title: c.date + " — " + c.venue + " (" + c.city + ")", desc: c.event_name + " · " + c.recording_type + " · " + c.notes, href: "concerts.html?concert=" + encodeURIComponent(c.id) });
+        }
+      }
+      if (window.NIRVANA_SESSIONS) {
+        for (i = 0; i < window.NIRVANA_SESSIONS.length; i++) {
+          var ses = window.NIRVANA_SESSIONS[i];
+          FULL_INDEX.push({ type: "Session", title: ses.title + " (" + ses.date + ")", desc: ses.studio_name + " · " + ses.notes, href: "listening.html#sessions" });
+        }
+      }
+      if (window.NIRVANA_STUDIOS) {
+        for (i = 0; i < window.NIRVANA_STUDIOS.length; i++) {
+          var st = window.NIRVANA_STUDIOS[i];
+          FULL_INDEX.push({ type: "Studio", title: st.name + " (" + st.city + ")", desc: st.owners + " · " + st.notes, href: "listening.html#" + encodeURIComponent(st.id) });
         }
       }
       if (window.NIRVANA_MAP_PLACES) {
         for (i = 0; i < window.NIRVANA_MAP_PLACES.length; i++) {
           var p = window.NIRVANA_MAP_PLACES[i];
-          FULL_INDEX.push({
-            type: "Location",
-            title: p.name + " (" + p.city + ")",
-            desc: p.dates + " — " + p.desc,
-            href: "map.html"
-          });
+          FULL_INDEX.push({ type: "Location", title: p.name + " (" + p.city + ")", desc: p.dates + " — " + p.desc, href: "map.html?place=" + encodeURIComponent(p.id) });
+        }
+      }
+      if (window.NIRVANA_SCENE_ENTITIES) {
+        for (i = 0; i < window.NIRVANA_SCENE_ENTITIES.length; i++) {
+          var sc = window.NIRVANA_SCENE_ENTITIES[i];
+          FULL_INDEX.push({ type: "Scene", title: sc.name + " (" + sc.kind + ")", desc: sc.years + " — " + sc.link, href: "grunge.html#" + encodeURIComponent(sc.id) });
+        }
+      }
+      if (window.NIRVANA_INFLUENCE_LINKS) {
+        for (i = 0; i < window.NIRVANA_INFLUENCE_LINKS.length; i++) {
+          var inf = window.NIRVANA_INFLUENCE_LINKS[i];
+          FULL_INDEX.push({ type: "Influence", title: inf.artist + " [" + inf.rel + "]", desc: inf.genre + " — " + inf.desc, href: "influences.html#" + encodeURIComponent(inf.id) });
         }
       }
       if (window.NIRVANA_ARTIFACTS) {
         for (i = 0; i < window.NIRVANA_ARTIFACTS.length; i++) {
           var a = window.NIRVANA_ARTIFACTS[i];
-          FULL_INDEX.push({
-            type: "Artifact",
-            title: a.title + " (" + a.date + ")",
-            desc: a.category + " — " + a.desc,
-            href: "artifacts.html"
-          });
+          FULL_INDEX.push({ type: "Artifact", title: a.title + " (" + a.date + ")", desc: a.category + " — " + a.desc, href: "artifacts.html?id=" + encodeURIComponent(a.id) });
         }
       }
     }
