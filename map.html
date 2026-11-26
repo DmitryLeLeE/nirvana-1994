@@ -247,7 +247,11 @@
     }
 
     initMap();
-    showPlaceCard("ok-hotel");
+    (function () {
+      var params = new URLSearchParams(location.search);
+      var q = params.get("place") || "ok-hotel";
+      selectPlace(q);
+    })();
   </script>
 </body>
 </html>

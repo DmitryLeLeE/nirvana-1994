@@ -60,7 +60,10 @@
     <hr>
 
     <h2>Interactive Timeline (1967&ndash;1994)</h2>
-    <p class="small">filter by event type &#8212; verified against LiveNirvana, Nirvana Live Guide &amp; official releases</p>
+    <p class="small">
+      <span class="badge-1994">ORIGINAL 1994 ARCHIVE</span>
+      filter by event type &#8212; verified against LiveNirvana, Nirvana Live Guide &amp; official releases
+    </p>
 
     <p class="small">
       <button type="button" onclick="filterTimeline('all')">All Events</button>
@@ -78,16 +81,19 @@
       <tbody id="tlBody"></tbody>
     </table>
 
-    <h3>After</h3>
+    <div class="modern-layer">
+    <span class="badge-modern">MODERN ARCHIVE &middot; POST-1994</span>
+    <h3>After 1994</h3>
     <table class="content">
       <tr><th>Year</th><th>What happened</th></tr>
-      <tr><td>1994</td><td><i>MTV Unplugged in New York</i> released November 1</td></tr>
       <tr><td>1996</td><td>live compilation <i>From the Muddy Banks of the Wishkah</i></td></tr>
-      <tr><td>2002</td><td>best-of <i>Nirvana</i>; Cobain's <i>Journals</i> published</td></tr>
-      <tr><td>2004</td><td>box set <i>With the Lights Out</i></td></tr>
+      <tr><td>2002</td><td>best-of <i>Nirvana</i> (with &#8220;You Know You&#8217;re Right&#8221;); Cobain&#8217;s <i>Journals</i> published</td></tr>
+      <tr><td>2004</td><td>box set <i>With the Lights Out</i> (rarities &amp; &#8220;Do Re Mi&#8221;)</td></tr>
+      <tr><td>2009</td><td><i>Live at Reading</i> officially released in full</td></tr>
       <tr><td>2014</td><td>Nirvana inducted into the Rock and Roll Hall of Fame</td></tr>
       <tr><td>2015</td><td>documentary <i>Kurt Cobain: Montage of Heck</i></td></tr>
     </table>
+    </div>
 
     <p><img class="photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Mosrite_Mark_IV_Gospel_-_Kurt_Cobain_%28Nirvana%29_-_Museum_of_Pop_Culture_%282017-03-04_17.50.20_by_Francisco_Antunes%29.jpg/500px-Mosrite_Mark_IV_Gospel_-_Kurt_Cobain_%28Nirvana%29_-_Museum_of_Pop_Culture_%282017-03-04_17.50.20_by_Francisco_Antunes%29.jpg" width="200" alt="Kurt's Mosrite guitar, Museum of Pop Culture"></p>
 
@@ -109,7 +115,7 @@
   <script>
     var TL_EVENTS = [
       { date: "Feb 20, 1967", type: "formation", text: "Kurt Donald Cobain born in Aberdeen, Washington. Parents divorce in 1976 when he is nine.", link: "kurt.html", linkText: "Kurt Cobain", src: "Cross (2001)" },
-      { date: "1985", type: "formation", text: "Kurt meets Krist Novoselic through Buzz Osbourne of the Melvins.", link: "about.html", linkText: "The Band", src: "Azerrad (1993)" },
+      { date: "Late 1985", type: "formation", text: "Kurt forms Fecal Matter and meets Krist Novoselic. Records 'Illiteracy Will Prevail' demo at aunt Mari Earl's house in Burien/Seattle with Dale Crover (traditionally Dec 1985; some researchers suggest Easter 1986).", link: "about.html", linkText: "The Band", src: "Azerrad / Discogs" },
       { date: "Apr 18, 1987", type: "concert", text: "First documented fliered venue gig at Community World Theater, Tacoma (billed as Skid Row; with Aaron Burckhard). Note: the Raymond WA house party bootleg dates to summer 1987, not March.", link: "map.html", linkText: "Map", src: "LiveNirvana" },
       { date: "May 6, 1987", type: "studio", text: "Early radio session at KAOS 89.3 FM, Evergreen State College, Olympia.", link: "venues.html", linkText: "Venues", src: "LiveNirvana" },
       { date: "Nov 1988", type: "release", text: "Debut single 'Love Buzz / Big Cheese' released on Sub Pop Singles Club #1 (1,000 copies).", link: "listening.html?song=love-buzz", linkText: "Listening Room", src: "Discogs / Sub Pop" },
@@ -128,8 +134,9 @@
       { date: "Nov 18, 1993", type: "concert", text: "MTV Unplugged taped at Sony Music Studios, NYC (candies, lilies, 6 covers).", link: "bootlegs.html", linkText: "Unplugged", src: "MTV / DGC" },
       { date: "Jan 28-30, 1994", type: "1994", text: "Final studio session at Robert Lang Studios, North Seattle; 'You Know You're Right' tracked Jan 30.", link: "listening.html?song=ykyr", linkText: "YKYR", src: "LiveNirvana" },
       { date: "Mar 1, 1994", type: "1994", text: "Final concert at Terminal Eins, Munich, Germany (~3,000 fans; power outage during 'Come As You Are'; closed with 'Heart-Shaped Box').", link: "concerts.html", linkText: "Munich '94", src: "LiveNirvana" },
-      { date: "Mar 4 - Apr 1, 1994", type: "1994", text: "Overdose in Rome (Mar 4); intervention in Seattle; enters Exodus Recovery Center (Mar 25) and leaves Apr 1.", link: "death.html", linkText: "Death & Legacy", src: "Cross (2001)" },
-      { date: "Apr 5-10, 1994", type: "1994", text: "Kurt Cobain dies in Seattle on April 5 (found April 8); public vigil at Seattle Center on April 10.", link: "death.html", linkText: "Death & Legacy", src: "Seattle Times / AP" }
+      { date: "Mar 4 - Apr 1, 1994", type: "1994", text: "Overdose in Rome (Mar 4); Seattle intervention (Mar 25); enters Exodus Recovery Center in Marina del Rey, LA (Mar 30); scales the courtyard wall to leave on Apr 1 and flies back to Seattle.", link: "death.html", linkText: "Death & Legacy", src: "Rolling Stone / Cross" },
+      { date: "Apr 5-10, 1994", type: "1994", text: "Kurt Cobain dies in Seattle on April 5 (found April 8); public vigil at Seattle Center on April 10.", link: "death.html", linkText: "Death & Legacy", src: "Seattle Times / AP" },
+      { date: "Nov 1, 1994", type: "release", text: "MTV Unplugged in New York released posthumously on DGC.", link: "discography.html", linkText: "Discography", src: "DGC" }
     ];
 
     function filterTimeline(t) {

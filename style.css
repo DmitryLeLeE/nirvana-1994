@@ -275,6 +275,37 @@ pre.lyrics,
   }
 }
 
+.badge-1994 {
+  display: inline-block;
+  background: #d8f3dc;
+  color: #1b4332;
+  border: 1px solid #1b4332;
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 1px 5px;
+}
+
+.badge-modern {
+  display: inline-block;
+  background: #e2e8f0;
+  color: #1e293b;
+  border: 1px solid #475569;
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 1px 5px;
+}
+
+.modern-layer {
+  border: 2px dashed #475569;
+  background: #f4f6f8;
+  padding: 10px 14px;
+  max-width: 660px;
+  margin: 12px auto;
+  box-sizing: border-box;
+}
+
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
