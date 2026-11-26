@@ -107,13 +107,17 @@
         if (ses) sesLinks.push("<a href='listening.html?session=" + esc(ses.id) + "'>" + esc(ses.title) + " (" + esc(ses.session_date) + ")</a>");
       }
 
-      var tracksHtml = "<table class='content' style='margin-top:6px;'><tr><th>#</th><th>Track</th><th>Writers / Length</th><th>Archival Notes</th></tr>";
+      var tracksHtml = "<p class='small'><b>Canonical Edition:</b> " + esc(alb.canonical_edition || "") + "<br><b>Edition Variants:</b> " + esc(alb.edition_variants || "") + "</p>";
+      tracksHtml += "<table class='content' style='margin-top:6px;'><tr><th>#</th><th>Track</th><th>Writers / Length</th><th>Archival Notes</th></tr>";
       for (var t = 0; t < alb.tracks.length; t++) {
         var tr = alb.tracks[t];
         var tLink = tr.song_id
           ? "<a href='listening.html?song=" + esc(tr.song_id) + "'><b>" + esc(tr.title) + "</b></a> <span class='small'>(<a href='listening.html?song=" + esc(tr.song_id) + "#evolution'>Evolution</a>)</span>"
           : "<b>" + esc(tr.title) + "</b>";
-        tracksHtml += "<tr><td>" + (t + 1) + "</td><td>" + tLink + "</td><td class='small'>" + esc(tr.writers) + " &middot; " + esc(tr.duration) + "</td><td class='small'>" + esc(tr.note) + "</td></tr>";
+        var sesTag = tr.recording_session_id
+          ? " &middot; <a href='listening.html?session=" + esc(tr.recording_session_id) + "'>Session &rarr;</a>"
+          : "";
+        tracksHtml += "<tr><td>" + esc(tr.track_number || (t + 1)) + "</td><td>" + tLink + "</td><td class='small'>" + esc(tr.writers) + " &middot; " + esc(tr.duration) + "</td><td class='small'>" + esc(tr.track_notes || tr.note || "") + sesTag + "</td></tr>";
       }
       tracksHtml += "</table>";
 
@@ -141,6 +145,11 @@
         if (con) conLinks.push("<a href='concerts.html?concert=" + esc(con.id) + "'>" + esc(con.date + " — " + con.venue) + "</a>");
       }
 
+      var albSrcs = [];
+      for (var as = 0; as < (alb.sources || []).length; as++) {
+        albSrcs.push("<a href='" + esc(alb.sources[as].url) + "' target='_blank'>" + esc(alb.sources[as].label) + "</a>");
+      }
+
       box.innerHTML =
         "<div style='background:" + alb.theme.headerBg + "; color:" + alb.theme.headerFg + "; padding:8px 10px; margin:-14px -14px 12px -14px;'>" +
         "<div class='small' style='opacity:0.9;'>" + esc(alb.theme.tag) + "</div>" +
@@ -156,7 +165,8 @@
         "<h4>F. Critical Reception</h4>" + recHtml +
         "<h4>G. Listening Experience &amp; Era Concerts</h4>" +
         "<p class='small'><b>Official Streams:</b> <a href='" + esc(alb.spotify_url) + "' target='_blank'>Spotify</a> &middot; <a href='" + esc(alb.youtube_url) + "' target='_blank'>YouTube</a> &middot; <a href='listening.html'>Open Listening Room &rarr;</a><br>" +
-        (conLinks.length ? "<b>Era Concerts:</b> " + conLinks.join(" &middot; ") : "") + "</p>";
+        (conLinks.length ? "<b>Era Concerts:</b> " + conLinks.join(" &middot; ") + "<br>" : "") +
+        (albSrcs.length ? "<b>Primary Sources:</b> " + albSrcs.join(" &middot; ") : "") + "</p>";
     }
 
     (function initAlbums() {
