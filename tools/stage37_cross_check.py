@@ -32,6 +32,9 @@ data = load_js_globals([
     "data/scene_influences_data.js",
     "data/listening_data.js",
     "data/map_data.js",
+    "data/stage4_story_data.js",
+    "data/stage4_albums_data.js",
+    "data/stage4_exhibitions_data.js",
 ])
 
 errors = []
@@ -251,6 +254,70 @@ for sg in songs:
         validate_internal_href(lnk.get("href"), f"songs[{sg.get('id')}]")
 passed.append(f"Songs internal links validated ({len(songs)} songs)")
 
+# Stage 4.9 QA: Sitemap integration
+sitemap_txt = (ROOT / "sitemap.html").read_text(encoding="utf-8")
+for req_page in ("story.html", "albums.html", "exhibitions.html", "explore.html"):
+    if f'href="{req_page}"' not in sitemap_txt:
+        errors.append(f"sitemap.html missing Stage 4 link '{req_page}'")
+passed.append("Sitemap includes all 4 Stage 4 pages")
+
+# Stage 4.9 QA: Album dossiers tracklist & duration validation
+albums = data.get("NIRVANA_ALBUM_DOSSIERS", [])
+total_album_tracks = 0
+linked_song_ids_in_albums = set()
+dur_re = re.compile(r"^(\d+:\d{2}|Unknown)$")
+for alb in albums:
+    aid = alb.get("id", "?")
+    if not alb.get("canonical_edition") or not alb.get("edition_variants") or not alb.get("sources"):
+        errors.append(f"Album {aid} missing canonical_edition, edition_variants, or sources")
+    tracks = alb.get("tracks") or []
+    for idx, tr in enumerate(tracks, 1):
+        total_album_tracks += 1
+        if tr.get("track_number") != idx:
+            errors.append(f"Album {aid} track {tr.get('title')} has track_number={tr.get('track_number')}, expected {idx}")
+        if " / " in (tr.get("title") or ""):
+            errors.append(f"Album {aid} contains merged track title: '{tr.get('title')}'")
+        dur = tr.get("duration", "")
+        if not dur_re.match(dur):
+            errors.append(f"Album {aid} track '{tr.get('title')}' has invalid duration '{dur}'")
+        sid = tr.get("song_id")
+        if sid:
+            if sid not in songs_by_id:
+                errors.append(f"Album {aid} track '{tr.get('title')}' references missing song_id '{sid}'")
+            else:
+                linked_song_ids_in_albums.add(sid)
+        rsid = tr.get("recording_session_id")
+        if rsid and rsid not in sessions_by_id:
+            errors.append(f"Album {aid} track '{tr.get('title')}' references missing recording_session_id '{rsid}'")
+passed.append(f"Album dossiers validated ({len(albums)} albums, {total_album_tracks} individual tracks, {len(linked_song_ids_in_albums)} linked Song IDs)")
+
+# Stage 4.9 QA: Story source semantics
+story_chapters = data.get("NIRVANA_STORY_CHAPTERS", [])
+for ch in story_chapters:
+    cid = ch.get("id", "?")
+    for cl in ch.get("claims") or []:
+        if "pub_date" in cl:
+            errors.append(f"Story {cid} still uses deprecated pub_date field")
+        if not cl.get("source_publication_date") or not cl.get("source_context") or not cl.get("source_type"):
+            errors.append(f"Story {cid} claim missing source_publication_date/source_context/source_type")
+        if not (cl.get("source_url") or "").startswith("https://"):
+            errors.append(f"Story {cid} claim source_url is not an external https:// source: '{cl.get('source_url')}'")
+passed.append(f"Story chapters validated ({len(story_chapters)} chapters with external https:// sources)")
+
+# Stage 4.9 QA: Exhibitions & deep-links check
+exhibitions = data.get("NIRVANA_EXHIBITIONS", [])
+for ex in exhibitions:
+    for pid in ex.get("photo_ids") or []:
+        if pid not in photos_by_id:
+            errors.append(f"Exhibition {ex.get('id')} references missing photo_id '{pid}'")
+    for aid in ex.get("artifact_ids") or []:
+        if aid not in artifacts_by_id:
+            errors.append(f"Exhibition {ex.get('id')} references missing artifact_id '{aid}'")
+    for cid in ex.get("concert_ids") or []:
+        if cid not in concerts_by_id:
+            errors.append(f"Exhibition {ex.get('id')} references missing concert_id '{cid}'")
+passed.append(f"Digital exhibitions validated ({len(exhibitions)} exhibitions)")
+
 report = {
     "concerts_count": len(concerts),
     "setlist_counts": setlist_counts,
@@ -265,6 +332,11 @@ report = {
     "sessions_count": len(sessions),
     "songs_count": len(songs),
     "map_places_count": len(places_by_id),
+    "story_chapters_count": len(story_chapters),
+    "album_dossiers_count": len(albums),
+    "album_individual_tracks_count": total_album_tracks,
+    "album_linked_song_ids_count": len(linked_song_ids_in_albums),
+    "exhibitions_count": len(exhibitions),
     "errors": errors,
     "warnings": warnings,
     "unverified": unverified,

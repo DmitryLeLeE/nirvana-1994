@@ -1,10 +1,10 @@
 {
   "concerts_count": 17,
   "setlist_counts": {
-    "PARTIAL": 8,
     "INCOMPLETE": 1,
-    "COMPLETE": 7,
-    "UNKNOWN": 1
+    "PARTIAL": 8,
+    "UNKNOWN": 1,
+    "COMPLETE": 7
   },
   "photos_count": 23,
   "known_authorship_photos": 21,
@@ -17,6 +17,11 @@
   "sessions_count": 11,
   "songs_count": 12,
   "map_places_count": 19,
+  "story_chapters_count": 6,
+  "album_dossiers_count": 5,
+  "album_individual_tracks_count": 66,
+  "album_linked_song_ids_count": 10,
+  "exhibitions_count": 5,
   "errors": [],
   "warnings": [],
   "unverified": [
@@ -41,10 +46,14 @@
     "Map places validated (19 unique IDs with valid coordinates)",
     "Gallery metadata validated (23 photos; known authorship=21, unknown=2)",
     "Artifacts internal links validated (15 items)",
-    "Concerts validated (17 shows; setlist_counts={'PARTIAL': 8, 'INCOMPLETE': 1, 'COMPLETE': 7, 'UNKNOWN': 1})",
+    "Concerts validated (17 shows; setlist_counts={'INCOMPLETE': 1, 'PARTIAL': 8, 'UNKNOWN': 1, 'COMPLETE': 7})",
     "Physical releases validated (15 items)",
     "Studios (7) & Sessions (11) validated",
     "Scene (20) & Influences (12) validated",
-    "Songs internal links validated (12 songs)"
+    "Songs internal links validated (12 songs)",
+    "Sitemap includes all 4 Stage 4 pages",
+    "Album dossiers validated (5 albums, 66 individual tracks, 10 linked Song IDs)",
+    "Story chapters validated (6 chapters with external https:// sources)",
+    "Digital exhibitions validated (5 exhibitions)"
   ]
 }
