@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nirvana &#8212; THE KURT WALL (1994 Memorial &amp; Ad Chaos)</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <meta property="og:site_name" content="Nirvana Memorial &#8212; a hand-made 1994 fan site">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Nirvana &#8212; The Kurt Memorial Wall">
+  <meta property="og:description" content="1994-style fan memorial wall for Kurt Cobain with classic GIFs, retro banner ads, and fake CGI submission queue.">
+  <meta property="og:image" content="https://dmitrylelee.github.io/nirvana-1994/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <center>
+
+    <p><img src="assets/banner-guestbook.gif" width="600" height="80" alt="NIRVANA &#8212; Kurt Memorial Wall"></p>
+
+    <marquee style="background:#330066; color:#ffff00; border:2px dashed #ff00ff;">
+      &#9733; WELCOME TO THE KURT WALL &#9733; LEAVE A TRIBUTE &#9733; FREE GRUNGE CHAT &#9733; CLICK THE BANNER TO WIN A MODEM &#9733;
+    </marquee>
+
+    <p class="nav">
+      <a href="index.html">Home</a> |
+      <a href="about.html">The Band</a> |
+      <a href="grunge.html">The Scene</a> |
+      <a href="timeline.html">Timeline</a> |
+      <a href="discography.html">Discography</a> |
+      <a href="kurt.html">Kurt Cobain</a> |
+      <a href="family.html">Family</a> |
+      <a href="death.html">Death &amp; Legacy</a> |
+      <a href="27club.html">27 Club</a> |
+      <a href="songs.html">Songs</a> |
+      <a href="quotes.html">Quotes</a> |
+      <a href="lyrics.html">Lyrics</a> |
+      <a href="faq.html">FAQ</a> |
+      <a href="poll.html">Poll</a> |
+      <a href="gear.html">Gear</a> |
+      <a href="trivia.html">Trivia</a> |
+      <a href="awards.html">Awards</a> |
+      <a href="culture90s.html">The 90s</a> |
+      <a href="bootlegs.html">Bootlegs</a> |
+      <a href="influences.html">Influences</a> |
+      <a href="tabs.html">Tabs</a> |
+      <a href="concerts.html">Concerts</a> |
+      <a href="venues.html">Venues</a> |
+      <a href="videos.html">Videos</a> |
+      <a href="wall.html">Kurt Wall</a> <img src="assets/new.gif" width="32" height="12" alt="NEW"> |
+      <a href="quiz.html">Quiz</a> |
+      <a href="webmaster.html">Webmaster</a> |
+      <a href="sitemap.html">Sitemap</a> |
+      <a href="media.html">Media</a> |
+      <a href="gallery.html">Gallery</a> |
+      <a href="guestbook.html">Guestbook</a> |
+      <a href="links.html">Sources</a>
+    </p>
+
+    <hr>
+
+    <p>
+      <img src="assets/hot.gif" width="32" height="12" alt="HOT!">
+      <a href="secret.html" title="totally real 1994 ad"><img src="assets/ad-chat.gif" width="468" height="60" alt="1994 Chat Room Ad"></a>
+      <img src="assets/wow.gif" width="32" height="12" alt="WOW!">
+    </p>
+    <p class="small" style="color:#880000;"><b>SPONSORED AD (1994):</b> Free Nirvana Chat Room!! 100% real (just kidding, it goes to a secret page)</p>
+
+    <h2 style="background:#000080; color:#00ff66; padding:6px 12px; border:3px ridge #c0c0c0; display:inline-block;">
+      <img src="assets/flame.gif" width="24" height="24" alt="">
+      THE KURT COBAIN MEMORIAL WALL
+      <img src="assets/flame.gif" width="24" height="24" alt="">
+    </h2>
+
+    <p class="small">
+      write what Kurt meant to you &middot; processed via fake <code>/cgi-bin/wall_submit.pl</code>
+    </p>
+
+    <table class="content" style="border:3px outset #808080; background:#ffffcc;">
+      <tr>
+        <th style="background:#800000; color:#ffff00;" colspan="2">
+          <img src="assets/cool.gif" width="32" height="12" alt="COOL!">
+          SUBMIT A NOTE TO THE WALL (CGI-BIN SIMULATOR v1.0)
+        </th>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <form onsubmit="return submitWall(this)">
+            <p>
+              <b>Your Nickname / City:</b><br>
+              <input type="text" name="nick" maxlength="40" placeholder="e.g. flannel_kid94, Portland OR" required>
+            </p>
+            <p>
+              <b>Favorite Song (optional):</b><br>
+              <input type="text" name="song" maxlength="40" placeholder="e.g. Pennyroyal Tea">
+            </p>
+            <p>
+              <b>Your Message for Kurt:</b><br>
+              <textarea name="body" rows="3" maxlength="260" placeholder="Say something real..." required></textarea>
+            </p>
+            <p>
+              <input type="submit" value="SEND TO /cgi-bin/wall_submit.pl">
+              <img src="assets/btn-free.gif" width="88" height="31" alt="FREE!" style="vertical-align:middle;">
+            </p>
+          </form>
+          <div id="cgiStatus" style="display:none; background:#000000; color:#00ff66; font-family:'Courier New',monospace; padding:8px; border:2px inset #808080; text-align:left; font-size:12px;"></div>
+        </td>
+      </tr>
+    </table>
+
+    <br>
+
+    <p>
+      <img src="assets/ad-ringtone.gif" width="468" height="60" alt="Free grunge ringtones ad">
+    </p>
+
+    <h3>Pinned Notes on the Wall</h3>
+    <div id="wallList"></div>
+
+    <hr>
+
+    <p>
+      <a href="guestbook.html"><img src="assets/ad-homepage.gif" width="468" height="60" alt="Free Homepage Ad"></a><br>
+      <span class="small">another classic 1994 banner ad &middot; nobody knew anything about web design in 1994 and it was glorious</span>
+    </p>
+
+    <p class="last-updated">Last updated: 11/16/94</p>
+    <p class="small">[ <a href="index.html">home</a> ] &middot; Nirvana Memorial Web Ring</p>
+    <p>
+      <img src="assets/btn-netscape.gif" width="88" height="31" alt="Get Netscape 2.0">
+      <img src="assets/btn-notepad.gif" width="88" height="31" alt="Made with Notepad">
+      <img src="assets/btn-guestbook.gif" width="88" height="31" alt="Sign my guestbook">
+      <img src="assets/btn-webring.gif" width="88" height="31" alt="Nirvana Webring">
+    </p>
+    <p class="small">&#169; 1994 &middot; in memory of Kurt Cobain</p>
+
+  </center>
+
+  <script>
+    var WKEY = "nirvana_kurt_wall";
+    var DEFAULT_WALL = [
+      { nick: "aberdeen_ghost", song: "Something in the Way", date: "04/09/94", status: "APPROVED", body: "Walked past the Wishkah bridge tonight. Someone left three carnations and a broken cassette." },
+      { nick: "jess_olympia", song: "All Apologies", date: "04/10/94", status: "APPROVED", body: "You made every weird kid in Washington feel less alone. Thank you for every note." },
+      { nick: "dave_14k", song: "Lithium", date: "04/12/94", status: "APPROVED", body: "Sitting in my dorm room at 3am with Netscape open and In Utero on repeat. Still doesn't feel real." },
+      { nick: "skater_boy94", song: "Breed", date: "04/14/94", status: "APPROVED", body: "Bought a cheap lefty knockoff guitar at a pawnshop because of you. Playing it loud until the neighbors bang on the wall." },
+      { nick: "riotgrrrl_tx", song: "Pennyroyal Tea", date: "04/17/94", status: "APPROVED", body: "Printed this whole page out at Kinko's to put in my zine folder. Rest easy, Kurt." },
+      { nick: "moscow_tape94", song: "Come As You Are", date: "05/02/94", status: "APPROVED", body: "Dubbed Nevermind onto a TDK SA90 from a friend's CD. Your voice cuts right through the static." }
+    ];
+
+    function loadWall() {
+      try {
+        var raw = localStorage.getItem(WKEY);
+        if (raw) return JSON.parse(raw);
+      } catch (e) {}
+      return DEFAULT_WALL;
+    }
+
+    function escW(s) {
+      return String(s).replace(/[&<>"]/g, function (c) {
+        return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+      });
+    }
+
+    function renderWall() {
+      var box = document.getElementById("wallList");
+      var items = loadWall();
+      box.innerHTML = "";
+      for (var i = 0; i < items.length; i++) {
+        var it = items[i];
+        var d = document.createElement("div");
+        d.className = "note";
+        d.style.marginBottom = "10px";
+        var badge = it.status === "PENDING WEBMASTER"
+          ? "<span style='background:#ffff00; color:#880000; padding:1px 4px; font-size:11px;'>[QUEUED / PENDING WEBMASTER]</span>"
+          : "<span style='color:#006600; font-size:11px;'>[VERIFIED 1994]</span>";
+        var songHtml = it.song ? " &middot; <i>listening to: " + escW(it.song) + "</i>" : "";
+        d.innerHTML = "<p><b>" + escW(it.nick) + "</b> (" + escW(it.date) + ")" + songHtml + " " + badge + "<br><br>" + escW(it.body) + "</p>";
+        box.appendChild(d);
+      }
+    }
+
+    function submitWall(form) {
+      var nick = form.nick.value.trim();
+      var song = form.song.value.trim();
+      var body = form.body.value.trim();
+      if (!nick || !body) return false;
+
+      var st = document.getElementById("cgiStatus");
+      st.style.display = "block";
+      st.innerHTML = "Connecting to cgi-bin/wall_submit.pl via 14.4k...<br>Uploading " + body.length + " bytes...<br><b>200 OK:</b> Entry saved to local queue! Webmaster will review after midnight (shown below as PENDING).";
+
+      var items = loadWall();
+      items.unshift({
+        nick: nick,
+        song: song,
+        date: "today",
+        status: "PENDING WEBMASTER",
+        body: body
+      });
+      try { localStorage.setItem(WKEY, JSON.stringify(items.slice(0, 25))); } catch (e) {}
+      renderWall();
+      form.reset();
+      return false;
+    }
+
+    renderWall();
+  </script>
+</body>
+</html>
