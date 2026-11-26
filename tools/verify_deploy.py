@@ -7,7 +7,11 @@ files = [
     'concerts.html', 'data/concerts_data.js',
     'gallery.html', 'data/photos_data.js', 'data/artifacts_data.js',
     'grunge.html', 'influences.html', 'data/scene_influences_data.js',
-    'discography.html', 'data/releases_data.js', 'data/sessions_data.js'
+    'discography.html', 'data/releases_data.js', 'data/sessions_data.js',
+    'story.html', 'data/stage4_story_data.js',
+    'albums.html', 'data/stage4_albums_data.js',
+    'exhibitions.html', 'data/stage4_exhibitions_data.js',
+    'explore.html'
 ]
 markers = {
     'index.html': 'NEW ARCHIVE TOOLS',
@@ -16,12 +20,16 @@ markers = {
     'bootlegs.html': 'The Boombox Rehearsal (c. Summer 1987)',
     'sitemap.html': 'Archive &amp; Site Map',
     'search.html': 'href="sitemap.html">Archive</a>',
-    'listening.html': 'completeness_status',
-    'concerts.html': 'setlist_status',
+    'listening.html': 'buildSongEvolutionHtml',
+    'concerts.html': 'selectJourney',
     'gallery.html': 'data/photos_data.js',
     'grunge.html': 'renderSources',
-    'influences.html': 'renderSources',
-    'discography.html': 'category_type'
+    'influences.html': 'Musical Heritage',
+    'discography.html': 'category_type',
+    'story.html': 'NIRVANA_STORY_CHAPTERS',
+    'albums.html': 'NIRVANA_ALBUM_DOSSIERS',
+    'exhibitions.html': 'NIRVANA_EXHIBITIONS',
+    'explore.html': 'EXPLORE NIRVANA'
 }
 for f in files:
     local = open(f, encoding='utf-8').read().replace('\r\n', '\n')
