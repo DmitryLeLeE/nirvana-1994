@@ -191,10 +191,18 @@
           yr: yr,
           tp: tp,
           dateLabel: rec.capture_date,
+          datePrecision: rec.capture_date_precision,
+          pubDate: rec.publication_date,
+          relDate: rec.release_date,
+          relReleaseId: rec.related_release_id,
           photog: rec.photographer,
+          attribution: rec.attribution,
           place: rec.location,
           event: rec.event_context,
           license: rec.license,
+          licenseUrl: rec.license_url,
+          licenseJurisdiction: rec.license_jurisdiction,
+          rightsNote: rec.rights_note,
           sourceLabel: rec.source_label,
           archiveLayer: rec.archive_layer,
           relatedHref: rec.related_href,
@@ -203,10 +211,18 @@
           yr: "places",
           tp: "gear",
           dateLabel: "Unknown",
+          datePrecision: "UNKNOWN",
+          pubDate: "Unknown",
+          relDate: "",
+          relReleaseId: "",
           photog: "Unknown",
+          attribution: "Unknown",
           place: "Unknown",
           event: "Unverified archival entry",
           license: "Unknown / Unverified",
+          licenseUrl: "links.html",
+          licenseJurisdiction: "Unverified",
+          rightsNote: "Metadata not verified.",
           sourceLabel: "Unverified",
           archiveLayer: "modern-archive",
           relatedHref: "links.html",
@@ -260,11 +276,14 @@
       document.getElementById("lbImg").src = it.src;
       document.getElementById("lbImg").alt = it.alt;
       document.getElementById("lbCaption").innerHTML = "<b>" + it.caption + "</b> (" + (lbIndex + 1) + "/" + visibleItems.length + ")";
+      var relDateHtml = it.meta.relDate ? (" &middot; <b>Related Release Date:</b> " + it.meta.relDate) : "";
+      var jurisHtml = it.meta.licenseJurisdiction ? (" (" + it.meta.licenseJurisdiction + ")") : "";
+      var rightsHtml = it.meta.rightsNote ? ("<br><i>" + it.meta.rightsNote + "</i>") : "";
       document.getElementById("lbSource").innerHTML =
-        "<b>Photo ID:</b> <code>" + it.id + "</code> &middot; <b>Date:</b> " + it.meta.dateLabel + " &middot; <b>Layer:</b> <code>" + it.meta.archiveLayer + "</code><br>" +
-        "<b>Photographer / Credit:</b> " + it.meta.photog + " &middot; <b>Location:</b> " + it.meta.place + "<br>" +
+        "<b>Photo ID:</b> <code>" + it.id + "</code> &middot; <b>Capture Date:</b> " + it.meta.dateLabel + " [<code>" + it.meta.datePrecision + "</code>]" + relDateHtml + "<br>" +
+        "<b>Attribution / Photographer:</b> " + (it.meta.attribution || it.meta.photog) + " &middot; <b>Location:</b> " + it.meta.place + "<br>" +
         "<b>Context:</b> " + it.meta.event + " &middot; <a href='" + it.meta.relatedHref + "'>" + it.meta.relatedText + " &rarr;</a><br>" +
-        "<b>License:</b> <code>" + it.meta.license + "</code> &middot; <b>Source:</b> <a href='" + it.sourceUrl + "' target='_blank'>" + it.meta.sourceLabel + "</a>";
+        "<b>License:</b> <a href='" + it.meta.licenseUrl + "' target='_blank'><code>" + it.meta.license + "</code></a>" + jurisHtml + " &middot; <b>Source:</b> <a href='" + it.sourceUrl + "' target='_blank'>" + it.meta.sourceLabel + "</a>" + rightsHtml;
       document.getElementById("galLightbox").style.display = "block";
     }
 

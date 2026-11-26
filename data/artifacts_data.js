@@ -8,8 +8,8 @@ window.NIRVANA_ARTIFACTS = [
     authentic: true,
     img: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Kurt_Cobain_on_Love_Buzz_Big_Cheese_front_cover_%28cropped%29.jpg/500px-Kurt_Cobain_on_Love_Buzz_Big_Cheese_front_cover_%28cropped%29.jpg",
     author: "Alice Wheeler (photograph) / Sub Pop",
-    source: "Wikimedia Commons (Public Domain)",
-    desc: "Front cover photograph of Kurt Cobain for Nirvana's debut Sub Pop Singles Club #1 7-inch single (1,000 hand-numbered copies).",
+    source: "Wikimedia Commons (US Public Domain — pre-1989 no-notice; non-US unverified)",
+    desc: "Front cover photograph of Kurt Cobain for Nirvana's debut Sub Pop Singles Club #1 7-inch single (1,000 hand-numbered copies). Sleeve released Nov 1988; exact shoot day in 1988 unverified.",
     links: [{ label: "Discography", href: "discography.html" }, { label: "Listening Room (Love Buzz)", href: "listening.html?song=love-buzz" }]
   },
   {
@@ -21,7 +21,7 @@ window.NIRVANA_ARTIFACTS = [
     authentic: true,
     img: "https://upload.wikimedia.org/wikipedia/commons/1/16/Kurt_Cobain_1986_mugshot.png",
     author: "Unknown (Aberdeen Police Department public record)",
-    source: "Wikimedia Commons (Public Domain)",
+    source: "Wikimedia Commons (US Public Domain; non-US unverified)",
     desc: "Arrest photograph of 19-year-old Kurt Cobain in Aberdeen, Washington, following a trespassing/graffiti incident.",
     links: [{ label: "Kurt Cobain", href: "kurt.html" }, { label: "Trivia", href: "trivia.html" }]
   },
@@ -34,7 +34,7 @@ window.NIRVANA_ARTIFACTS = [
     authentic: true,
     img: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Photo_of_Kurt_Cobain_from_US_Embassy_in_Bern.jpg/500px-Photo_of_Kurt_Cobain_from_US_Embassy_in_Bern.jpg",
     author: "Embassy of the United States, Bern",
-    source: "Wikimedia Commons (Public Domain)",
+    source: "Wikimedia Commons (US Gov Public Domain; non-US may differ)",
     desc: "Official emergency passport photograph of Kurt Cobain issued through the U.S. Embassy in Bern, Switzerland during the 1989 European tour.",
     links: [{ label: "Kurt Cobain", href: "kurt.html" }, { label: "Gallery", href: "gallery.html" }]
   },
