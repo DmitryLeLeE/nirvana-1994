@@ -285,7 +285,7 @@
         var c = findConcertById(j.stops[i]);
         if (!c) continue;
         var mapCell = c.venue_id ? "<a href='map.html?place=" + esc(c.venue_id) + "'>Map &rarr;</a>" : "&#8212;";
-        rows += "<tr><td>" + (i + 1) + "</td><td><a href='#concertDetail' onclick='selectConcert(\"" + esc(c.id) + "\")'><b>" + esc(c.date) + "</b></a></td>" +
+        rows += "<tr><td>" + (i + 1) + "</td><td><a href='#concertDetail' onclick='selectConcert(\"" + esc(c.id) + "\")'><b>" + esc(c.date) + "</b></a> <button type='button' class='small' onclick='selectConcert(\"" + esc(c.id) + "\"); document.getElementById(\"concertDetail\").scrollIntoView();'>Inspect</button></td>" +
           "<td class='small'>" + esc(c.venue + " (" + c.city + ", " + c.country + ")") + "</td>" +
           "<td class='small'>" + setlistBadge(c.setlist_status) + " (" + (c.setlist ? c.setlist.length : 0) + ")</td>" +
           "<td class='small'>" + mapCell + "</td></tr>";
