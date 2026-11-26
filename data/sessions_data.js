@@ -1,11 +1,12 @@
+// Recording Studios & Documented Sessions Registry (Stage 3.7.5)
 window.NIRVANA_STUDIOS = [
-  { id: "stu-reciprocal", name: "Reciprocal Recording", city: "Seattle, WA", address: "4230 Leary Way NW (Ballard/Interbay)", owners: "Chris Hanzsek & Jack Endino", map_id: "reciprocal", notes: "8-track and 16-track studio where Jack Endino recorded early Sub Pop bands including Nirvana's Jan 1988 demo and Bleach.", source: "LiveNirvana / Azerrad (1993)" },
-  { id: "stu-kaos", name: "KAOS 89.3 FM Studio", city: "Olympia, WA", address: "The Evergreen State College Campus", owners: "The Evergreen State College", map_id: "evergreen", notes: "College radio studio where Nirvana taped their first radio session on May 6, 1987.", source: "LiveNirvana", source_url: "https://www.livenirvana.com/sessions/radio/may-1987.php" },
-  { id: "stu-maidavale", name: "BBC Maida Vale Studios", city: "London, UK", address: "Delaware Road, Maida Vale", owners: "BBC", map_id: "", notes: "Historic BBC radio studios where Nirvana recorded all three John Peel Sessions (1989, 1990, 1991).", source: "LiveNirvana", source_url: "https://www.livenirvana.com/sessions/radio/october-1989.php" },
-  { id: "stu-smart", name: "Smart Studios", city: "Madison, WI", address: "1254 E Washington Ave", owners: "Butch Vig & Steve Marker", map_id: "", notes: "Recorded the April 1990 demos with Chad Channing, including the final album take of 'Polly'.", source: "Azerrad (1993) / LiveNirvana" },
-  { id: "stu-soundcity", name: "Sound City Studios", city: "Van Nuys, CA", address: "15456 Cabrito Rd", owners: "Tom Skeeter & Joe Gottfried", map_id: "sound-city", notes: "Famous for its custom Neve 8028 console and drum room sound; hosted the May 1991 Nevermind sessions.", source: "Wikipedia / Nevermind", source_url: "https://en.wikipedia.org/wiki/Nevermind" },
-  { id: "stu-pachyderm", name: "Pachyderm Studio", city: "Cannon Falls, MN", address: "Rural Goodhue County, MN", owners: "Jim Salon & Mark Haines", map_id: "pachyderm", notes: "Secluded studio where Steve Albini recorded In Utero in two weeks (Feb 1993).", source: "Wikipedia / In Utero", source_url: "https://en.wikipedia.org/wiki/In_Utero" },
-  { id: "stu-robertlang", name: "Robert Lang Studios", city: "Shoreline / North Seattle, WA", address: "19916 Richmond Beach Dr NW", owners: "Robert Lang", map_id: "robert-lang", notes: "Site of Nirvana's final studio session (Jan 28-30, 1994), yielding 'You Know You're Right'.", source: "LiveNirvana", source_url: "https://www.livenirvana.com/sessions/studio/january-1994.php" }
+  { id: "stu-reciprocal", name: "Reciprocal Recording", city: "Seattle, WA", address: "4230 Leary Way NW (Ballard/Interbay)", owners: "Chris Hanzsek & Jack Endino", map_id: "reciprocal", notes: "8-track and 16-track studio where Jack Endino recorded early Sub Pop bands including Nirvana's Jan 1988 demo and Bleach.", source: "LiveNirvana — Jan 1988 Session", source_url: "https://www.livenirvana.com/sessions/studio/january-1988.php" },
+  { id: "stu-kaos", name: "KAOS 89.3 FM Studio", city: "Olympia, WA", address: "The Evergreen State College Campus", owners: "The Evergreen State College", map_id: "evergreen", notes: "College radio studio where Nirvana taped their first radio session on May 6, 1987.", source: "LiveNirvana — May 1987 KAOS", source_url: "https://www.livenirvana.com/sessions/radio/may-1987.php" },
+  { id: "stu-maidavale", name: "BBC Maida Vale Studios", city: "London, UK", address: "Delaware Road, Maida Vale", owners: "BBC", map_id: "", notes: "Historic BBC radio studios where Nirvana recorded all three John Peel Sessions (1989, 1990, 1991).", source: "LiveNirvana — Oct 1989 Peel #1", source_url: "https://www.livenirvana.com/sessions/radio/october-1989.php" },
+  { id: "stu-smart", name: "Smart Studios", city: "Madison, WI", address: "1254 E Washington Ave", owners: "Butch Vig & Steve Marker", map_id: "", notes: "Recorded the April 1990 demos with Chad Channing, including the final album take of 'Polly'.", source: "Wikipedia — Nevermind", source_url: "https://en.wikipedia.org/wiki/Nevermind" },
+  { id: "stu-soundcity", name: "Sound City Studios", city: "Van Nuys, CA", address: "15456 Cabrito Rd", owners: "Tom Skeeter & Joe Gottfried", map_id: "sound-city", notes: "Famous for its custom Neve 8028 console and drum room sound; hosted the May 1991 Nevermind sessions.", source: "Wikipedia — Nevermind", source_url: "https://en.wikipedia.org/wiki/Nevermind" },
+  { id: "stu-pachyderm", name: "Pachyderm Studio", city: "Cannon Falls, MN", address: "Rural Goodhue County, MN", owners: "Jim Salon & Mark Haines", map_id: "pachyderm", notes: "Secluded studio where Steve Albini recorded In Utero in two weeks (Feb 1993).", source: "Wikipedia — In Utero", source_url: "https://en.wikipedia.org/wiki/In_Utero" },
+  { id: "stu-robertlang", name: "Robert Lang Studios", city: "Shoreline / North Seattle, WA", address: "19916 Richmond Beach Dr NW", owners: "Robert Lang", map_id: "robert-lang", notes: "Site of Nirvana's final studio session (Jan 28-30, 1994), yielding 'You Know You're Right'.", source: "LiveNirvana — Jan 1994 Session", source_url: "https://www.livenirvana.com/sessions/studio/january-1994.php" }
 ];
 
 window.NIRVANA_SESSIONS = [
@@ -13,6 +14,9 @@ window.NIRVANA_SESSIONS = [
     id: "ses-1985-fecal",
     title: "Fecal Matter — 'Illiteracy Will Prevail' Demo",
     date: "Dec 1985 (disputed spring 1986)",
+    session_date: "December 1985 (disputed spring 1986)",
+    first_release_date: "1986 cassette circulation; 'Spank Thru' surfaced officially on Sliver: The Best of the Box (2005)",
+    archival_note: "Original 15-track demo cassette; listing below shows key documented/circulating tracks rather than every untitled fragment.",
     kind: "Demo / Home",
     studio_id: "",
     studio_name: "Mari Earl's residence (Burien / Seattle, WA)",
@@ -22,14 +26,18 @@ window.NIRVANA_SESSIONS = [
     tracks: ["Sound of Dentage", "Bambi Slaughter", "Laminated Effect", "Spank Thru", "Class of '86", "Blathers Log", "Downer"],
     gear: "TEAC A-2340 reel-to-reel 4-track",
     notes: "Pre-Nirvana demo cassette that introduced 'Spank Thru' to Krist Novoselic.",
-    source: "Wikipedia / Azerrad (1993)",
+    source: "Wikipedia — Fecal Matter",
     source_url: "https://en.wikipedia.org/wiki/Fecal_Matter_(band)",
-    confidence_status: "DISPUTED"
+    confidence_status: "DISPUTED",
+    completeness_status: "SELECTED TRACKS"
   },
   {
     id: "ses-1987-kaos",
     title: "KAOS 89.3 FM Radio Session",
     date: "May 6, 1987",
+    session_date: "May 6, 1987",
+    first_release_date: "Broadcast May 1987; 'Hairspray Queen' / rehearsal excerpts later circulated on archival releases",
+    archival_note: "Complete 9-song live-in-studio radio performance documented by LiveNirvana.",
     kind: "Radio / TV",
     studio_id: "stu-kaos",
     studio_name: "KAOS 89.3 FM, Evergreen State College",
@@ -41,12 +49,16 @@ window.NIRVANA_SESSIONS = [
     notes: "First documented radio/studio session by Nirvana.",
     source: "LiveNirvana",
     source_url: "https://www.livenirvana.com/sessions/radio/may-1987.php",
-    confidence_status: "CONFIRMED"
+    confidence_status: "CONFIRMED",
+    completeness_status: "COMPLETE RECORDING LIST"
   },
   {
     id: "ses-1987-boombox",
     title: "Boombox Rehearsal ('Mrs. Butterworth' tape)",
     date: "c. Summer 1987",
+    session_date: "c. Summer 1987 (exact day unknown)",
+    first_release_date: "November 23, 2004 (With the Lights Out box set)",
+    archival_note: "Title 'Mrs. Butterworth' was coined by management in 2004; only partial rehearsal tape survives.",
     kind: "Demo / Home",
     studio_id: "",
     studio_name: "Cobain residence, Aberdeen, WA",
@@ -55,15 +67,19 @@ window.NIRVANA_SESSIONS = [
     participants: "Kurt Cobain, Krist Novoselic, Aaron Burckhard",
     tracks: ["Untitled ('Mrs. Butterworth')", "Unknown rehearsal takes"],
     gear: "Consumer cassette boombox",
-    notes: "Attributed to summer 1987 and Aaron Burckhard by Jack Endino; title 'Mrs. Butterworth' was coined by management in 2004.",
+    notes: "Attributed to summer 1987 and Aaron Burckhard by Jack Endino; exact recording date and full tape contents remain unconfirmed.",
     source: "LiveNirvana / Jack Endino",
     source_url: "https://www.livenirvana.com/sessions/home/summer-1987.php",
-    confidence_status: "APPROXIMATE"
+    confidence_status: "APPROXIMATE",
+    completeness_status: "PARTIAL DOCUMENTATION"
   },
   {
     id: "ses-1988-01-reciprocal",
     title: "First Reciprocal Recording Demo",
     date: "January 23, 1988",
+    session_date: "January 23, 1988",
+    first_release_date: "June 15, 1989 (3 tracks on Bleach); remaining tracks on Incesticide (1992) & With the Lights Out (2004)",
+    archival_note: "Full 10-track demo recorded in a single afternoon with Melvins drummer Dale Crover.",
     kind: "Studio Album",
     studio_id: "stu-reciprocal",
     studio_name: "Reciprocal Recording, Seattle, WA",
@@ -73,14 +89,18 @@ window.NIRVANA_SESSIONS = [
     tracks: ["If You Must", "Downer", "Floyd the Barber", "Paper Cuts", "Spank Thru", "Hairspray Queen", "Aero Zeppelin", "Beeswax", "Mexican Seafood", "Pen Cap Chew"],
     gear: "8-track tape machine",
     notes: "Three tracks ('Floyd the Barber', 'Paper Cuts', 'Downer') were kept directly for Bleach.",
-    source: "Azerrad (1993) / LiveNirvana",
-    source_url: "https://en.wikipedia.org/wiki/Bleach_(Nirvana_album)",
-    confidence_status: "CONFIRMED"
+    source: "LiveNirvana — Jan 1988 Session",
+    source_url: "https://www.livenirvana.com/sessions/studio/january-1988.php",
+    confidence_status: "CONFIRMED",
+    completeness_status: "COMPLETE RECORDING LIST"
   },
   {
     id: "ses-1988-bleach",
     title: "Bleach & 'Love Buzz' Sessions",
     date: "June 1988 - January 1989",
+    session_date: "June 1988 – January 1989 (multiple sessions)",
+    first_release_date: "Nov 1988 ('Love Buzz' SP23); June 15, 1989 (Bleach LP)",
+    archival_note: "Summary of the core Chad Channing Reciprocal sessions; excludes the Jan 1988 Dale Crover tracks listed separately above.",
     kind: "Studio Album",
     studio_id: "stu-reciprocal",
     studio_name: "Reciprocal Recording, Seattle, WA",
@@ -90,14 +110,18 @@ window.NIRVANA_SESSIONS = [
     tracks: ["Love Buzz", "Big Cheese", "Blew", "About a Girl", "School", "Negative Creep", "Scoff", "Swap Meet", "Mr. Moustache", "Sifting", "Blandest"],
     gear: "Univox Hi-Flier, Boss DS-1",
     notes: "Total cost of the Bleach sessions was $606.17, fronted by Jason Everman.",
-    source: "Sub Pop / Wikipedia",
+    source: "Wikipedia — Bleach",
     source_url: "https://en.wikipedia.org/wiki/Bleach_(Nirvana_album)",
-    confidence_status: "CONFIRMED"
+    confidence_status: "CONFIRMED",
+    completeness_status: "SELECTED TRACKS"
   },
   {
     id: "ses-1989-peel1",
     title: "BBC John Peel Session #1",
     date: "October 26, 1989 (aired Nov 22, 1989)",
+    session_date: "October 26, 1989",
+    first_release_date: "November 22, 1989 (BBC Radio 1 broadcast)",
+    archival_note: "Complete 4-track Peel Session #1; followed by Peel Session #2 (Oct 21, 1990) and #3 (Sept 3, 1991).",
     kind: "Radio / TV",
     studio_id: "stu-maidavale",
     studio_name: "BBC Maida Vale Studio 4/5, London, UK",
@@ -109,12 +133,16 @@ window.NIRVANA_SESSIONS = [
     notes: "First UK BBC Radio 1 session.",
     source: "LiveNirvana",
     source_url: "https://www.livenirvana.com/sessions/radio/october-1989.php",
-    confidence_status: "CONFIRMED"
+    confidence_status: "CONFIRMED",
+    completeness_status: "COMPLETE RECORDING LIST"
   },
   {
     id: "ses-1990-smart",
     title: "Smart Studios Sessions",
     date: "April 2-6, 1990",
+    session_date: "April 2–6, 1990",
+    first_release_date: "Sept 24, 1991 ('Polly' on Nevermind); demos later on Nevermind 20th Deluxe (2011)",
+    archival_note: "Complete 7-song Sub Pop demo tracking list from Madison, WI.",
     kind: "Demo / Home",
     studio_id: "stu-smart",
     studio_name: "Smart Studios, Madison, WI",
@@ -124,14 +152,18 @@ window.NIRVANA_SESSIONS = [
     tracks: ["In Bloom", "Immodium (Breed)", "Lithium", "Polly", "Pay to Play (Stay Away)", "Dive", "Sappy"],
     gear: "24-track analog tape",
     notes: "Demoed early Nevermind material for Sub Pop; the 'Polly' take from this session was used on Nevermind.",
-    source: "LiveNirvana / Azerrad (1993)",
+    source: "Wikipedia — Nevermind",
     source_url: "https://en.wikipedia.org/wiki/Nevermind",
-    confidence_status: "CONFIRMED"
+    confidence_status: "CONFIRMED",
+    completeness_status: "COMPLETE RECORDING LIST"
   },
   {
     id: "ses-1991-soundcity",
     title: "Nevermind Album Sessions",
     date: "May 2-28, 1991",
+    session_date: "May 2–28, 1991 (mixed Aug 1991)",
+    first_release_date: "September 24, 1991 (Nevermind LP/CD)",
+    archival_note: "Lists the 12 Sound City tracks released on Nevermind ('Polly' came from the April 1990 Smart Studios session).",
     kind: "Studio Album",
     studio_id: "stu-soundcity",
     studio_name: "Sound City Studios, Van Nuys, CA",
@@ -141,14 +173,18 @@ window.NIRVANA_SESSIONS = [
     tracks: ["Smells Like Teen Spirit", "In Bloom", "Come As You Are", "Breed", "Lithium", "Territorial Pissings", "Drain You", "Lounge Act", "Stay Away", "On a Plain", "Something in the Way", "Endless, Nameless"],
     gear: "Neve 8028 console, Fender Mustang/Jaguar, Boss DS-1, EHX Small Clone",
     notes: "Major-label debut for DGC; Andy Wallace mixed the album in August 1991.",
-    source: "Wikipedia / Nevermind",
+    source: "Wikipedia — Nevermind",
     source_url: "https://en.wikipedia.org/wiki/Nevermind",
-    confidence_status: "CONFIRMED"
+    confidence_status: "CONFIRMED",
+    completeness_status: "COMPLETE RECORDING LIST"
   },
   {
     id: "ses-1993-pachyderm",
     title: "In Utero Album Sessions",
     date: "February 12-26, 1993",
+    session_date: "February 12–26, 1993",
+    first_release_date: "September 13/21, 1993 (In Utero LP/CD)",
+    archival_note: "Complete primary album/B-side tracking list from Cannon Falls, MN.",
     kind: "Studio Album",
     studio_id: "stu-pachyderm",
     studio_name: "Pachyderm Studio, Cannon Falls, MN",
@@ -158,31 +194,39 @@ window.NIRVANA_SESSIONS = [
     tracks: ["Serve the Servants", "Scentless Apprentice", "Heart-Shaped Box", "Rape Me", "Frances Farmer Will Have Her Revenge on Seattle", "Dumb", "Very Ape", "Milk It", "Pennyroyal Tea", "Radio Friendly Unit Shifter", "tourette's", "All Apologies", "Marigold"],
     gear: "Neve 8068 console, Veleno aluminum guitar, Tech 21 SansAmp",
     notes: "Recorded live in 14 days for $24,000 studio rental + $100,000 flat fee. Scott Litt later remixed 'Heart-Shaped Box' and 'All Apologies'.",
-    source: "Wikipedia / In Utero",
+    source: "Wikipedia — In Utero",
     source_url: "https://en.wikipedia.org/wiki/In_Utero",
-    confidence_status: "CONFIRMED"
+    confidence_status: "CONFIRMED",
+    completeness_status: "COMPLETE RECORDING LIST"
   },
   {
     id: "ses-1994-robertlang",
     title: "Robert Lang Studios Final Session",
     date: "January 28-30, 1994",
+    session_date: "January 28–30, 1994",
+    first_release_date: "October 29, 2002 (Nirvana greatest hits — 'You Know You're Right')",
+    archival_note: "Band recorded 'You Know You're Right' on Jan 30; earlier days featured instrumental jams and Dave Grohl solo demos (several untitled takes).",
     kind: "Studio Album",
     studio_id: "stu-robertlang",
     studio_name: "Robert Lang Studios, North Seattle, WA",
     producer: "Nirvana & Adam Kasper",
     engineer: "Adam Kasper",
     participants: "Kurt Cobain, Krist Novoselic, Dave Grohl",
-    tracks: ["You Know You're Right ('Kurt's Tune #1')", "Dave Grohl / Krist Novoselic jams"],
+    tracks: ["You Know You're Right ('Kurt's Tune #1')", "Dave Grohl / Krist Novoselic instrumental jams"],
     gear: "Fender Jag-Stang / Mustang",
     notes: "Nirvana's final studio recording session. 'You Know You're Right' was tracked on Jan 30 and released in 2002.",
-    source: "LiveNirvana",
+    source: "LiveNirvana — Jan 1994 Session",
     source_url: "https://www.livenirvana.com/sessions/studio/january-1994.php",
-    confidence_status: "CONFIRMED"
+    confidence_status: "CONFIRMED",
+    completeness_status: "SELECTED TRACKS"
   },
   {
     id: "ses-1994-doremi",
     title: "Seattle Home 4-Track Demo ('Do Re Mi')",
     date: "Early 1994 (exact date unknown)",
+    session_date: "Early 1994 (exact date unknown)",
+    first_release_date: "November 23, 2004 (With the Lights Out box set)",
+    archival_note: "Exact recording date and full contents of the home cassette are undocumented in public session logs.",
     kind: "Demo / Home",
     studio_id: "",
     studio_name: "Cobain residence, Seattle, WA",
@@ -191,9 +235,10 @@ window.NIRVANA_SESSIONS = [
     participants: "Kurt Cobain (solo)",
     tracks: ["Do Re Mi"],
     gear: "Acoustic guitar, 4-track cassette",
-    notes: "One of Kurt Cobain's final home recordings, surfaced on With the Lights Out (2004).",
-    source: "With the Lights Out (2004)",
-    source_url: "links.html",
-    confidence_status: "APPROXIMATE"
+    notes: "One of Kurt Cobain's final home recordings, surfaced posthumously on With the Lights Out (2004).",
+    source: "Wikipedia — With the Lights Out",
+    source_url: "https://en.wikipedia.org/wiki/With_the_Lights_Out",
+    confidence_status: "APPROXIMATE",
+    completeness_status: "UNKNOWN"
   }
 ];

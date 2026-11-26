@@ -221,10 +221,11 @@
       for (var i = 0; i < window.NIRVANA_STUDIOS.length; i++) {
         var st = window.NIRVANA_STUDIOS[i];
         var mapCell = st.map_id ? "<a href='map.html?place=" + esc(st.map_id) + "'>Map &rarr;</a>" : "&#8212;";
+        var stSrc = st.source_url ? " &middot; <a href='" + esc(st.source_url) + "' target='_blank'>" + esc(st.source) + "</a>" : "";
         var tr = document.createElement("tr");
         tr.id = st.id;
         tr.innerHTML =
-          "<td><b>" + esc(st.name) + "</b><br><span class='small'>" + esc(st.notes) + "</span></td>" +
+          "<td><b>" + esc(st.name) + "</b><br><span class='small'>" + esc(st.notes) + stSrc + "</span></td>" +
           "<td>" + esc(st.city) + "<br><span class='small'>" + esc(st.address) + "</span></td>" +
           "<td class='small'>" + esc(st.owners) + "</td>" +
           "<td>" + mapCell + "</td>";
@@ -242,8 +243,8 @@
         var tr = document.createElement("tr");
         tr.id = ses.id;
         tr.innerHTML =
-          "<td class='small'><b>" + esc(ses.date) + "</b></td>" +
-          "<td><a href='#sessionDetail' onclick='selectSession(\"" + esc(ses.id) + "\")'><b>" + esc(ses.title) + "</b></a></td>" +
+          "<td class='small'><b>" + esc(ses.session_date || ses.date) + "</b></td>" +
+          "<td><a href='#sessionDetail' onclick='selectSession(\"" + esc(ses.id) + "\")'><b>" + esc(ses.title) + "</b></a><br><span class='small'><code>" + esc(ses.completeness_status || "SELECTED TRACKS") + "</code></span></td>" +
           "<td class='small'>" + esc(ses.studio_name) + "</td>" +
           "<td class='small'>" + esc(ses.confidence_status) + "</td>";
         tb.appendChild(tr);
@@ -266,7 +267,8 @@
       var stuLink = ses.studio_id ? " (<a href='#" + esc(ses.studio_id) + "'>studio details</a>)" : "";
       document.getElementById("sessionDetail").innerHTML =
         "<h4 style='margin-top:0;'>" + esc(ses.title) + "</h4>" +
-        "<p><b>Date:</b> " + esc(ses.date) + " &middot; <b>Status:</b> <code>" + esc(ses.confidence_status) + "</code><br>" +
+        "<p><b>Session Date:</b> " + esc(ses.session_date || ses.date) + " &middot; <b>Confidence:</b> <code>" + esc(ses.confidence_status) + "</code> &middot; <b>Completeness:</b> <code>" + esc(ses.completeness_status || "SELECTED TRACKS") + "</code><br>" +
+        "<b>First Release / Archival Note:</b> " + esc(ses.first_release_date || "See notes") + (ses.archival_note ? " &mdash; " + esc(ses.archival_note) : "") + "<br>" +
         "<b>Studio:</b> " + esc(ses.studio_name) + stuLink + "<br>" +
         "<b>Producer / Engineer:</b> " + esc(ses.producer) + " / " + esc(ses.engineer) + "<br>" +
         "<b>Participants:</b> " + esc(ses.participants) + "<br>" +
