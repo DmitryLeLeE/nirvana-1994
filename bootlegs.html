@@ -43,6 +43,7 @@
       <a href="influences.html">Influences</a> |
       <a href="tabs.html">Tabs</a> |
       <a href="concerts.html">Concerts</a> |
+      <a href="venues.html">Venues</a> |
       <a href="quiz.html">Quiz</a> |
       <a href="webmaster.html">Webmaster</a> |
       <a href="sitemap.html">Sitemap</a> |
@@ -240,7 +241,33 @@
 
     <hr>
 
-    <p class="last-updated">Last updated: 04/19/94</p>
+    <h3 id="trading">1994 Tape Trading Board (HAVE / WANT)</h3>
+    <p class="small">trade TDK SA90 / Maxell XLII cassettes by mail &#8212; no bootleg sellers! (saved in your browser)</p>
+
+    <form onsubmit="return addTrade(this)">
+      <p>
+        Handle / City:<br>
+        <input type="text" name="who" maxlength="40" placeholder="e.g. mike_sea94, Seattle" required>
+      </p>
+      <p>
+        I HAVE:<br>
+        <input type="text" name="have" maxlength="90" placeholder="e.g. Reading '92 1st-gen TDK SA90" required>
+      </p>
+      <p>
+        I WANT:<br>
+        <input type="text" name="want" maxlength="90" placeholder="e.g. Paramount '91 or Smart Studios" required>
+      </p>
+      <p><input type="submit" value="Post trade listing"></p>
+    </form>
+
+    <table class="content" id="tradeTable">
+      <thead><tr><th>Trader</th><th>HAVE</th><th>WANT</th></tr></thead>
+      <tbody id="tradeBody"></tbody>
+    </table>
+
+    <hr>
+
+    <p class="last-updated">Last updated: 11/16/94</p>
     <p class="small">[ <a href="index.html">home</a> ] &middot; Nirvana Memorial Web Ring</p>
     <p>
       <img src="assets/btn-netscape.gif" width="88" height="31" alt="Get Netscape 2.0">
@@ -251,5 +278,48 @@
     <p class="small">&#169; 1994 &middot; in memory of Kurt Cobain</p>
 
   </center>
+
+  <script>
+    var TKEY = "nirvana_trades";
+    function loadTrades() {
+      try {
+        var r = localStorage.getItem(TKEY);
+        if (r) return JSON.parse(r);
+      } catch (e) {}
+      return [
+        { who: "subpop_dan (Seattle)", have: "Off Ramp 11/25/90 (1st gen Maxell XLII)", want: "Paramount 10/31/91 soundboard" },
+        { who: "kirsten_94 (Olympia)", have: "Reading '92 FM broadcast (TDK SA90)", want: "Any 1989 Bleach tour Europe tape" },
+        { who: "tomas_prg (Prague)", have: "In Utero Albini rough mixes (2nd gen)", want: "Peel Sessions '89 & '91 clean dub" },
+        { who: "xander@umich.edu", have: "Smart Studios 1990 demos + Boombox '88", want: "Live & Loud Pier 48 complete audio" },
+        { who: "londongrunge (UK)", have: "Munich 03/01/94 audience tape (TDK D90)", want: "Unplugged rehearsal / soundcheck" }
+      ];
+    }
+    function esc(s) {
+      return String(s).replace(/[&<>"]/g, function (c) {
+        return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+      });
+    }
+    function renderTrades() {
+      var tb = document.getElementById("tradeBody");
+      var list = loadTrades();
+      tb.innerHTML = "";
+      for (var i = 0; i < list.length; i++) {
+        var tr = document.createElement("tr");
+        tr.innerHTML = "<td>" + esc(list[i].who) + "</td><td>" + esc(list[i].have) + "</td><td>" + esc(list[i].want) + "</td>";
+        tb.appendChild(tr);
+      }
+    }
+    function addTrade(form) {
+      var who = form.who.value.trim(), have = form.have.value.trim(), want = form.want.value.trim();
+      if (!who || !have || !want) return false;
+      var list = loadTrades();
+      list.unshift({ who: who, have: have, want: want });
+      try { localStorage.setItem(TKEY, JSON.stringify(list.slice(0, 20))); } catch (e) {}
+      renderTrades();
+      form.reset();
+      return false;
+    }
+    renderTrades();
+  </script>
 </body>
 </html>

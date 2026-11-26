@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 &#8212; Geocities / Webring Neighbor Not Found</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <center>
+
+    <p><img src="assets/under-construction.gif" width="360" height="48" alt="Page missing"></p>
+
+    <h2>ERROR 404 &#8212; PAGE NOT FOUND</h2>
+    <p class="small" id="hostLine">geocities.com/SunsetStrip/Alley/1994/</p>
+
+    <hr>
+
+    <div class="note">
+      <p id="deadMsg">
+        This member of the <b>Nirvana Memorial Web Ring</b> has vanished from the server.
+      </p>
+    </div>
+
+    <pre class="lyrics" style="text-align:center;">
+  [ x ]  image_missing.gif  (0 bytes)
+  ---------------------------------------
+  Connection closed by remote host.
+  Last seen: October 1994
+    </pre>
+
+    <p class="small" id="ownerNote"></p>
+
+    <hr>
+
+    <p>
+      <a href="sitemap.html">&#8592; back to Webring &amp; Sitemap</a> &middot;
+      <a href="index.html">Nirvana Memorial Home</a>
+    </p>
+    <p class="small">&#169; 1994 &#8212; Nirvana Memorial Web Ring</p>
+
+  </center>
+
+  <script>
+    (function () {
+      var params = new URLSearchParams(location.search);
+      var site = params.get("site") || "lyrics";
+      var data = {
+        lyrics: {
+          host: "cs.washington.edu/~jdoe/kurt-lyrics/",
+          msg: "<b>Kurt&#8217;s Lyric Archive</b> is no longer hosted on this university account. The student graduated in June 1994 and the sysadmin wiped ~/public_html.",
+          note: "Tip: you can still read the typed lyrics on <a href='lyrics.html'>our Lyrics page</a>."
+        },
+        aberdeen: {
+          host: "tripod.com/aberdeen_sound_94/",
+          msg: "<b>The Aberdeen Sound Page</b> exceeded its 1 MB monthly bandwidth limit after someone posted a 600 KB .wav file of &#8220;Blew&#8221;.",
+          note: "Check back next month &#8212; or visit <a href='grunge.html'>The Seattle Scene</a>."
+        },
+        grungegirl94: {
+          host: "angelfire.com/wa/grungegirl94/hole.html",
+          msg: "<b>grungegirl94&#8217;s Hole Page</b> was last updated on 04/16/94. Rumor says she moved to Olympia to start a riot grrrl zine.",
+          note: "She still left a note in <a href='guestbook.html'>our Guestbook</a>."
+        },
+        subpop: {
+          host: "halcyon.com/~subpop_tapes/trade.txt",
+          msg: "<b>Sub Pop&#8217;s Unofficial Tape Trading Post</b> moved offline to snail mail only. Send a blank TDK SA90 and a SASE to PO Box 20645, Seattle.",
+          note: "Or post your trade on our <a href='bootlegs.html#trading'>Tape Trading Board</a>!"
+        }
+      };
+      var entry = data[site] || data.lyrics;
+      document.getElementById("hostLine").textContent = entry.host;
+      document.getElementById("deadMsg").innerHTML = entry.msg;
+      document.getElementById("ownerNote").innerHTML = entry.note;
+    })();
+  </script>
+</body>
+</html>

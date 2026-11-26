@@ -59,6 +59,7 @@
       <a href="influences.html">Influences</a> |
       <a href="tabs.html">Tabs</a> |
       <a href="concerts.html">Concerts</a> |
+      <a href="venues.html">Venues</a> |
       <a href="quiz.html">Quiz</a> |
       <a href="webmaster.html">Webmaster</a> |
       <a href="sitemap.html">Sitemap</a> |
@@ -123,8 +124,16 @@
     <div class="statusbar"><span id="statustext">Welcome to my Nirvana page!!!</span></div>
 
     <p class="midi">
-      MIDI: grunge theme
+      MIDI:
+      <select id="midiTrack" onchange="if(midiOn){ni=0;}">
+        <option value="slts">Smells Like Teen Spirit</option>
+        <option value="caya">Come As You Are</option>
+        <option value="about">About a Girl</option>
+        <option value="grunge">Original Grunge Riff</option>
+      </select>
       <input type="button" id="midiBtn" value="PLAY" onclick="midiToggle()">
+      &nbsp;
+      <input type="button" id="modemBtn" value="14.4k MODEM: OFF" onclick="toggleModemMode()">
     </p>
 
     <p><img src="assets/under-construction.gif" width="360" height="48" alt="Under construction"></p>
@@ -180,25 +189,62 @@
     }, 4000);
 
     var midiOn = false, midiTimer = null, ctx = null, ni = 0;
-    var RIFF = [220, 220, 196, 220, 262, 196, 220, 175];
+    var RIFFS = {
+      slts:   [175, 175, 175, 233, 233, 208, 208, 208, 277, 277],
+      caya:   [131, 131, 139, 147, 196, 147, 196, 147, 139, 131],
+      about:  [165, 165, 247, 196, 196, 247, 165, 196],
+      grunge: [220, 220, 196, 220, 262, 196, 220, 175]
+    };
     function midiToggle() {
       if (!ctx) ctx = new (window.AudioContext || window.webkitAudioContext)();
       if (ctx.state === "suspended") ctx.resume();
       midiOn = !midiOn;
       document.getElementById("midiBtn").value = midiOn ? "STOP" : "PLAY";
-      if (midiOn) { playMidiNote(); midiTimer = setInterval(playMidiNote, 450); }
+      if (midiOn) { ni = 0; playMidiNote(); midiTimer = setInterval(playMidiNote, 360); }
       else { clearInterval(midiTimer); midiTimer = null; }
     }
     function playMidiNote() {
+      var track = document.getElementById("midiTrack") ? document.getElementById("midiTrack").value : "slts";
+      var notes = RIFFS[track] || RIFFS.grunge;
       var o = ctx.createOscillator(), g = ctx.createGain();
       o.type = "square";
-      o.frequency.value = RIFF[ni % RIFF.length]; ni++;
-      g.gain.value = 0.06;
+      o.frequency.value = notes[ni % notes.length]; ni++;
+      g.gain.value = 0.05;
       o.connect(g); g.connect(ctx.destination);
       var t = ctx.currentTime;
-      g.gain.setValueAtTime(0.06, t);
-      g.gain.exponentialRampToValueAtTime(0.001, t + 0.4);
-      o.start(t); o.stop(t + 0.42);
+      g.gain.setValueAtTime(0.05, t);
+      g.gain.exponentialRampToValueAtTime(0.001, t + 0.32);
+      o.start(t); o.stop(t + 0.34);
+    }
+
+    var modemTimer = null;
+    function toggleModemMode() {
+      var btn = document.getElementById("modemBtn");
+      var imgs = document.querySelectorAll("img");
+      if (modemTimer) {
+        clearInterval(modemTimer);
+        modemTimer = null;
+        for (var i = 0; i < imgs.length; i++) imgs[i].style.clipPath = "";
+        btn.value = "14.4k MODEM: OFF";
+        return;
+      }
+      btn.value = "14.4k MODEM: LOADING...";
+      var pct = 0;
+      for (var i = 0; i < imgs.length; i++) {
+        imgs[i].style.clipPath = "inset(0 0 100% 0)";
+      }
+      modemTimer = setInterval(function () {
+        pct += 4;
+        for (var j = 0; j < imgs.length; j++) {
+          imgs[j].style.clipPath = "inset(0 0 " + Math.max(0, 100 - pct) + "% 0)";
+        }
+        if (pct >= 100) {
+          clearInterval(modemTimer);
+          modemTimer = null;
+          for (var k = 0; k < imgs.length; k++) imgs[k].style.clipPath = "";
+          btn.value = "14.4k MODEM: ON (REPLAY)";
+        }
+      }, 120);
     }
 
     function randomRingPage() {

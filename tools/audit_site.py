@@ -12,7 +12,8 @@ for fn in htmls:
     for m in re.findall(r'href="([^"]+)"', txt):
         if m.startswith(('http', 'mailto:', '#', 'javascript:')):
             continue
-        if not os.path.exists(m):
+        path_only = m.split('#', 1)[0].split('?', 1)[0]
+        if path_only and not os.path.exists(path_only):
             broken_internal.append((fn, m))
     for m in re.findall(r'src="([^"]+)"', txt):
         if m.startswith('http'):
