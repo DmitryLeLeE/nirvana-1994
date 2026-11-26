@@ -227,7 +227,7 @@ window.NIRVANA_INFLUENCE_LINKS = [
     desc: "'Damaged' and 'My War' appear in Kurt's Top 50 Albums; core hardcore blueprint.",
     source: "Wikipedia — Journals (Kurt Cobain)",
     sources: [
-      { source_name: "Wikipedia — Journals (Cobain book)", source_url: "https://en.wikipedia.org/wiki/Journals_(Cobain_book)", source_type: "archival_publication", supports: "Kurt Cobain's Top 50 Albums list", notes: "Published 2002" }
+      { source_name: "Wikipedia — Kurt Cobain (Journals / Top 50)", source_url: "https://en.wikipedia.org/wiki/Kurt_Cobain", source_type: "archival_publication", supports: "Kurt Cobain's Top 50 Albums list (Journals, 2002)", notes: "Published 2002" }
     ]
   },
   {
