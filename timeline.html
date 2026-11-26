@@ -58,6 +58,8 @@
       <button type="button" onclick="filterTimeline('release')">Releases</button>
       <button type="button" onclick="filterTimeline('concert')">Concerts &amp; TV</button>
       <button type="button" onclick="filterTimeline('1994')">1994</button>
+      <button type="button" onclick="filterTimeline('status:Confirmed')">Confirmed</button>
+      <button type="button" onclick="filterTimeline('status:Disputed')">Disputed / Approx</button>
     </p>
 
     <table class="content">
@@ -143,7 +145,13 @@
       tb.innerHTML = "";
       for (var i = 0; i < TL_EVENTS.length; i++) {
         var e = TL_EVENTS[i];
-        if (t !== "all" && e.type !== t) continue;
+        if (t === "status:Confirmed") {
+          if (e.status !== "Confirmed") continue;
+        } else if (t === "status:Disputed") {
+          if (e.status === "Confirmed") continue;
+        } else if (t !== "all" && e.type !== t) {
+          continue;
+        }
         var tr = document.createElement("tr");
         tr.id = e.id;
         var badge = e.status === "Confirmed"

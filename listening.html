@@ -168,7 +168,7 @@
           "<td>" + esc(s.album) + "</td>" +
           "<td>" + s.year + "</td>" +
           "<td>" + esc(s.duration) + "</td>" +
-          "<td>" + s.versions.length + " takes</td>";
+          "<td>" + s.versions.length + (s.versions.length === 1 ? " take" : " takes") + "</td>";
         tb.appendChild(tr);
       }
     }
@@ -259,7 +259,7 @@
         "<b>Personnel:</b> " + esc(s.personnel) + "</p>" +
         "<p><b>History:</b> " + esc(s.story) + "</p>" +
         playerHtml +
-        "<h4>Version Comparison (" + s.versions.length + " takes)</h4>" +
+        "<h4>Version Comparison (" + s.versions.length + (s.versions.length === 1 ? " take" : " takes") + ")</h4>" +
         versHtml +
         buildSongEvolutionHtml(s) +
         "<p class='small' style='margin-top:10px;'><b>Related archive pages:</b> " + linksHtml + "</p>";

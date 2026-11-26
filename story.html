@@ -52,7 +52,7 @@
     </div>
 
     <div id="chapterToc" style="max-width:680px; margin-bottom:12px;"></div>
-    <div id="chapterView" style="max-width:700px; text-align:left; background:#fffdf2; border:2px solid #808080; padding:14px;"></div>
+    <div id="chapterView" style="max-width:700px; width:100%; box-sizing:border-box; text-align:left; background:#fffdf2; border:2px solid #808080; padding:14px;"></div>
 
     <p class="small" style="margin-top:12px;">
       <button type="button" id="prevChapBtn" onclick="stepChapter(-1)">&larr; Previous Chapter</button>
@@ -133,7 +133,7 @@
           : "<a href='" + esc(cl.source_url) + "'>" + esc(cl.source) + "</a>";
         var pubPart = (cl.source_publication_date && cl.source_publication_date !== "Unknown") ? (", pub. " + esc(cl.source_publication_date)) : "";
         var ctxPart = cl.source_context ? (" — " + esc(cl.source_context)) : "";
-        claimsHtml += "<tr><td class='small' style='white-space:nowrap;'>" + claimBadge(cl.type) + "<br>" + esc(cl.event_date) + "</td>" +
+        claimsHtml += "<tr><td class='small' style='vertical-align:top;'>" + claimBadge(cl.type) + "<br>" + esc(cl.event_date) + "</td>" +
           "<td class='small'>" + esc(cl.text) + "<br><b>Source:</b> " + srcLink + esc(ctxPart) + pubPart + "</td></tr>";
       }
       claimsHtml += "</table>";

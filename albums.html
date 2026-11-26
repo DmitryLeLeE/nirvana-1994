@@ -42,7 +42,7 @@
     </p>
 
     <p id="albumTabs" class="small"></p>
-    <div id="albumDossier" style="max-width:720px; text-align:left; padding:14px;"></div>
+    <div id="albumDossier" style="max-width:720px; width:100%; box-sizing:border-box; text-align:left; padding:14px;"></div>
 
     <hr>
 
@@ -152,7 +152,7 @@
 
       box.innerHTML =
         "<div style='background:" + alb.theme.headerBg + "; color:" + alb.theme.headerFg + "; padding:8px 10px; margin:-14px -14px 12px -14px;'>" +
-        "<div class='small' style='opacity:0.9;'>" + esc(alb.theme.tag) + "</div>" +
+        "<div class='small' style='opacity:0.9; color:" + alb.theme.headerFg + ";'>" + esc(alb.theme.tag) + "</div>" +
         "<h3 style='margin:2px 0 0 0; color:" + alb.theme.headerFg + ";'>" + esc(alb.title) + " (" + alb.year + ") — " + esc(alb.label_cat) + "</h3>" +
         "</div>" +
         coverHtml +

@@ -2,9 +2,9 @@
   "concerts_count": 17,
   "setlist_counts": {
     "INCOMPLETE": 1,
+    "COMPLETE": 7,
     "PARTIAL": 8,
-    "UNKNOWN": 1,
-    "COMPLETE": 7
+    "UNKNOWN": 1
   },
   "photos_count": 23,
   "known_authorship_photos": 21,
@@ -46,7 +46,7 @@
     "Map places validated (19 unique IDs with valid coordinates)",
     "Gallery metadata validated (23 photos; known authorship=21, unknown=2)",
     "Artifacts internal links validated (15 items)",
-    "Concerts validated (17 shows; setlist_counts={'INCOMPLETE': 1, 'PARTIAL': 8, 'UNKNOWN': 1, 'COMPLETE': 7})",
+    "Concerts validated (17 shows; setlist_counts={'INCOMPLETE': 1, 'COMPLETE': 7, 'PARTIAL': 8, 'UNKNOWN': 1})",
     "Physical releases validated (15 items)",
     "Studios (7) & Sessions (11) validated",
     "Scene (20) & Influences (12) validated",

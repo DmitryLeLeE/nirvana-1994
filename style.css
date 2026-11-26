@@ -233,6 +233,12 @@ pre.lyrics,
 }
 
 @media (max-width: 680px) {
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
   h1 {
     font-size: clamp(26px, 8vw, 48px);
     letter-spacing: 4px;
@@ -248,9 +254,16 @@ pre.lyrics,
   }
 
   .note,
-  .quote {
-    max-width: 100%;
-    box-sizing: border-box;
+  .quote,
+  .modern-layer,
+  #albumDossier,
+  #chapterView,
+  #concertDetail,
+  #journeyView,
+  #chapterToc {
+    max-width: 100% !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
 
   .gallery,
@@ -264,7 +277,10 @@ pre.lyrics,
 
   table.content {
     display: block;
+    width: 100%;
+    max-width: 100%;
     overflow-x: auto;
+    box-sizing: border-box;
   }
 
   input[type="button"],
