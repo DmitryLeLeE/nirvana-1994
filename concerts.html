@@ -83,14 +83,21 @@
         <option value="Unknown Recording Source">Unknown Recording Source</option>
       </select>
       &nbsp;
-      <label><input type="checkbox" id="cHasSetlist" onchange="renderConcerts()"> Setlist documented only</label>
+      <b>Setlist:</b>
+      <select id="cSetlist" onchange="renderConcerts()">
+        <option value="all">All Shows</option>
+        <option value="COMPLETE">Complete Setlists Only</option>
+        <option value="HAS_ANY">Complete + Partial</option>
+        <option value="INCOMPLETE">Incomplete Documentation</option>
+        <option value="UNKNOWN">Setlist Unknown</option>
+      </select>
     </p>
 
     <p class="small" id="concertStats"></p>
 
     <table class="content">
       <thead>
-        <tr><th>Date</th><th>Venue &amp; City</th><th>Tour / Event</th><th>Recording</th><th>Status</th></tr>
+        <tr><th>Date</th><th>Venue &amp; City</th><th>Tour / Event</th><th>Recording</th><th>Setlist / Date</th></tr>
       </thead>
       <tbody id="concertRows"></tbody>
     </table>
@@ -133,23 +140,33 @@
       return "";
     }
 
+    function setlistBadge(st) {
+      if (st === "COMPLETE") return "<span class='badge-1994'>COMPLETE SETLIST</span>";
+      if (st === "PARTIAL") return "<span class='badge-modern'>PARTIAL SETLIST</span>";
+      if (st === "INCOMPLETE") return "<span style='background:#fff3cd;color:#664d03;border:1px solid #664d03;font-size:10px;padding:1px 4px;font-family:Courier New,monospace;'>INCOMPLETE DOCUMENTATION</span>";
+      return "<span style='background:#f8d7da;color:#842029;border:1px solid #842029;font-size:10px;padding:1px 4px;font-family:Courier New,monospace;'>SETLIST UNKNOWN</span>";
+    }
+
     function renderConcerts() {
       var yr = document.getElementById("cYear").value;
       var co = document.getElementById("cCountry").value;
       var rc = document.getElementById("cRec").value;
-      var hs = document.getElementById("cHasSetlist").checked;
+      var sl = document.getElementById("cSetlist").value;
       var tb = document.getElementById("concertRows");
       tb.innerHTML = "";
-      var shown = 0, withSetlist = 0;
+      var shown = 0, cnt = { COMPLETE: 0, PARTIAL: 0, INCOMPLETE: 0, UNKNOWN: 0 };
 
       for (var i = 0; i < window.NIRVANA_CONCERTS.length; i++) {
         var c = window.NIRVANA_CONCERTS[i];
         if (yr !== "all" && String(c.year) !== yr) continue;
         if (co !== "all" && c.country !== co) continue;
         if (rc !== "all" && c.recording_type !== rc) continue;
-        if (hs && (!c.setlist || !c.setlist.length)) continue;
+        if (sl === "COMPLETE" && c.setlist_status !== "COMPLETE") continue;
+        if (sl === "HAS_ANY" && c.setlist_status !== "COMPLETE" && c.setlist_status !== "PARTIAL") continue;
+        if (sl === "INCOMPLETE" && c.setlist_status !== "INCOMPLETE") continue;
+        if (sl === "UNKNOWN" && c.setlist_status !== "UNKNOWN") continue;
         shown++;
-        if (c.setlist && c.setlist.length) withSetlist++;
+        if (cnt.hasOwnProperty(c.setlist_status)) cnt[c.setlist_status]++;
 
         var tr = document.createElement("tr");
         tr.id = c.id;
@@ -158,10 +175,11 @@
           "<td>" + esc(c.venue) + "<br><span class='small'>" + esc(c.city) + ", " + esc(c.country) + "</span></td>" +
           "<td>" + esc(c.event_name) + "<br><span class='small'>" + esc(c.tour) + "</span></td>" +
           "<td class='small'>" + esc(c.recording_type) + "</td>" +
-          "<td class='small'>" + esc(c.confidence_status) + "</td>";
+          "<td class='small'>" + setlistBadge(c.setlist_status) + "<br>Date: " + esc(c.confidence_status) + "</td>";
         tb.appendChild(tr);
       }
-      document.getElementById("concertStats").textContent = "Showing " + shown + " show(s) (" + withSetlist + " with documented setlists).";
+      document.getElementById("concertStats").textContent =
+        "Showing " + shown + " show(s) — Complete: " + cnt.COMPLETE + " · Partial: " + cnt.PARTIAL + " · Incomplete: " + cnt.INCOMPLETE + " · Unknown: " + cnt.UNKNOWN;
     }
 
     function selectConcert(id) {
@@ -187,10 +205,20 @@
       var mapLink = c.venue_id ? "<a href='map.html?place=" + esc(c.venue_id) + "'>View Venue on Map</a> &middot; " : "";
       var legalHtml = c.legal_watch ? "<br><b>Legal release / watch:</b> " + esc(c.legal_watch) : "";
 
+      var srcsHtml = "";
+      if (c.setlist_sources && c.setlist_sources.length) {
+        for (var k = 0; k < c.setlist_sources.length; k++) {
+          srcsHtml += "<a href='" + esc(c.setlist_sources[k].url) + "' target='_blank'>" + esc(c.setlist_sources[k].name) + "</a>" + (k < c.setlist_sources.length - 1 ? " &middot; " : "");
+        }
+      } else {
+        srcsHtml = "<a href='" + esc(c.source_url) + "' target='_blank'>" + esc(c.sources) + "</a>";
+      }
+
       document.getElementById("concertDetail").innerHTML =
         "<h3 style='margin-top:0;'>" + esc(c.date) + " &#8212; " + esc(c.venue) + " (" + esc(c.city) + ")</h3>" +
         "<p><b>Event / Tour:</b> " + esc(c.event_name) + " (" + esc(c.tour) + ")<br>" +
-        "<b>Date precision:</b> " + esc(c.date_precision) + " &middot; <b>Status:</b> <code>" + esc(c.confidence_status) + "</code><br>" +
+        "<b>Date precision:</b> " + esc(c.date_precision) + " &middot; <b>Date Status:</b> <code>" + esc(c.confidence_status) + "</code><br>" +
+        "<b>Setlist Status:</b> " + setlistBadge(c.setlist_status) + " &#8212; " + esc(c.setlist_completeness_note) + "<br>" +
         "<b>Lineup:</b> " + esc(c.lineup) + "<br>" +
         "<b>Duration:</b> " + esc(c.duration) + "<br>" +
         "<b>Recording:</b> " + esc(c.recording_type) + " &#8212; " + esc(c.recording_notes) + legalHtml + "</p>" +
@@ -199,7 +227,7 @@
         setHtml +
         "<p class='small' style='margin-top:8px;'>" + mapLink +
         "<a href='venues.html'>Venues</a> &middot; <a href='bootlegs.html'>Bootlegs</a> &middot; " +
-        "<b>Source:</b> <a href='" + esc(c.source_url) + "' target='_blank'>" + esc(c.sources) + "</a></p>";
+        "<b>Sources:</b> " + srcsHtml + "</p>";
     }
 
     renderConcerts();

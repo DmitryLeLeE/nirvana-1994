@@ -12,6 +12,8 @@ window.NIRVANA_CONCERTS = [
     tour: "Early Washington Shows",
     lineup: "Kurt Cobain, Krist Novoselic, Aaron Burckhard",
     setlist: [],
+    setlist_status: "UNKNOWN",
+    setlist_completeness_note: "No setlist or recording survives from this show.",
     duration: "Unknown",
     recording_type: "Unknown Recording Source",
     recording_notes: "No circulating audio or video recording is documented.",
@@ -19,6 +21,7 @@ window.NIRVANA_CONCERTS = [
     notes: "First documented fliered public club show. Billed under early name 'Skid Row'.",
     sources: "LiveNirvana (1987-04-18)",
     source_url: "https://www.livenirvana.com/concerts/87/87-04-18.php",
+    setlist_sources: [{ name: "LiveNirvana (1987-04-18)", url: "https://www.livenirvana.com/concerts/87/87-04-18.php" }],
     confidence_status: "CONFIRMED"
   },
   {
@@ -34,6 +37,8 @@ window.NIRVANA_CONCERTS = [
     tour: "Early Washington Shows",
     lineup: "Kurt Cobain, Krist Novoselic, Aaron Burckhard, Tony Poukkula (guest guitar on Led Zeppelin jams)",
     setlist: ["Spank Thru", "Aero Zeppelin", "If You Must", "Heartbreaker (Led Zeppelin cover)", "How Many More Times (Led Zeppelin cover)"],
+    setlist_status: "INCOMPLETE",
+    setlist_completeness_note: "Incomplete ~35-minute audience tape; full running order and remaining songs are unverified.",
     duration: "~35 min (incomplete tape)",
     recording_type: "Audience Recording",
     recording_notes: "Earliest circulating live audience tape of Nirvana.",
@@ -41,6 +46,7 @@ window.NIRVANA_CONCERTS = [
     notes: "Long cited as 'March 1987 (first show)', but LiveNirvana visual/musical chronology places it in summer 1987.",
     sources: "LiveNirvana / Nirvana Live Guide",
     source_url: "https://www.livenirvana.com/",
+    setlist_sources: [{ name: "LiveNirvana Chronology", url: "https://www.livenirvana.com/" }, { name: "Nirvana Live Guide", url: "https://www.nirvanaguide.com/" }],
     confidence_status: "DISPUTED"
   },
   {
@@ -56,6 +62,8 @@ window.NIRVANA_CONCERTS = [
     tour: "Pre-Bleach Regional Shows",
     lineup: "Kurt Cobain, Krist Novoselic, Dave Foster",
     setlist: [],
+    setlist_status: "UNKNOWN",
+    setlist_completeness_note: "No setlist survives in archival records.",
     duration: "Unknown",
     recording_type: "Unknown Recording Source",
     recording_notes: "No confirmed full recording in circulation.",
@@ -63,6 +71,7 @@ window.NIRVANA_CONCERTS = [
     notes: "Sub Pop co-founder Jonathan Poneman attended and soon offered Nirvana a single.",
     sources: "Azerrad (1993) / Nirvana Live Guide",
     source_url: "https://www.nirvanaguide.com/",
+    setlist_sources: [{ name: "Nirvana Live Guide", url: "https://www.nirvanaguide.com/" }],
     confidence_status: "APPROXIMATE"
   },
   {
@@ -78,13 +87,16 @@ window.NIRVANA_CONCERTS = [
     tour: "Bleach US Tour",
     lineup: "Kurt Cobain, Krist Novoselic, Chad Channing, Jason Everman (2nd guitar)",
     setlist: ["School", "Floyd the Barber", "Love Buzz", "Negative Creep", "Blew"],
+    setlist_status: "PARTIAL",
+    setlist_completeness_note: "Partial audience recording; additional songs may have been played before/after the tape cut.",
     duration: "~25 min",
     recording_type: "Audience Recording",
     recording_notes: "Partial audience tape circulates.",
     legal_watch: "",
     notes: "In-store performance during Nirvana's first major US tour outside the Pacific Northwest.",
     sources: "LiveNirvana (1989-06-23)",
-    source_url: "https://www.livenirvana.com/",
+    source_url: "https://www.livenirvana.com/concerts/89/89-06-23.php",
+    setlist_sources: [{ name: "LiveNirvana (1989-06-23)", url: "https://www.livenirvana.com/concerts/89/89-06-23.php" }],
     confidence_status: "CONFIRMED"
   },
   {
@@ -100,13 +112,16 @@ window.NIRVANA_CONCERTS = [
     tour: "1990 Pacific Northwest",
     lineup: "Kurt Cobain, Krist Novoselic, Dan Peters (Mudhoney, drums)",
     setlist: ["Love Buzz", "Floyd the Barber", "Scoff", "Dive", "About a Girl", "Spank Thru", "Breed", "Sliver", "Been a Son", "Negative Creep", "Blew"],
+    setlist_status: "PARTIAL",
+    setlist_completeness_note: "Core songs documented from circulating audience recordings; exact completeness of encore/cuts varies by source.",
     duration: "~45 min",
     recording_type: "Audience Recording",
     recording_notes: "Audience video and audio circulate.",
     legal_watch: "",
     notes: "Only live performance with Dan Peters on drums; live debut of 'Sliver'; Dave Grohl watched from the audience.",
     sources: "LiveNirvana (1990-09-22)",
-    source_url: "https://www.livenirvana.com/",
+    source_url: "https://www.livenirvana.com/concerts/90/90-09-22.php",
+    setlist_sources: [{ name: "LiveNirvana (1990-09-22)", url: "https://www.livenirvana.com/concerts/90/90-09-22.php" }],
     confidence_status: "CONFIRMED"
   },
   {
@@ -122,13 +137,16 @@ window.NIRVANA_CONCERTS = [
     tour: "Pre-Nevermind Club Shows",
     lineup: "Kurt Cobain, Krist Novoselic, Dave Grohl",
     setlist: ["Aneurysm", "Drain You", "School", "Floyd the Barber", "About a Girl", "Polly", "Lithium", "Breed", "Sliver", "Negative Creep", "Blew"],
-    duration: "~55 min",
+    setlist_status: "PARTIAL",
+    setlist_completeness_note: "Selected highlights listed here; the full Off Ramp set ran longer (see LiveNirvana for complete 20+ song log).",
+    duration: "~55+ min",
     recording_type: "Audience Recording",
     recording_notes: "Well-known 1990 audience tape widely traded on TDK/Maxell cassettes.",
     legal_watch: "",
     notes: "One of Dave Grohl's first Seattle club shows, previewing early Nevermind material.",
-    sources: "Nirvana Live Guide",
-    source_url: "https://www.nirvanaguide.com/",
+    sources: "LiveNirvana (1990-11-25)",
+    source_url: "https://www.livenirvana.com/concerts/90/90-11-25.php",
+    setlist_sources: [{ name: "LiveNirvana (1990-11-25)", url: "https://www.livenirvana.com/concerts/90/90-11-25.php" }],
     confidence_status: "CONFIRMED"
   },
   {
@@ -144,6 +162,8 @@ window.NIRVANA_CONCERTS = [
     tour: "Spring 1991",
     lineup: "Kurt Cobain, Krist Novoselic, Dave Grohl",
     setlist: ["Pennyroyal Tea", "Smells Like Teen Spirit", "Territorial Pissings", "Drain You", "Lithium", "Aneurysm", "Negative Creep", "Blew"],
+    setlist_status: "PARTIAL",
+    setlist_completeness_note: "Partial list of confirmed songs from circulating audience audio/video.",
     duration: "~50 min",
     recording_type: "Audience Recording",
     recording_notes: "Audience video & audio exist; partial clips officially released on With the Lights Out (2004).",
@@ -151,6 +171,7 @@ window.NIRVANA_CONCERTS = [
     notes: "First live performance of 'Smells Like Teen Spirit' (with early alternate lyrics).",
     sources: "LiveNirvana (1991-04-17)",
     source_url: "https://www.livenirvana.com/concerts/91/91-04-17.php",
+    setlist_sources: [{ name: "LiveNirvana (1991-04-17)", url: "https://www.livenirvana.com/concerts/91/91-04-17.php" }],
     confidence_status: "CONFIRMED"
   },
   {
@@ -171,6 +192,8 @@ window.NIRVANA_CONCERTS = [
       "Breed", "Sliver", "Love Buzz", "Lithium", "Been a Son", "Negative Creep",
       "On a Plain", "Blew", "[Encore] Rape Me", "[Encore] Territorial Pissings", "[Encore] Endless, Nameless"
     ],
+    setlist_status: "COMPLETE",
+    setlist_completeness_note: "Complete 19-song running order verified by 16mm multitrack film & official 2011 release.",
     duration: "~70 min",
     recording_type: "Professional Video",
     recording_notes: "Shot entirely on 16mm film with multitrack audio. Released officially in 2011 (Live at the Paramount).",
@@ -178,6 +201,7 @@ window.NIRVANA_CONCERTS = [
     notes: "Only Nirvana concert filmed entirely on 16mm.",
     sources: "LiveNirvana (1991-10-31)",
     source_url: "https://www.livenirvana.com/concerts/91/91-10-31.php",
+    setlist_sources: [{ name: "LiveNirvana (1991-10-31)", url: "https://www.livenirvana.com/concerts/91/91-10-31.php" }],
     confidence_status: "CONFIRMED"
   },
   {
@@ -193,13 +217,16 @@ window.NIRVANA_CONCERTS = [
     tour: "Nevermind European Tour",
     lineup: "Kurt Cobain, Krist Novoselic, Dave Grohl",
     setlist: ["Drain You", "Aneurysm", "School", "Floyd the Barber", "Smells Like Teen Spirit", "About a Girl", "Polly", "Lithium", "Sliver", "Breed", "Come As You Are", "Been a Son", "Negative Creep", "On a Plain", "Blew", "[Encore] Territorial Pissings"],
+    setlist_status: "COMPLETE",
+    setlist_completeness_note: "Complete broadcast setlist verified by VPRO video & 3FM FM radio logs.",
     duration: "~60 min",
     recording_type: "FM Broadcast",
     recording_notes: "Pro-shot video & Dutch 3FM FM broadcast; classic European bootleg source.",
     legal_watch: "Official clips on Live! Tonight! Sold Out!! (1994)",
     notes: "Landmark European club show during the peak of Nevermind's breakout.",
     sources: "LiveNirvana (1991-11-25)",
-    source_url: "https://www.livenirvana.com/",
+    source_url: "https://www.livenirvana.com/concerts/91/91-11-25.php",
+    setlist_sources: [{ name: "LiveNirvana (1991-11-25)", url: "https://www.livenirvana.com/concerts/91/91-11-25.php" }],
     confidence_status: "CONFIRMED"
   },
   {
@@ -215,13 +242,16 @@ window.NIRVANA_CONCERTS = [
     tour: "TV Appearance",
     lineup: "Kurt Cobain, Krist Novoselic, Dave Grohl",
     setlist: ["Smells Like Teen Spirit", "Territorial Pissings"],
+    setlist_status: "COMPLETE",
+    setlist_completeness_note: "Complete 2-song live television broadcast.",
     duration: "~9 min (2 songs)",
     recording_type: "TV Broadcast",
     recording_notes: "National NBC live broadcast; gear smashed at the end of 'Territorial Pissings'.",
     legal_watch: "Official SNL clips / Live! Tonight! Sold Out!!",
     notes: "Aired the same day Nevermind reached #1 on Billboard 200.",
-    sources: "Nirvana Live Guide / NBC",
-    source_url: "https://www.nirvanaguide.com/",
+    sources: "LiveNirvana (1992-01-11)",
+    source_url: "https://www.livenirvana.com/concerts/92/92-01-11.php",
+    setlist_sources: [{ name: "LiveNirvana (1992-01-11)", url: "https://www.livenirvana.com/concerts/92/92-01-11.php" }],
     confidence_status: "CONFIRMED"
   },
   {
@@ -237,13 +267,16 @@ window.NIRVANA_CONCERTS = [
     tour: "Pacific Rim Tour 1992",
     lineup: "Kurt Cobain, Krist Novoselic, Dave Grohl",
     setlist: ["Aneurysm", "Drain You", "School", "Sliver", "About a Girl", "Come As You Are", "Lithium", "Breed", "Polly", "Lounge Act", "Smells Like Teen Spirit", "On a Plain", "Negative Creep", "Blew", "[Encore] Territorial Pissings"],
+    setlist_status: "PARTIAL",
+    setlist_completeness_note: "Circulating soundboard tape covers core 15-song sequence; tape cuts/encore order noted in LiveNirvana.",
     duration: "~60 min",
     recording_type: "Soundboard Recording",
     recording_notes: "Clean soundboard tape widely circulated among 1990s collectors.",
     legal_watch: "",
     notes: "One of three Melbourne Palace dates (Jan 31, Feb 1, Feb 2, 1992).",
     sources: "LiveNirvana (1992-02-01)",
-    source_url: "https://www.livenirvana.com/",
+    source_url: "https://www.livenirvana.com/concerts/92/92-02-01.php",
+    setlist_sources: [{ name: "LiveNirvana (1992-02-01)", url: "https://www.livenirvana.com/concerts/92/92-02-01.php" }],
     confidence_status: "CONFIRMED"
   },
   {
@@ -263,9 +296,11 @@ window.NIRVANA_CONCERTS = [
       "Come As You Are", "Lithium", "About a Girl", "tourette's", "Polly",
       "Lounge Act", "Smells Like Teen Spirit", "On a Plain", "Negative Creep",
       "Been a Son", "All Apologies", "Blew",
-      "[Encore] Dumb", "[Encore] Stay Away", "[Encore] spank thru / D-7",
-      "[Encore] The Money Will Roll Right In", "[Encore] Territorial Pissings"
+      "[Encore] Dumb", "[Encore] Stay Away", "[Encore] Spank Thru",
+      "[Encore] D-7", "[Encore] The Money Will Roll Right In", "[Encore] Territorial Pissings"
     ],
+    setlist_status: "COMPLETE",
+    setlist_completeness_note: "Complete 24-song setlist verified by BBC broadcast and 2009 Live at Reading release.",
     duration: "~85 min",
     recording_type: "FM Broadcast",
     recording_notes: "BBC Radio 1 FM broadcast & pro video; released officially in full in 2009 (Live at Reading).",
@@ -273,6 +308,7 @@ window.NIRVANA_CONCERTS = [
     notes: "Kurt entered in a wheelchair & hospital gown before playing 24 songs in front of ~70,000 fans.",
     sources: "LiveNirvana (1992-08-30)",
     source_url: "https://www.livenirvana.com/concerts/92/92-08-30.php",
+    setlist_sources: [{ name: "LiveNirvana (1992-08-30)", url: "https://www.livenirvana.com/concerts/92/92-08-30.php" }],
     confidence_status: "CONFIRMED"
   },
   {
@@ -288,13 +324,16 @@ window.NIRVANA_CONCERTS = [
     tour: "In Utero North American Tour",
     lineup: "Kurt Cobain, Krist Novoselic, Dave Grohl, Pat Smear, Lori Goldston",
     setlist: ["Radio Friendly Unit Shifter", "Drain You", "Breed", "Serve the Servants", "Come As You Are", "Smells Like Teen Spirit", "Sliver", "Dumb", "In Bloom", "About a Girl", "Lithium", "Pennyroyal Tea", "School", "Polly", "Rape Me", "Heart-Shaped Box", "You Know You're Right"],
+    setlist_status: "PARTIAL",
+    setlist_completeness_note: "Selected songs from the ~20-song set; encore songs ('All Apologies', 'Blew') omitted in this summary.",
     duration: "~75 min",
     recording_type: "Audience Recording",
     recording_notes: "Audience cassette circulated from 1994 with the unreleased song mislabeled 'On a Mountain' / 'Autopilot'.",
     legal_watch: "",
     notes: "Features the only documented live performance of 'You Know You're Right'.",
-    sources: "LiveNirvana / Wikipedia",
-    source_url: "https://www.livenirvana.com/",
+    sources: "LiveNirvana (1993-10-23)",
+    source_url: "https://www.livenirvana.com/concerts/93/93-10-23.php",
+    setlist_sources: [{ name: "LiveNirvana (1993-10-23)", url: "https://www.livenirvana.com/concerts/93/93-10-23.php" }],
     confidence_status: "CONFIRMED"
   },
   {
@@ -315,6 +354,8 @@ window.NIRVANA_CONCERTS = [
       "On a Plain", "Something in the Way", "Plateau", "Oh Me", "Lake of Fire",
       "All Apologies", "Where Did You Sleep Last Night"
     ],
+    setlist_status: "COMPLETE",
+    setlist_completeness_note: "Complete 14-song main taping setlist verified by MTV Unplugged in New York (1994).",
     duration: "~65 min",
     recording_type: "TV Broadcast",
     recording_notes: "Broadcast Dec 1993 (2 songs cut); released in full Nov 1, 1994 on MTV Unplugged in New York.",
@@ -322,6 +363,7 @@ window.NIRVANA_CONCERTS = [
     notes: "Not Nirvana's final show — the band toured through Dec 1993 and Europe Feb-Mar 1994.",
     sources: "LiveNirvana (1993-11-18)",
     source_url: "https://www.livenirvana.com/concerts/93/93-11-18.php",
+    setlist_sources: [{ name: "LiveNirvana (1993-11-18)", url: "https://www.livenirvana.com/concerts/93/93-11-18.php" }],
     confidence_status: "CONFIRMED"
   },
   {
@@ -342,6 +384,8 @@ window.NIRVANA_CONCERTS = [
       "All Apologies", "Heart-Shaped Box", "Blew", "The Man Who Sold the World",
       "School", "Come As You Are", "Lithium", "About a Girl", "Endless, Nameless"
     ],
+    setlist_status: "COMPLETE",
+    setlist_completeness_note: "Complete 17-song setlist verified by 2013 official Live and Loud release.",
     duration: "~75 min",
     recording_type: "TV Broadcast",
     recording_notes: "MTV New Year's Eve broadcast; released in full in 2013 (In Utero 20th Anniversary).",
@@ -349,6 +393,7 @@ window.NIRVANA_CONCERTS = [
     notes: "Closed with stage destruction during 'Endless, Nameless'.",
     sources: "LiveNirvana (1993-12-13)",
     source_url: "https://www.livenirvana.com/concerts/93/93-12-13.php",
+    setlist_sources: [{ name: "LiveNirvana (1993-12-13)", url: "https://www.livenirvana.com/concerts/93/93-12-13.php" }],
     confidence_status: "CONFIRMED"
   },
   {
@@ -364,6 +409,8 @@ window.NIRVANA_CONCERTS = [
     tour: "In Utero European Tour 1994",
     lineup: "Kurt Cobain, Krist Novoselic, Dave Grohl, Pat Smear, Melora Creager",
     setlist: ["Radio Friendly Unit Shifter", "Drain You", "Breed", "Serve the Servants", "Come As You Are", "Smells Like Teen Spirit", "Sliver", "Dumb", "In Bloom", "About a Girl", "Lithium", "Pennyroyal Tea", "School", "Polly", "Very Ape", "Lounge Act", "Rape Me", "Territorial Pissings", "[Encore] The Man Who Sold the World", "[Encore] All Apologies", "[Encore] On a Plain", "[Encore] Blew"],
+    setlist_status: "PARTIAL",
+    setlist_completeness_note: "22 songs preserved on FM broadcast; minor broadcast cuts/omissions possible per LiveNirvana.",
     duration: "~85 min",
     recording_type: "FM Broadcast",
     recording_notes: "High-quality Italian FM broadcast ('XXII II MCMXCIV').",
@@ -371,6 +418,7 @@ window.NIRVANA_CONCERTS = [
     notes: "Features Melora Creager on cello during the final European leg.",
     sources: "LiveNirvana (1994-02-22)",
     source_url: "https://www.livenirvana.com/concerts/94/94-02-22.php",
+    setlist_sources: [{ name: "LiveNirvana (1994-02-22)", url: "https://www.livenirvana.com/concerts/94/94-02-22.php" }],
     confidence_status: "CONFIRMED"
   },
   {
@@ -393,6 +441,8 @@ window.NIRVANA_CONCERTS = [
       "[Encore] The Man Who Sold the World", "[Encore] All Apologies",
       "[Encore] On a Plain", "[Encore] Blew", "[Encore] Heart-Shaped Box"
     ],
+    setlist_status: "COMPLETE",
+    setlist_completeness_note: "Complete final concert setlist verified by circulating audience tape and LiveNirvana.",
     duration: "~80 min (~3,000 attendance)",
     recording_type: "Audience Recording",
     recording_notes: "Audience audio recording circulates; venue power cut briefly during 'Come As You Are'.",
@@ -400,6 +450,7 @@ window.NIRVANA_CONCERTS = [
     notes: "Nirvana's final live performance. Kurt had severe laryngitis and bronchitis; tour cancelled after Rome overdose.",
     sources: "LiveNirvana (1994-03-01)",
     source_url: "https://www.livenirvana.com/concerts/94/94-03-01.php",
+    setlist_sources: [{ name: "LiveNirvana (1994-03-01)", url: "https://www.livenirvana.com/concerts/94/94-03-01.php" }],
     confidence_status: "CONFIRMED"
   }
 ];
