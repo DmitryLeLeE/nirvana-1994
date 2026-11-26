@@ -196,7 +196,7 @@
         }
         if (inSet) {
           var eraTag = con.year <= 1991 ? "EARLY LIVE" : "LATER LIVE";
-          conRows.push("<tr><td class='small'>" + esc(con.date) + "</td><td class='small'><code>" + eraTag + "</code> <a href='concerts.html#" + esc(con.id) + "'><b>" + esc(con.venue + " (" + con.city + ")") + "</b></a></td><td class='small'>" + esc(con.recording_type) + " &middot; " + esc(con.setlist_status) + "</td></tr>");
+          conRows.push("<tr><td class='small'>" + esc(con.date) + "</td><td class='small'><code>" + eraTag + "</code> <a href='concerts.html?concert=" + esc(con.id) + "'><b>" + esc(con.venue + " (" + con.city + ")") + "</b></a></td><td class='small'>" + esc(con.recording_type) + " &middot; " + esc(con.setlist_status) + "</td></tr>");
         }
       }
 
@@ -332,12 +332,23 @@
     filterSongs("all");
     renderStudios();
     renderSessions("all");
-    selectSession("ses-1994-robertlang");
-    // Open Drain You by default (as featured example) or from ?song=
-    (function () {
+    (function initListening() {
       var params = new URLSearchParams(location.search);
-      var q = params.get("song") || "drain-you";
-      selectSong(q);
+      var hashId = (location.hash || "").replace(/^#/, "");
+
+      var qSong = params.get("song") || "drain-you";
+      selectSong(qSong);
+
+      var qSession = params.get("session") || (hashId.indexOf("ses-") === 0 ? hashId : "");
+      if (qSession) {
+        selectSession(qSession);
+        if (hashId !== "evolution") {
+          var sd = document.getElementById("sessionDetail");
+          if (sd) sd.scrollIntoView();
+        }
+      } else {
+        selectSession("ses-1994-robertlang");
+      }
     })();
   </script>
 </body>

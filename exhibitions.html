@@ -127,7 +127,7 @@
       var conLinks = [];
       for (var c = 0; c < ex.concert_ids.length; c++) {
         var con = findById(window.NIRVANA_CONCERTS, ex.concert_ids[c]);
-        if (con) conLinks.push("<a href='concerts.html#" + esc(con.id) + "'>" + esc(con.date + " — " + con.venue) + "</a>");
+        if (con) conLinks.push("<a href='concerts.html?concert=" + esc(con.id) + "'>" + esc(con.date + " — " + con.venue) + "</a>");
       }
 
       var albLinks = [];

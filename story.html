@@ -153,7 +153,7 @@
         var cLinks = [];
         for (var k = 0; k < ch.concert_ids.length; k++) {
           var con = findById(window.NIRVANA_CONCERTS, ch.concert_ids[k]);
-          if (con) cLinks.push("<a href='concerts.html#" + esc(con.id) + "'>" + esc(con.date + " — " + con.venue) + "</a>");
+          if (con) cLinks.push("<a href='concerts.html?concert=" + esc(con.id) + "'>" + esc(con.date + " — " + con.venue) + "</a>");
         }
         conHtml += cLinks.join(" &middot; ") + "</li>";
       }
@@ -164,7 +164,7 @@
         var sLinks = [];
         for (var s = 0; s < ch.session_ids.length; s++) {
           var ses = findById(window.NIRVANA_SESSIONS, ch.session_ids[s]);
-          if (ses) sLinks.push("<a href='listening.html#" + esc(ses.id) + "'>" + esc(ses.title) + "</a>");
+          if (ses) sLinks.push("<a href='listening.html?session=" + esc(ses.id) + "'>" + esc(ses.title) + "</a>");
         }
         sesHtml += sLinks.join(" &middot; ") + "</li>";
       }
