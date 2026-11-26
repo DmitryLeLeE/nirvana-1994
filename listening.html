@@ -81,6 +81,31 @@
       <tbody id="releaseRows"></tbody>
     </table>
 
+    <h3 id="sessions">3. Recording Sessions &amp; Studios Archive</h3>
+    <p class="small">
+      <button type="button" onclick="renderSessions('all')">All Sessions (11)</button>
+      <button type="button" onclick="renderSessions('Studio Album')">Studio Sessions</button>
+      <button type="button" onclick="renderSessions('Radio / TV')">Radio / BBC Peel</button>
+      <button type="button" onclick="renderSessions('Demo / Home')">Demos &amp; Home</button>
+    </p>
+    <table class="content">
+      <thead>
+        <tr><th>Date</th><th>Session</th><th>Studio</th><th>Status</th></tr>
+      </thead>
+      <tbody id="sessionRows"></tbody>
+    </table>
+    <div id="sessionDetail" class="note" style="max-width:640px; width:100%; box-sizing:border-box; margin-top:10px;">
+      <p class="small">Click any session above to inspect engineer, gear, recorded tracks, and studio dossier.</p>
+    </div>
+
+    <h4>Recording Studios Directory</h4>
+    <table class="content">
+      <thead>
+        <tr><th>Studio</th><th>City &amp; Address</th><th>Owners / Engineers</th><th>Map</th></tr>
+      </thead>
+      <tbody id="studioRows"></tbody>
+    </table>
+
     <hr>
 
     <p class="small">
@@ -101,6 +126,7 @@
   </center>
 
   <script src="data/listening_data.js"></script>
+  <script src="data/sessions_data.js"></script>
   <script>
     var currentFilter = "all";
 
@@ -188,8 +214,72 @@
       slot.innerHTML = "<iframe width='320' height='240' src='https://www.youtube.com/embed/" + esc(ytId) + "' frameborder='0' allowfullscreen title='Official Nirvana Video'></iframe>";
     }
 
+    function renderStudios() {
+      var tb = document.getElementById("studioRows");
+      if (!tb || !window.NIRVANA_STUDIOS) return;
+      tb.innerHTML = "";
+      for (var i = 0; i < window.NIRVANA_STUDIOS.length; i++) {
+        var st = window.NIRVANA_STUDIOS[i];
+        var mapCell = st.map_id ? "<a href='map.html?place=" + esc(st.map_id) + "'>Map &rarr;</a>" : "&#8212;";
+        var tr = document.createElement("tr");
+        tr.id = st.id;
+        tr.innerHTML =
+          "<td><b>" + esc(st.name) + "</b><br><span class='small'>" + esc(st.notes) + "</span></td>" +
+          "<td>" + esc(st.city) + "<br><span class='small'>" + esc(st.address) + "</span></td>" +
+          "<td class='small'>" + esc(st.owners) + "</td>" +
+          "<td>" + mapCell + "</td>";
+        tb.appendChild(tr);
+      }
+    }
+
+    function renderSessions(kind) {
+      var tb = document.getElementById("sessionRows");
+      if (!tb || !window.NIRVANA_SESSIONS) return;
+      tb.innerHTML = "";
+      for (var i = 0; i < window.NIRVANA_SESSIONS.length; i++) {
+        var ses = window.NIRVANA_SESSIONS[i];
+        if (kind !== "all" && ses.kind !== kind) continue;
+        var tr = document.createElement("tr");
+        tr.id = ses.id;
+        tr.innerHTML =
+          "<td class='small'><b>" + esc(ses.date) + "</b></td>" +
+          "<td><a href='#sessionDetail' onclick='selectSession(\"" + esc(ses.id) + "\")'><b>" + esc(ses.title) + "</b></a></td>" +
+          "<td class='small'>" + esc(ses.studio_name) + "</td>" +
+          "<td class='small'>" + esc(ses.confidence_status) + "</td>";
+        tb.appendChild(tr);
+      }
+    }
+
+    function selectSession(id) {
+      var ses = null;
+      for (var i = 0; i < window.NIRVANA_SESSIONS.length; i++) {
+        if (window.NIRVANA_SESSIONS[i].id === id) { ses = window.NIRVANA_SESSIONS[i]; break; }
+      }
+      if (!ses) return;
+      var trkHtml = "";
+      for (var j = 0; j < ses.tracks.length; j++) {
+        trkHtml += esc(ses.tracks[j]) + (j < ses.tracks.length - 1 ? " &middot; " : "");
+      }
+      var srcHtml = ses.source_url
+        ? "<a href='" + esc(ses.source_url) + "' target='_blank'>" + esc(ses.source) + "</a>"
+        : esc(ses.source);
+      var stuLink = ses.studio_id ? " (<a href='#" + esc(ses.studio_id) + "'>studio details</a>)" : "";
+      document.getElementById("sessionDetail").innerHTML =
+        "<h4 style='margin-top:0;'>" + esc(ses.title) + "</h4>" +
+        "<p><b>Date:</b> " + esc(ses.date) + " &middot; <b>Status:</b> <code>" + esc(ses.confidence_status) + "</code><br>" +
+        "<b>Studio:</b> " + esc(ses.studio_name) + stuLink + "<br>" +
+        "<b>Producer / Engineer:</b> " + esc(ses.producer) + " / " + esc(ses.engineer) + "<br>" +
+        "<b>Participants:</b> " + esc(ses.participants) + "<br>" +
+        "<b>Gear:</b> " + esc(ses.gear) + "</p>" +
+        "<p><b>Tracks:</b> " + trkHtml + "</p>" +
+        "<p><b>Notes:</b> " + esc(ses.notes) + " &middot; <b>Source:</b> " + srcHtml + "</p>";
+    }
+
     renderReleases();
     filterSongs("all");
+    renderStudios();
+    renderSessions("all");
+    selectSession("ses-1994-robertlang");
     // Open Drain You by default (as featured example) or from ?song=
     (function () {
       var params = new URLSearchParams(location.search);
