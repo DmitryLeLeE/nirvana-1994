@@ -170,6 +170,15 @@
   <script src="data/scene_influences_data.js"></script>
   <script>
     function esc(s) { return String(s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+    function renderSources(list, fallback) {
+      if (!list || !list.length) return "<i>(" + esc(fallback || "Archive") + ")</i>";
+      var out = [];
+      for (var i = 0; i < list.length; i++) {
+        var s = list[i];
+        out.push("<a href='" + esc(s.source_url) + "' target='_blank' title='" + esc(s.supports || "") + " [" + esc(s.source_type || "") + "]'>" + esc(s.source_name) + "</a>");
+      }
+      return out.join(" &middot; ");
+    }
     function renderScene(kind) {
       var tb = document.getElementById("sceneRows");
       tb.innerHTML = "";
@@ -178,7 +187,7 @@
         if (kind !== "all" && e.kind !== kind) continue;
         var tr = document.createElement("tr");
         tr.id = e.id;
-        tr.innerHTML = "<td><b>" + esc(e.name) + "</b></td><td class='small'>" + esc(e.kind) + "</td><td class='small'>" + esc(e.years) + "</td><td class='small'>" + esc(e.link) + " <i>(" + esc(e.source) + ")</i></td>";
+        tr.innerHTML = "<td><b>" + esc(e.name) + "</b></td><td class='small'>" + esc(e.kind) + "</td><td class='small'>" + esc(e.years) + "</td><td class='small'>" + esc(e.link) + "<br><b>Sources:</b> " + renderSources(e.sources, e.source) + "</td>";
         tb.appendChild(tr);
       }
     }
