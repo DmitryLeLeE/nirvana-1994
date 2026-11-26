@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nirvana — Digital Archive Exhibitions</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <meta property="og:site_name" content="Nirvana Memorial — a hand-made 1994 fan site">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Nirvana — Digital Archive Exhibitions">
+  <meta property="og:description" content="Five curated digital exhibitions built from verified photographs, museum artifacts, and labeled reconstructions.">
+  <meta property="og:image" content="https://dmitrylelee.github.io/nirvana-1994/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <center>
+
+    <p><img src="assets/banner-gallery.gif" width="600" height="80" alt="NIRVANA — digital exhibitions"></p>
+
+    <p class="nav">
+      <a href="index.html">Home</a> |
+      <a href="about.html">The Band</a> |
+      <a href="discography.html">Discography</a> |
+      <a href="songs.html">Songs</a> |
+      <a href="listening.html">Listening Room</a> |
+      <a href="concerts.html">Concerts</a> |
+      <a href="timeline.html">Timeline</a> |
+      <a href="gallery.html">Gallery</a> |
+      <a href="media.html">Media</a> |
+      <a href="sitemap.html">Archive</a> |
+      <a href="search.html">Search</a> |
+      <a href="links.html">Sources</a>
+    </p>
+
+    <hr>
+
+    <h2>DIGITAL ARCHIVE EXHIBITIONS</h2>
+    <p class="small">
+      curated thematic collections separating original artifacts, archival photos, modern research &amp; illustrative reconstructions<br>
+      Related: <a href="gallery.html">Photo Gallery</a> &middot; <a href="artifacts.html">Artifact Archive</a> &middot; <a href="zines.html">Zines</a> &middot; <a href="story.html">The Nirvana Story</a>
+    </p>
+
+    <div class="note" style="max-width:660px; margin-bottom:10px;">
+      <p style="margin:0; font-size:12px;">
+        <b>Authenticity Legend:</b>
+        <span class="badge-1994">ORIGINAL ARTIFACT</span> / <span class="badge-1994">ARCHIVAL PHOTO</span> primary historical objects &middot;
+        <span class="badge-modern">MODERN RESEARCH MATERIAL</span> post-1994 museum/site photography &middot;
+        <span style="background:#fff3cd;color:#664d03;border:1px solid #664d03;font-size:10px;padding:1px 4px;font-family:Courier New,monospace;">ILLUSTRATIVE RECONSTRUCTION</span> modern text/visual mockup
+      </p>
+    </div>
+
+    <p id="exhTabs" class="small"></p>
+    <div id="exhView" style="max-width:700px; text-align:left; background:#fffdf2; border:3px ridge #808080; padding:14px;"></div>
+
+    <hr>
+
+    <p class="last-updated">Last updated: 11/16/94 <span class="small">(Stage 4 Curated Exhibitions)</span></p>
+    <p class="small">[ <a href="index.html">home</a> ] &middot; Nirvana Memorial Web Ring</p>
+    <p>
+      <img src="assets/btn-netscape.gif" width="88" height="31" alt="Get Netscape 2.0">
+      <img src="assets/btn-notepad.gif" width="88" height="31" alt="Made with Notepad">
+      <img src="assets/btn-guestbook.gif" width="88" height="31" alt="Sign my guestbook">
+      <img src="assets/btn-webring.gif" width="88" height="31" alt="Nirvana Webring">
+    </p>
+    <p class="small">&#169; 1994 &middot; in memory of Kurt Cobain</p>
+
+  </center>
+
+  <script src="data/photos_data.js"></script>
+  <script src="data/artifacts_data.js"></script>
+  <script src="data/concerts_data.js"></script>
+  <script src="data/stage4_exhibitions_data.js"></script>
+  <script>
+    function esc(s) {
+      return String(s).replace(/[&<>"]/g, function (c) {
+        return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+      });
+    }
+
+    function findById(arr, id) {
+      if (!arr) return null;
+      for (var i = 0; i < arr.length; i++) {
+        if (arr[i].id === id) return arr[i];
+      }
+      return null;
+    }
+
+    function renderTabs(activeId) {
+      var btns = [];
+      for (var i = 0; i < window.NIRVANA_EXHIBITIONS.length; i++) {
+        var ex = window.NIRVANA_EXHIBITIONS[i];
+        var st = ex.id === activeId ? " style='font-weight:bold; border:2px solid #000000;'" : "";
+        btns.push("<button type='button'" + st + " onclick='selectExhibition(\"" + esc(ex.id) + "\")'>" + esc(ex.number) + "</button>");
+      }
+      document.getElementById("exhTabs").innerHTML = btns.join(" ");
+    }
+
+    function selectExhibition(id) {
+      var ex = findById(window.NIRVANA_EXHIBITIONS, id) || window.NIRVANA_EXHIBITIONS[0];
+      renderTabs(ex.id);
+
+      var photosHtml = "<table class='content'><tr><th>Preview</th><th>Item &amp; Classification</th><th>Date, Attribution &amp; License</th></tr>";
+      for (var p = 0; p < ex.photo_ids.length; p++) {
+        var ph = findById(window.NIRVANA_PHOTOS, ex.photo_ids[p]);
+        if (!ph) continue;
+        var clsBadge = ph.archive_layer === "1994-context"
+          ? "<span class='badge-1994'>ARCHIVAL PHOTO</span>"
+          : "<span class='badge-modern'>MODERN RESEARCH MATERIAL</span>";
+        photosHtml += "<tr><td style='text-align:center;'><img class='photo' loading='lazy' src='" + esc(ph.src) + "' alt='" + esc(ph.title) + "' width='90'></td>" +
+          "<td class='small'>" + clsBadge + "<br><b>" + esc(ph.title) + "</b><br><a href='" + esc(ph.related_href) + "'>" + esc(ph.related_text) + " &rarr;</a></td>" +
+          "<td class='small'><b>Captured:</b> " + esc(ph.capture_date) + "<br><b>By:</b> " + esc(ph.attribution) + "<br><b>License:</b> <a href='" + esc(ph.license_url) + "' target='_blank'>" + esc(ph.license) + "</a></td></tr>";
+      }
+      photosHtml += "</table>";
+
+      var artsHtml = "<table class='content' style='margin-top:8px;'><tr><th>Artifact / Document</th><th>Authenticity</th><th>Notes</th></tr>";
+      for (var a = 0; a < ex.artifact_ids.length; a++) {
+        var ar = findById(window.NIRVANA_ARTIFACTS, ex.artifact_ids[a]);
+        if (!ar) continue;
+        var aBadge = ar.authentic
+          ? "<span class='badge-1994'>ORIGINAL ARTIFACT</span>"
+          : "<span style='background:#fff3cd;color:#664d03;border:1px solid #664d03;font-size:10px;padding:1px 4px;font-family:Courier New,monospace;'>ILLUSTRATIVE RECONSTRUCTION</span>";
+        artsHtml += "<tr><td><a href='artifacts.html?id=" + esc(ar.id) + "'><b>" + esc(ar.title) + "</b></a></td><td>" + aBadge + "</td><td class='small'>" + esc(ar.desc) + "</td></tr>";
+      }
+      artsHtml += "</table>";
+
+      var conLinks = [];
+      for (var c = 0; c < ex.concert_ids.length; c++) {
+        var con = findById(window.NIRVANA_CONCERTS, ex.concert_ids[c]);
+        if (con) conLinks.push("<a href='concerts.html#" + esc(con.id) + "'>" + esc(con.date + " — " + con.venue) + "</a>");
+      }
+
+      var albLinks = [];
+      for (var al = 0; al < ex.album_links.length; al++) {
+        albLinks.push("<a href='" + esc(ex.album_links[al].href) + "'>" + esc(ex.album_links[al].label) + "</a>");
+      }
+
+      var srcLinks = [];
+      for (var s = 0; s < ex.sources.length; s++) {
+        var sc = ex.sources[s];
+        srcLinks.push(sc.href.indexOf("http") === 0
+          ? "<a href='" + esc(sc.href) + "' target='_blank'>" + esc(sc.label) + "</a>"
+          : "<a href='" + esc(sc.href) + "'>" + esc(sc.label) + "</a>");
+      }
+
+      document.getElementById("exhView").innerHTML =
+        "<p class='small' style='margin:0;'><code>" + esc(ex.number) + "</code></p>" +
+        "<h3 style='margin-top:4px;'>" + esc(ex.title) + "</h3>" +
+        "<p class='small'>" + esc(ex.intro) + "</p>" +
+        "<h4>Curated Photographic Record</h4>" + photosHtml +
+        "<h4>Artifacts, Flyers &amp; Documents</h4>" + artsHtml +
+        "<p class='small' style='margin-top:10px;'>" +
+        (albLinks.length ? "<b>Albums / Routes:</b> " + albLinks.join(" &middot; ") + "<br>" : "") +
+        (conLinks.length ? "<b>Related Concerts:</b> " + conLinks.join(" &middot; ") + "<br>" : "") +
+        "<b>Sources:</b> " + srcLinks.join(" &middot; ") + "</p>";
+    }
+
+    (function initExh() {
+      var params = new URLSearchParams(location.search);
+      var q = params.get("exhibition") || "exh-subpop";
+      selectExhibition(q);
+    })();
+  </script>
+</body>
+</html>
