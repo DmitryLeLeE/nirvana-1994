@@ -1,14 +1,14 @@
 {
   "concerts_count": 17,
   "setlist_counts": {
-    "INCOMPLETE": 1,
+    "UNKNOWN": 1,
     "COMPLETE": 7,
-    "PARTIAL": 8,
-    "UNKNOWN": 1
+    "INCOMPLETE": 1,
+    "PARTIAL": 8
   },
-  "photos_count": 23,
-  "known_authorship_photos": 21,
-  "unknown_authorship_photos": 2,
+  "photos_count": 28,
+  "known_authorship_photos": 24,
+  "unknown_authorship_photos": 4,
   "artifacts_count": 15,
   "scene_entities_count": 20,
   "influence_links_count": 12,
@@ -29,6 +29,10 @@
     "Photo pho-03: capture_date precision is UNKNOWN (Unknown (cover painting created pre-Dec 1992))",
     "Photo pho-05: photographer unknown (Unknown (MTV / DGC))",
     "Photo pho-15: photographer unknown (Unknown (Aberdeen Police Department))",
+    "Photo pho-24: capture_date precision is UNKNOWN (Unknown (archival Wikimedia Commons portrait))",
+    "Photo pho-25: photographer unknown (Unknown (1991 gig poster))",
+    "Photo pho-26: photographer unknown (Unknown (1991 flyer))",
+    "Photo pho-28: capture_date precision is APPROXIMATE (Post-2005)",
     "Concert con-1987-04-18-tacoma: setlist_status=PARTIAL (9 tracks)",
     "Concert con-1987-summer-raymond: setlist_status=INCOMPLETE (5 tracks)",
     "Concert con-1988-04-central: setlist_status=UNKNOWN (0 tracks)",
@@ -44,9 +48,9 @@
   ],
   "passed": [
     "Map places validated (19 unique IDs with valid coordinates)",
-    "Gallery metadata validated (23 photos; known authorship=21, unknown=2)",
+    "Gallery metadata validated (28 photos; known authorship=24, unknown=4)",
     "Artifacts internal links validated (15 items)",
-    "Concerts validated (17 shows; setlist_counts={'INCOMPLETE': 1, 'COMPLETE': 7, 'PARTIAL': 8, 'UNKNOWN': 1})",
+    "Concerts validated (17 shows; setlist_counts={'UNKNOWN': 1, 'COMPLETE': 7, 'INCOMPLETE': 1, 'PARTIAL': 8})",
     "Physical releases validated (15 items)",
     "Studios (7) & Sessions (11) validated",
     "Scene (20) & Influences (12) validated",
