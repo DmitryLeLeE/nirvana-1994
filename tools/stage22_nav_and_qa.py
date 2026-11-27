@@ -13,7 +13,7 @@ COMPACT_NAV = '''<p class="nav">
       <a href="timeline.html">Timeline</a> |
       <a href="gallery.html">Gallery</a> |
       <a href="media.html">Media</a> |
-      <a href="sitemap.html">Archive</a> |
+      <a href="sitemap.html">Site Map</a> |
       <a href="search.html">Search</a> |
       <a href="links.html">Sources</a>
     </p>'''
