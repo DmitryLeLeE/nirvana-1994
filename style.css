@@ -152,6 +152,18 @@ table.content th {
   border: 3px ridge #888888;
 }
 
+p > img.photo,
+p > a > img.photo {
+  margin: 6px;
+  vertical-align: middle;
+}
+
+img[src*="divider-anim.gif"] {
+  display: block;
+  margin: 12px auto;
+  max-width: 100%;
+}
+
 .note {
   display: inline-block;
   background: #fffdf2;

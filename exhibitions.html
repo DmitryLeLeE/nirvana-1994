@@ -107,7 +107,7 @@
         var clsBadge = ph.archive_layer === "1994-context"
           ? "<span class='badge-1994'>ARCHIVAL PHOTO</span>"
           : "<span class='badge-modern'>MODERN RESEARCH MATERIAL</span>";
-        photosHtml += "<tr><td style='text-align:center;'><img class='photo' loading='lazy' src='" + esc(ph.src) + "' alt='" + esc(ph.title) + "' width='90'></td>" +
+        photosHtml += "<tr><td style='text-align:center; min-width:136px;'><img class='photo' loading='lazy' src='" + esc(ph.src) + "' alt='" + esc(ph.title) + "' width='130' style='min-width:100px;'></td>" +
           "<td class='small'>" + clsBadge + "<br><b>" + esc(ph.title) + "</b><br><a href='" + esc(ph.related_href) + "'>" + esc(ph.related_text) + " &rarr;</a></td>" +
           "<td class='small'><b>Captured:</b> " + esc(ph.capture_date) + "<br><b>By:</b> " + esc(ph.attribution) + "<br><b>License:</b> <a href='" + esc(ph.license_url) + "' target='_blank'>" + esc(ph.license) + "</a></td></tr>";
       }

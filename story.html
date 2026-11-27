@@ -144,7 +144,7 @@
         for (var p = 0; p < ch.photo_ids.length; p++) {
           var ph = findById(window.NIRVANA_PHOTOS, ch.photo_ids[p]);
           if (!ph) continue;
-          photosHtml += "<a href='gallery.html' title='" + esc(ph.title) + "'><img class='photo' loading='lazy' src='" + esc(ph.src) + "' alt='" + esc(ph.title) + "' width='110' style='margin:4px; vertical-align:top;'></a>";
+          photosHtml += "<a href='gallery.html' title='" + esc(ph.title) + "'><img class='photo' loading='lazy' src='" + esc(ph.src) + "' alt='" + esc(ph.title) + "' width='150' style='margin:6px; vertical-align:middle;'></a>";
         }
         photosHtml += "</p>";
       }
